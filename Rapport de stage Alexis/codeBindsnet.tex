@@ -1,0 +1,138 @@
+\chapter{Annexes}
+
+\section{Exemple de code bindsnet}
+\label{codeBindsnet}
+Nous avons commencer à partir d'un code donné sur un des tutoriel de Bindsnet traitant de la simulation dans un SNN (Spiking Neural Network), que nous allons présentez ici:
+
+Tout d'abord:
+
+Ici nous importons les packages dont nous avons besoin:
+
+\begin{lstlisting}[language=Python]
+
+import torch
+import matplotlib.pyplot as plt
+from bindsnet.network import Network
+from bindsnet.network.nodes import Input, LIFNodes
+from bindsnet.network.topology import Connection
+from bindsnet.network.monitors import Monitor
+from bindsnet.analysis.plotting import plot_spikes, plot_voltages
+
+\end{lstlisting}
+
+\begin{itemize}
+
+\item D'abord torch qui nous permet de faire nos opérations matricielles.\\
+
+\item Matplotlib.pyplot qui nous permet de faire nos graphiques et courbes.\\
+
+\item La classe Network \footnote{Network: Permet la création d'un réseau générique sans couche ni connexion.} classe appartenant au module network \footnote{network: Module de Bidsnet qui contient tout ce qu'il faut pour creer notre réseau et faire notre simulation.} de Bindsnet.\\
+
+\item Les classes Input \footnote{Input: Permet la création d'un type de neurone utilisé en guise d'entrée} et LIFNodes \footnote{Type de neurone utilisé en guise de neurones contenu dans notre réservoir (LIF: Leaky Integrate and Fire).} appartenant au module network.\\
+
+\item La classe Connection \footnote{Connection: Permet la création d'une connexion du type par défaut de Bindsnet.} appartenant au module Topology \footnote{Topology: Contenant les classes de nos differents types de connexions.} appartenant encore une fois au module network.
+
+\item La classe Monitors \footnote{Monitors: Permet de crée un moniteurs qui vont nous rapporter l'état de notre réseau a chaque instant de la simulation.} appartenant à la au module monitors \footnote{monitors: Contenant nos différents types de moniteurs} appartenant aussi à network.
+
+\item Et pour finir les classes plot\_spikes \footnote{plot\_spikes: Crée un graphique montrant avec en abscisse le temps et en ordonné les différent neurone, les émissions des neurones par des points bleus.} et plot\_voltages \footnote{plot\_voltages: Permet la création d'un graphique représntant les courbes des potentiels de membrane de chaque neurone au fur pour chaque neurone durant la simulation (Avec le temps de la simulation en abscisse et le potentiel de membrane en Volts en ordonnée)} appartenant au module Plotting \footnote{Plotting: Module contenant tout se qui nous permettrait d'afficher l'état de notre réseaux sous forme de graphique.} appartenant au module Analysis.
+
+\end{itemize}
+
+\begin{lstlisting}[language=Python]
+
+# Simulation time.
+time = 500
+
+# Create the network.
+network = Network()
+
+# Create and add input, output layers.
+source_layer = Input(n=100)
+target_layer = LIFNodes(n=1000)
+
+network.add_layer(
+    layer=source_layer, name="A"
+)
+network.add_layer(
+    layer=target_layer, name="B"
+)
+
+\end{lstlisting}
+
+Nous commençons par mettre le temps de notre simulation dans une variable pour pouvoir le changer plus aisément par la suite. Puis nous créeons notre réseau à partir de la fameuse classe Network en appelant
+son constructeur, nous créons nos deux couches de neurones celle avec nos entrées 100 pour être précis et celle avec notre réservoir qui contiendra 1000 neurone de type LIFNodes que nous ajoutons pour finir a notre réservoir.
+
+\begin{lstlisting}[language=Python]
+
+# Create connection between input and output layers.
+forward_connection = Connection(
+    source=source_layer,
+    target=target_layer,
+    w=0.05 + 0.1 * torch.randn(source_layer.n, target_layer.n),  # Normal(0.05, 0.01) weights.
+)
+
+network.add_connection(
+    connection=forward_connection, source="A", target="B"
+)
+
+# Create recurrent connection in output layer.
+recurrent_connection = Connection(
+    source=target_layer,
+    target=target_layer,
+    w=0.025 * (torch.eye(target_layer.n) - 1), # Small, inhibitory "competitive" weights.
+)
+
+network.add_connection(
+    connection=recurrent_connection, source="B", target="B"
+)
+
+\end{lstlisting}
+
+Nous continuons en créeant une connection de nos neurones d'entrées aux neurones dans notre réservoir grace au constructeur de notre classe Connection qui prend en paramètre les deux couches à lié ainsi qu'une matrice représentant les poids de chacunes de ces connexions.
+
+\begin{lstlisting}[language=Python]
+
+# Create and add input and output layer monitors.
+source_monitor = Monitor(
+    obj=source_layer,
+    state_vars=("s",),  # Record spikes and voltages.
+    time=time,  # Length of simulation (if known ahead of time).
+)
+target_monitor = Monitor(
+    obj=target_layer,
+    state_vars=("s", "v"),  # Record spikes and voltages.
+    time=time,  # Length of simulation (if known ahead of time).
+)
+
+network.add_monitor(monitor=source_monitor, name="A")
+network.add_monitor(monitor=target_monitor, name="B")
+
+
+\end{lstlisting}
+
+Nous créons nos moniteurs en précisent l'objet observé, les paramètres à surveillé ici \"s\" pour les différent spike et \"v\" pour les potentiels de membranes.
+
+\begin{lstlisting}[language=Python, caption=Python example]
+
+# Create input spike data, where each spike is distributed according to Bernoulli(0.1).
+input_data = torch.bernoulli(0.1 * torch.ones(time, source_layer.n)).byte()
+inputs = {"A": input_data}
+
+# Simulate network on input data.
+network.run(inputs=inputs, time=time)
+
+# Retrieve and plot simulation spike, voltage data from monitors.
+spikes = {
+    "A": source_monitor.get("s"), "B": target_monitor.get("s")
+}
+voltages = {"B": target_monitor.get("v")}
+
+plt.ioff()
+plot_spikes(spikes)
+plot_voltages(voltages, plot_type="line")
+plt.show()
+
+\end{lstlisting}
+
+Ici nous lancons notre simulation avec des spikes d'entrée distribuerselon une loi de distribution de bernoulli.
+Puis nous créons nos courbes et les affichons.

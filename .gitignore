@@ -1,0 +1,6 @@
+# pas de fichiers npy
+*.npy
+
+
+*.aux
+*.log

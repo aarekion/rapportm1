@@ -1,0 +1,12 @@
+\babel@toc {french}{}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Figure 1 Sch\IeC {\'e}ma de l'organisation interne du LAMIA: \IeC {\textsuperscript 1}Apprentissages Interactions Donn\IeC {\'e}es. \IeC {\textsuperscript 2}Data analytics and big data gathering with sensors. \IeC {\textsuperscript 3}Math\IeC {\'e}matiques (analyse variationnelle, analyse num\IeC {\'e}rique, EDP, analyse statistique, math\IeC {\'e}matiques discr\IeC {\`e}tes). \IeC {\textsuperscript 4}Membres permanents : Suzy Gaucher-Casalis~(MCF),~Enguerran Grandchamp~(MCF--HDR),~Jean-Luc Henry~(MCF),~Jimmy Nagau~(MCF),~Vincent Pag\IeC {\'e}(MCF),~Helene Paugam Moisy~(PR),~S\IeC {\'e}bastien R\IeC {\'e}gis~(MCF),~C\IeC {\'e}line R\IeC {\'e}mi~(MCF).\relax }}{5}{figure.caption.6}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Fonctionnement d'un neurone seul\relax }}{7}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces r\IeC {\'e}seau de neurones classique en couches\relax }}{8}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Fonctionnement d'un neurone impulsionnel. \textbf {\IeC {\`a} gauche}~: le neurone $i$ re\IeC {\c c}oit des impulsions en provenance des entr\IeC {\'e}es $j$ aux instants $s_k$. \textbf {\IeC {\`a} droite}~: \IeC {\'e}volution du potentiel de membrane du neurone $i$ en fonction du temps. Ce neurone \IeC {\'e}mettra un spike peu apr\IeC {\`e}s $s_3$\relax }}{9}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Architecture de reservoir computing\relax }}{9}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Exemple de rasterplot : On voit que les neurones \IeC {\'e}mettent de fa\IeC {\c c}on relativement synchronis\IeC {\'e}e avant de cesser brutalement. \relax }}{10}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Nous avons ici un exemple de code ex\IeC {\'e}cut\IeC {\'e} avec colab.\relax }}{12}{figure.caption.20}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Architecture scale-free\relax }}{14}{figure.caption.23}%

@@ -1,0 +1,93 @@
+\documentclass[a4paper]{report}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{eso-pic}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{appendix}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{subcaption}
+
+
+
+\usepackage{array}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+
+
+\lstset{style=mystyle}
+%\renewcommand{\thesection}{\arabic{section}}
+
+%%\renewcommand\lstlistingname{Quelltext} % Change language of section name
+
+%\providecommand{\tightlist}{%
+%temsep}{0pt}\setlength{\parskip}{0pt}}
+
+\providecommand{\tightlist}{}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\blap}[1]{\vbox to 0pt{#1\vss}}
+\newcommand\AtUpperLeftCorner[3]{%
+  \put(\LenToUnit{#1},\LenToUnit{\dimexpr\paperheight-#2}){\blap{#3}}%
+}
+\newcommand\AtUpperRightCorner[3]{%
+  \put(\LenToUnit{\dimexpr\paperwidth-#1},\LenToUnit{\dimexpr\paperheight-#2}){\blap{\llap{#3}}}%
+}
+
+\title{\LARGE{\begin{center}RAPPORT DE STAGE\end{center} \leavevmode\newline Classification des Cachalots par leurs clics}}
+\author{\textsc{Arekion} Alexis\\M1 Informatique\\Année universitaire 2019/2020}
+\date{\today}
+\makeatletter
+
+\begin{document}
+
+\include{pageDeGarde}
+\listoffigures
+\tableofcontents
+
+\include{Introduction}
+\include{Deroulement}
+\include{conclusion}
+
+\cleardoublepage
+\phantomsection
+\bibliographystyle{plain} % Le style est mis entre accolades.
+\addcontentsline{toc}{chapter}{Bibliographie}
+\bibliography{biblioArekion}
+
+
+\appendix
+\include{biblioArekion}
+%\include{bases}
+
+\end{document}
