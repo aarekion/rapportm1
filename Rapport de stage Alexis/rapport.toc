@@ -10,27 +10,34 @@
 \contentsline {section}{\numberline {1.3}R\IeC {\'e}seaux de neurones classiques et impulsionnels}{4}{section.1.3}%
 \contentsline {section}{\numberline {1.4}Probl\IeC {\'e}matique: Diffusion de rumeur}{5}{section.1.4}%
 \contentsline {chapter}{\numberline {2}D\IeC {\'e}roulement}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Th\IeC {\'e}orie}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.1}Etat de l'art}{6}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Fonctionnement des r\IeC {\'e}seaux de neurones}{6}{subsection.2.1.1}%
 \contentsline {subsubsection}{Neurone artificiel classique}{6}{section*.7}%
-\contentsline {subsubsection}{R\IeC {\'e}seaux de neurones classiques}{7}{section*.9}%
+\contentsline {subsubsection}{R\IeC {\'e}seaux de neurones classiques}{6}{section*.9}%
 \contentsline {subsection}{\numberline {2.1.2}R\IeC {\'e}seaux de neurones impulsionnels}{7}{subsection.2.1.2}%
 \contentsline {subsubsection}{Neurone \IeC {\`a} Spikes}{8}{section*.11}%
 \contentsline {subsubsection}{Reseau de neurones impulsionnels \IeC {\`a} reservoir}{9}{section*.13}%
-\contentsline {subsection}{\numberline {2.1.3}Le challenge}{9}{subsection.2.1.3}%
-\contentsline {section}{\numberline {2.2}le travail a distance}{10}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Outils utilis\IeC {\'e}s}{11}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Pr\IeC {\'e}sentation de GitHub}{11}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.2}Le challenge}{10}{section.2.2}%
+\contentsline {section}{\numberline {2.3}le travail a distance}{10}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Outils utilis\IeC {\'e}s}{11}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Pr\IeC {\'e}sentation de GitHub}{11}{subsection.2.3.2}%
 \contentsline {subsubsection}{Pourquoi Github}{11}{section*.17}%
-\contentsline {subsection}{\numberline {2.2.3}Pr\IeC {\'e}sentation de Google Colab}{11}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3.3}Pr\IeC {\'e}sentation de Google Colab}{11}{subsection.2.3.3}%
 \contentsline {subsubsection}{Pourquoi Colab}{11}{section*.19}%
-\contentsline {subsection}{\numberline {2.2.4}Pr\IeC {\'e}sentation de LaTex}{11}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.3.4}Pr\IeC {\'e}sentation de LaTex}{11}{subsection.2.3.4}%
 \contentsline {subsubsection}{Pourquoi Github}{11}{section*.22}%
-\contentsline {chapter}{\numberline {3}Conclusion}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Conclusion de l'\IeC {\'e}tude}{13}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Piste d'am\IeC {\'e}lioration}{13}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Changer architecture du r\IeC {\'e}seau (Barabasi)}{13}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}R\IeC {\'e}interpr\IeC {\'e}tation de l'exp\IeC {\'e}rience}{13}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Les apports du stage}{13}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}les apports au monde}{13}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}les apports personels}{13}{subsection.3.3.2}%
+\contentsline {section}{\numberline {2.4}Analyse des donn\IeC {\'e}es}{12}{section.2.4}%
+\contentsline {section}{\numberline {2.5}data augmentation et traitement du signal}{12}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Data augmentation}{12}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Traitement du signal}{12}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}difficult\IeC {\'e}s rencontr\IeC {\'e}es}{12}{section.2.6}%
+\contentsline {section}{\numberline {2.7}bilan}{12}{section.2.7}%
+\contentsline {chapter}{\numberline {3}bilan}{13}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Conclusion}{14}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Conclusion de l'\IeC {\'e}tude}{14}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Piste d'am\IeC {\'e}lioration}{14}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Changer architecture du r\IeC {\'e}seau (Barabasi)}{14}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}R\IeC {\'e}interpr\IeC {\'e}tation de l'exp\IeC {\'e}rience}{14}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Les apports du stage}{14}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}les apports au monde}{14}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}les apports personels}{14}{subsection.4.3.2}%
