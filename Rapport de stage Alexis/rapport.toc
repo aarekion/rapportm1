@@ -31,13 +31,14 @@
 \contentsline {subsection}{\numberline {2.5.1}Data augmentation}{12}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}Traitement du signal}{12}{subsection.2.5.2}%
 \contentsline {section}{\numberline {2.6}difficult\IeC {\'e}s rencontr\IeC {\'e}es}{12}{section.2.6}%
-\contentsline {section}{\numberline {2.7}bilan}{12}{section.2.7}%
-\contentsline {chapter}{\numberline {3}bilan}{13}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Conclusion}{14}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Conclusion de l'\IeC {\'e}tude}{14}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Piste d'am\IeC {\'e}lioration}{14}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Changer architecture du r\IeC {\'e}seau (Barabasi)}{14}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}R\IeC {\'e}interpr\IeC {\'e}tation de l'exp\IeC {\'e}rience}{14}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Les apports du stage}{14}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}les apports au monde}{14}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}les apports personels}{14}{subsection.4.3.2}%
+\contentsline {chapter}{\numberline {3}difficultesrencontres}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}bilan}{13}{section.3.1}%
+\contentsline {chapter}{\numberline {4}bilan}{14}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Conclusion}{15}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Conclusion de l'\IeC {\'e}tude}{15}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Piste d'am\IeC {\'e}lioration}{15}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Changer architecture du r\IeC {\'e}seau (Barabasi)}{15}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}R\IeC {\'e}interpr\IeC {\'e}tation de l'exp\IeC {\'e}rience}{15}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}Les apports du stage}{15}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}les apports au monde}{15}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}les apports personels}{15}{subsection.5.3.2}%
