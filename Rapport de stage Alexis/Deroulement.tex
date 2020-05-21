@@ -3,7 +3,7 @@
 
 
 
-La première partie sera consacrée à la découverte théorique des réseaux de neurones artificiels classique, qui me permettra plus facilement de présenter les réseaux de neurones impulsionnels.
+La première partie sera consacrée à la découverte théorique des réseaux de neurones artificiels classique.
 
 \section{Etat de l'art}
 \subsection{Fonctionnement des réseaux de neurones}
@@ -65,79 +65,6 @@ Nous allons, pour cette partie encore, utiliser une figure (\ref{reseauClassique
 \includegraphics[width=16.5cm]{./images/multicouche.png}
 \caption{réseau de neurones classique en couches}
 \label{reseauClassique}
-\end{figure}
-
-Voyons maintenant en quoi les réseaux de neurones impulsionnels se distingue de ces neurones classiques.
-
-\subsection{Réseaux de neurones impulsionnels}
-\label{SNN}
-
-Nous allons à présent aborder les neurones à Spikes aussi appelés réseaux de neurones impulsionnel. comme pour les réseaux de neurones classiques, nous allons expliquer le fonctionnement d'un neurone avant de détailler le fonctionnement d'un réseau de neurone impulsionnel.
-
-\textit{Remarque} : Pour le reste de ce rapport nous utiliserons les anglicismes \textit{Spiker} \footnote{Spiker: Émettre une impulsions},\textit{Spike}\footnote{Spike: l'Impulsion émise par un neurone}.
-Ces anglicismes sont en effet couramment utilisés entre chercheurs.
-
-\subsubsection{Neurone à Spikes}
-\label{neuroneSpike}
-
-Comme les neurones classiques vu en section~\ref{neuroneClassique}, un neurone impulsionnel présente des \textbf{entrées} pondérées par des \textbf{poids} et une \textbf{unique sortie}.
-
-En revanche, de façon plus proche du fonctionnement biologique, les neurones n'échangent plus des chiffres mais des \textbf{impulsions} (ou \textbf{spikes}).
-
-Tous les spikes ont des propriétés similaires et ne se distinguent que par leur instant d'émission. En conséquence, dans un réseau de neurones impulsionnels, l'information n'est portée que par le positionnement temporel des spikes.
-
-\textit{En plus d'être éloignée de la réalité nous avons des calculs lourd et couteux qui sont éffectuer sur chaque neurone ce qui demande une assez grande puissace de calcul donc une quantité d'énergie proportionelle.}
-
-Une propriété primordiale du neurone à spike est son \textbf{potentiel de membrane} qui représente l'excitation du neurone.
-En l'absence d'entrées, ce potentiel a une valeur dite \textbf{de repos}.
-
-Lorsque qu'un spike arrive au neurone, ce spike déclenche l'augmentation du potentiel de membrane, selon une \textbf{équation différentielle}~\footnote{variable en fonction des modèles de neurones utilisés}.
-
-Chaque nouveau spike induit ainsi des augmentations du potentiel de membranes proportionnelles aux poids des connections sur lesquelles ils arrivent.
-
-L'équation différentielle induit également qu'en l'absence de nouveau spike, le potentiel tendra à revenir au potentiel de repos.
-
-Si le potentiel de membrane atteint un certain \textbf{seuil}, le neurone \textbf{émet un spike en sortie}~\footnote{Après avoir spiké, un neurone devient réfractaire pendant un laps de temps, c-a-d qu'il ignore ses spikes d'entrée.}
-
-En conséquence, c'est bien la notion de temps qui détermine si l'on émet un spike ou non. Pour émettre un spike, un neurone doit recevoir un nombre de spike dans un interval de temps suffisament court  pour permettre à son potentiel de membrane d'atteindre le seuil déclenchant l'émission.
-
-Mais une fois de plus une image vaut mieux que mille mots:\newline
-
-\begin{figure}[h]
-  \begin{center}
-\includegraphics[width=12cm]{./images/image9.png}
-\end{center}
-\caption{Fonctionnement d'un neurone impulsionnel. \textbf{à gauche}~: le neurone $i$ reçoit des impulsions en provenance des entrées $j$ aux instants $s_k$. \textbf{à droite}~: évolution du potentiel de membrane du neurone $i$ en fonction du temps. Ce neurone émettra un spike peu après $s_3$}
-\label{NeuroneASpike}
-\end{figure}
-
-\subsubsection{Reseau de neurones impulsionnels à reservoir}
-
-Nous pouvons à présent attaquer les réseaux de neurones à spike.
-
-Comme dans le cas des réseaux de neurones classiques, un réseau impulsionnel comporte le plus souvent une \textbf{couche d'entrée}, une \textbf{couche de sortie} et une \textbf{architecture intermédiaire} entre ces couches.
-
-Le choix de cette architecture intermédiaire varie beaucoup plus que dans le cas des réseaux classiques. Durant ce stage, conformément à l'article de référence~\cite{Lympero} qui nous a guidés, nous utiliserons une architecture dite \textbf{de Reservoir Computing}, dans laquelle les couches ont disparues et les neurones sont simplement connectés les uns aux autres avec des connections récurrentes, formant un graphe.~\footnote{Pour les lecteurs plus forcenés, les autres architectures sont présentées en annexe.}
-
-Comme pour chaque présentation, nous allons illustrer cette architecture par un exemple sur la figure~\ref{reservoir}
-
-\begin{figure}[h]
-  \begin{center}
-\includegraphics[width=8cm]{./images/Reservoir.png}
-\end{center}
-\caption{Architecture de reservoir computing}
-\label{reservoir}
-\end{figure}
-
-Enfin, pour observer l'activité d'un réseau de neurones impulsionnel, on utilise une figure nommée \textbf{rasterplot}. Dans un rasterplot, l'axe des abscisses représente le temps et l'axe des ordonnées représente l'indice des neurones observés.
-Un point dans un rasterplot tel que celui de la figure~\ref{principeRasterplot} représente un spike émis par un neurone donné, à un instant donné.
-
-\begin{figure}[h]
-  \begin{center}
-  \includegraphics[width=8cm]{./images/SpikeB.png}
-  \end{center}
-  \caption{Exemple de rasterplot : On voit que les neurones émettent de façon relativement synchronisée avant de cesser brutalement.   }
-  \label{principeRasterplot}
 \end{figure}
 
 \section{Le challenge}
@@ -249,8 +176,8 @@ Cela permet encore une fois une synergie entre nos différent outil car LaTex pe
 \input{difficultesrencontres}
 
 \section{bilan}
-\hypertarget{bilan}{%
-\chapter{bilan}\label{bilan}}
+
+\input{difficultesrecontres}
 
 
 

@@ -186,35 +186,11 @@ Bien que basés de façon lointaine sur des neurones biologiques, ils sont
 en fait très peu plausibles biologiquement (les neurones échangent des
 chiffres entre eux, les informations se rétropropagent\ldots{})
 
-A l'inverse, une autre génération de réseaux de neurones, dits
-\textbf{réseaux de neurones impulsionnels} fait l'objet de nombreuses
-recherches. Nous reviendrons sur le fonctionnement de ces réseaux plus
-loin. Disons simplement que les neurones n'échangent plus des chiffres
-mais des impulsions électriques datées, qui se propagent dans le réseau
-et en déclenchent d'autres.
-
-Ces réseaux de neurones seraient plus proches des neurones biologiques
-et potentiellement capable de meilleurs résultats que les réseaux
-classiques. Néanmoins, à l'heure actuelle, les performances en
-apprentissage de ces réseaux de neurones sont beaucoup plus faibles que
-celles des réseaux de neurones classiques.
-
-L'activité de recherche du groupe \textbf{Spikes} consiste à
-expérimenter de nouvelles techniques d'apprentissage pour ces
-\textbf{réseaux de neurones impulsionnels} dans le but de contribuer à
-les améliorer.
 
 \hypertarget{problematique}{%
-\section{Problématique: Diffusion de rumeur}\label{problematique}}
+\section{Problématique: Classifier les Cachalots}\label{problematique}}
 
-Mon travail consistait dans l'étude de la diffusion de rumeur dans un réseau social.
-C'est un sujet très actuel et passionant. En effet,
-une meilleure connaissance des mécanismes de transmission permettrait par exemple de lutter contre la diffusion de \textit{fake news} ou de promouvoir la propagation d'informations importantes.
+Le challenge "Dyni Odontocete Click Classification, 10 species [ DOCC10 ]
+by Universite de Toulon" (https://challengedata.ens.fr/challenges/32) consistait simplement à réaliser un classifieur qui classe les cachalots en une dizaine d'especes à partir de leurs "Clics" pour celà nous avions a disposition une base d'apprentissage labelisée ainsi qu'une base de test non labelisée sur laquelle nous pouvions évaluer les performances réelles de nos classifieurs. Pour cela nous labelision les exemples de la base de test puis envoyions nos prédictions sur le site du challenge qui nous renvoyais nos performances ainsi qu'un classement des performances de tous les participants.
 
-Une étude datant de 2015~\cite{Lympero} montre que les réseaux de neurones impulsionnels pourraient permettre de modéliser la diffusion de rumeur.
-
-Cette application des réseaux de neurones impulsionnels a semblé très intéressante au groupe \textbf{SpikeTrain}. Elle s'accordait en effet bien avec les tests actuels de ce groupe sur le simulateur de réseaux de neurones \textbf{Bindsnet}.
-
-Dans ce cadre, mon stage consistait donc à essayer de reproduire les expériences menées dans cet article sur le simulateur \textit{Bindsnet}.
-
-Tous ces concepts m'étant inconnus avant ce stage, il m'a fallu découvrir à la fois les réseaux de neurones impulsionnels, la diffusion de la rumeur ainsi que la façon dont ces réseaux peuvent modéliser la diffusion de rumeur. Ce sont tous ces points qui feront l'objet de la section suivante.
+Les deux bases sont consititués d'enregistrements audios des clics des différentes especes de cachalots que je présenterais plus en détail dans la partie analyse des données.
