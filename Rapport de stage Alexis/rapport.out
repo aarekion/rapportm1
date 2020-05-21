@@ -5,25 +5,27 @@
 \BOOKMARK [1][-]{section.1.2}{Objectifs du groupe Spiketrain}{chapter.1}% 5
 \BOOKMARK [1][-]{section.1.3}{R\351seaux de neurones classiques}{chapter.1}% 6
 \BOOKMARK [1][-]{section.1.4}{Probl\351matique: Classifier les Cachalots}{chapter.1}% 7
-\BOOKMARK [0][-]{chapter.2}{D\351roulement}{}% 8
-\BOOKMARK [1][-]{subsection.2.0.1}{la convolution}{chapter.2}% 9
-\BOOKMARK [0][-]{chapter.3}{Analyse des donn\351es}{}% 10
-\BOOKMARK [1][-]{subsection.3.0.1}{La base d'apprentissage}{chapter.3}% 11
-\BOOKMARK [2][-]{subsection.3.0.2}{La base de test}{subsection.3.0.1}% 12
-\BOOKMARK [2][-]{subsection.3.0.3}{Traitement du signal}{subsection.3.0.1}% 13
-\BOOKMARK [2][-]{subsection.3.0.4}{Data augmentation}{subsection.3.0.1}% 14
-\BOOKMARK [2][-]{subsection.3.0.5}{difficult\351s rencontr\351es}{subsection.3.0.1}% 15
-\BOOKMARK [0][-]{chapter.4}{Le travail a distance}{}% 16
-\BOOKMARK [1][-]{section.4.1}{Le travail a distance}{chapter.4}% 17
-\BOOKMARK [2][-]{subsection.4.1.1}{Outils utilis\351s}{section.4.1}% 18
-\BOOKMARK [2][-]{subsection.4.1.2}{Pr\351sentation de GitHub}{section.4.1}% 19
-\BOOKMARK [2][-]{subsection.4.1.3}{Pr\351sentation de Google Colab}{section.4.1}% 20
-\BOOKMARK [2][-]{subsection.4.1.4}{Pr\351sentation de LaTex}{section.4.1}% 21
-\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 22
-\BOOKMARK [1][-]{section.5.1}{Conclusion de l'\351tude}{chapter.5}% 23
-\BOOKMARK [1][-]{section.5.2}{Piste d'am\351lioration}{chapter.5}% 24
-\BOOKMARK [2][-]{subsection.5.2.1}{Changer architecture du r\351seau \(Barabasi\)}{section.5.2}% 25
-\BOOKMARK [2][-]{subsection.5.2.2}{R\351interpr\351tation de l'exp\351rience}{section.5.2}% 26
-\BOOKMARK [1][-]{section.5.3}{Les apports du stage}{chapter.5}% 27
-\BOOKMARK [2][-]{subsection.5.3.1}{les apports au monde}{section.5.3}% 28
-\BOOKMARK [2][-]{subsection.5.3.2}{les apports personels}{section.5.3}% 29
+\BOOKMARK [0][-]{chapter.2}{Etat de l'art}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Etat de l'art}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.1.1}{Fonctionnement des r\351seaux de neurones}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.2}{la convolution}{section.2.1}% 11
+\BOOKMARK [1][-]{section.2.2}{Etat des lieux a mon arrive}{chapter.2}% 12
+\BOOKMARK [0][-]{chapter.3}{Analyse des donn\351es}{}% 13
+\BOOKMARK [1][-]{subsection.3.0.1}{La base d'apprentissage}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.0.2}{La base de test}{subsection.3.0.1}% 15
+\BOOKMARK [2][-]{subsection.3.0.3}{Traitement du signal}{subsection.3.0.1}% 16
+\BOOKMARK [2][-]{subsection.3.0.4}{Data augmentation}{subsection.3.0.1}% 17
+\BOOKMARK [2][-]{subsection.3.0.5}{difficult\351s rencontr\351es}{subsection.3.0.1}% 18
+\BOOKMARK [0][-]{chapter.4}{Le travail a distance}{}% 19
+\BOOKMARK [1][-]{section.4.1}{Le travail a distance}{chapter.4}% 20
+\BOOKMARK [2][-]{subsection.4.1.1}{Outils utilis\351s}{section.4.1}% 21
+\BOOKMARK [2][-]{subsection.4.1.2}{Pr\351sentation de GitHub}{section.4.1}% 22
+\BOOKMARK [2][-]{subsection.4.1.3}{Pr\351sentation de Google Colab}{section.4.1}% 23
+\BOOKMARK [2][-]{subsection.4.1.4}{Pr\351sentation de LaTex}{section.4.1}% 24
+\BOOKMARK [0][-]{chapter.5}{Conclusion}{}% 25
+\BOOKMARK [1][-]{section.5.1}{Conclusion de l'\351tude}{chapter.5}% 26
+\BOOKMARK [1][-]{section.5.2}{Piste d'am\351lioration}{chapter.5}% 27
+\BOOKMARK [2][-]{subsection.5.2.1}{R\351interpr\351tation de l'exp\351rience}{section.5.2}% 28
+\BOOKMARK [1][-]{section.5.3}{Les apports du stage}{chapter.5}% 29
+\BOOKMARK [2][-]{subsection.5.3.1}{les apports au monde}{section.5.3}% 30
+\BOOKMARK [2][-]{subsection.5.3.2}{les apports personels}{section.5.3}% 31
