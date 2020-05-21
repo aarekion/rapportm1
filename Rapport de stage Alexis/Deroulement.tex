@@ -1,16 +1,15 @@
 \hypertarget{Deroulement}{%
 \chapter{Déroulement}\label{Déroulement}}
 
-
-
-La première partie sera consacrée à la découverte théorique des réseaux de neurones artificiels classique.
+Quand je suis arrivé dans l'équipe plusieurs solutions basés sur les réseaux de neurones avaient déjà été explorés par mes tuteurs.
+La première partie sera donc consacrée à la découverte théorique des réseaux de neurones artificiels et a la convolution.
 
 \section{Etat de l'art}
 \subsection{Fonctionnement des réseaux de neurones}
-La plupart de mes connaissances sur le sujet vient des présentations que nous ont faites les membres du groupe \textbf{SpikeTrain}, ainsi que d'un livre, co-écrit par le Pr. Paugam Moisy~\cite{naturalHandbook}.
+La plupart de mes connaissances sur le sujet vient des présentations que m'ont faites les membres du groupe \textbf{SpikeTrain}, ainsi que d'un livre, co-écrit par le Pr. Paugam Moisy~\cite{naturalHandbook}.
 En voici donc un rapide résumé.
 
-\subsubsection{Neurone artificiel classique}
+\subsubsection{Neurone artificiel}
 \label{neuroneClassique}
 Tout d'abord avant de parler de réseaux de neurone à spike il serait de bon ton d'expliquer le principe du réseau de neurone classique, explication qui commencera par expliquer le
 le principe du neurone unique.
@@ -45,7 +44,7 @@ Un schéma reprenant ces explications est présenté dans la figure~\ref{neurone
 Notre apprentissage ce fera en modifiant les poids de ses différentes
 connexion (et le biais) de façon à obtenir une sortie proche de celle voulu.\newline
 
-\subsubsection{Réseaux de neurones classiques}
+\subsubsection{Réseaux de neurones}
 
 Les neurones présentés précédemment prennent tout leur intérêt lorsqu'ils sont utilisés en groupes, dans des \textbf{réseaux de neurones}.
 
@@ -67,27 +66,35 @@ Nous allons, pour cette partie encore, utiliser une figure (\ref{reseauClassique
 \label{reseauClassique}
 \end{figure}
 
-\section{Le challenge}
-\label{lechallenge}
+\subsection{la convolution}
+\label{la convolution}
 
-Le challenge "Dyni Odontocete Click Classification, 10 species [ DOCC10 ]
-by Universite de Toulon" (https://challengedata.ens.fr/challenges/32) consistait simplement à réaliser un classifieur qui classe les cachalots en une dizaine d'especes à partir de leurs "Clics" pour celà nous avions a disposition une base d'apprentissage labelisée ainsi qu'une base de test non labelisée sur laquelle nous pouvions évaluer les performances réelles de nos classifieurs. Pour cela nous labelision les exemples de la base de test puis envoyions nos prédictions sur le site du challenge qui nous renvoyais nos performances ainsi qu'un classement des performances de tous les participants.
+\section{Etat des lieux à mon arrive}
+\label{Etat des lieux à mon arrivé}
 
-Les deux bases sont consititués d'enregistrements audios des clics des différentes especes de cachalots que je présenterais plus en détail dans la partie analyse des données.
-
-Pour résoudre ce probléme j'ai commencé par analyser les données afin
--D'avoir une vision claire du probléme a résoudre
--D'avoir des idées de méthodes de résolution du probléme
--Comprendre d'éventuelles incohérences dans nos futurs résultats (notament des différences de performances entre les deux bases)
+Quand j'ai commencé mon stage mes tuteurs avaient déjà commencé le challenge depuis un moment déjà c'est pourquoi j'ai du dans un premier temps me mettre à jours sur le challenge et ce qu'ils avaient fais.
 
 
-Ensuite nous avons traité les données de différentes maniéres notament en faisant de la data augmentation et du traitement du signal.
 
-Puis M. Clergue se chargeait de tester un multitude de techniques d'apprentissage sur les données ainsi traités.
 
-M. Page nous a également fournis un grand nombre de petits programmes et de fonctions parfois simples parfois complexes dont nous avions besoin afin de réaliser nos différentes taches.
 
-%\include{lechallenge}
+
+De plus ceux ci rencontraient un probléme récurant qui était une grande disparité dans leurs résultats sur la base labelisée et leurs résultats sur la base non labelisée.
+C'est entre autre pour cette raison que j'ai été chargé de m'occuper de l'analyse des données
+
+
+\section{Analyse des données}
+\include{analysedesdonnees}
+
+\subsection{Traitement du signal}
+
+\subsection{Data augmentation}
+
+
+\subsection{difficultés rencontrées}
+
+\input{difficultesrencontres}
+
 
 \section{le travail a distance}
 
@@ -154,30 +161,14 @@ Voilà un exmple d'exécution avec colab:
 
 Nous pouvons dire que LaTex est un langage de traitement de texte tel que le markdown qui permet de mettre en forme notre texte de manière \"scientifique\" cela veut dire que. LaTex permet une faciliter d'écriture des équations et de toutes les écriture mathématiques.Permet de par ses nombreux package une quasi-infinité de possibilitées.
 
-\subsubsection{Pourquoi Github}
-Cela permet encore une fois une synergie entre nos différent outil car LaTex peut-être utiliser avec un simple bloc-note c'est donc du texte ce qui permet une intéraction facilitée avec GitHub d'ailleurs ce rapport est écrit avec Latex et retrouvable sur GitHub.
-
-\section{Analyse des données}
 
 
 
-\section{data augmentation et traitement du signal}
-
-\subsection{Data augmentation}
 
 
 
-\subsection{Traitement du signal}
 
 
-
-\section{difficultés rencontrées}
-
-\input{difficultesrencontres}
-
-\section{bilan}
-
-\input{difficultesrecontres}
 
 
 
