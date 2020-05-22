@@ -1,13 +1,21 @@
 
-\hypertarget{Etat de l'art}{%
-\chapter{Etat de l'art}\label{Etat de l'art}}
-\section{Etat de l'art}
-\label{Etat de l'art}
+%\hypertarget{Prerequis}{%
+%\chapter{Prérequis}\label{Prérequis}
 
-Quand je suis arrivé dans l'équipe plusieurs solutions basés sur les réseaux de neurones avaient déjà été explorés par mes tuteurs.
-La première partie sera donc consacrée à la découverte théorique des réseaux de neurones artificiels et a la convolution.
+\subsection{Les Cachalots}
+\label{Les Cachalots}
 
-\subsection{Fonctionnement des réseaux de neurones}
+\subsection{Etat des lieux a mon arrive}
+\label{Etat des lieux à mon arrivé}
+
+Quand j'ai commencé mon stage mes tuteurs avaient déjà commencé le challenge depuis un moment déjà c'est pourquoi j'ai du dans un premier temps me mettre à jours sur le challenge et ce qu'ils avaient fais.
+
+
+De plus ceux ci rencontraient un probléme récurant qui était une grande disparité dans leurs résultats sur la base labelisée et leurs résultats sur la base non labelisée.
+C'est entre autre pour cette raison que j'ai été chargé de m'occuper de l'analyse des données
+
+\section{Fonctionnement des réseaux de neurones convolutionels}
+
 La plupart de mes connaissances sur le sujet vient des présentations que m'ont faites les membres du groupe \textbf{SpikeTrain}, ainsi que d'un livre, co-écrit par le Pr. Paugam Moisy~\cite{naturalHandbook}.
 En voici donc un rapide résumé.
 
@@ -69,71 +77,124 @@ Nous allons, pour cette partie encore, utiliser une figure (\ref{reseauClassique
 \label{reseauClassique}
 \end{figure}
 
-
-\subsection{la convolution}
-\label{la convolution}
-
-
-
-
-\section{Etat des lieux a mon arrive}
-\label{Etat des lieux à mon arrivé}
-
-Quand j'ai commencé mon stage mes tuteurs avaient déjà commencé le challenge depuis un moment déjà c'est pourquoi j'ai du dans un premier temps me mettre à jours sur le challenge et ce qu'ils avaient fais.
-
-
-
-
-
-
-De plus ceux ci rencontraient un probléme récurant qui était une grande disparité dans leurs résultats sur la base labelisée et leurs résultats sur la base non labelisée.
-C'est entre autre pour cette raison que j'ai été chargé de m'occuper de l'analyse des données
-
-
+\hypertarget{Analyse des donnees}{%}
 \chapter{Analyse des données}\label{Analyse des données}}
-\hypertarget{analysedesdonnees}{%
-\section{Analyse des données}
 
-\subsection{La base d'apprentissage}
+\section{Les signaux}
+
+Dans un premier temps on commence par observer les signaux sans traitements sous différentes formes.\n
+D'abord de manière brute :
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=10cm]{./images/indice17000Spectro1Dlabel0classeGGavecprocessingaveczoom.png}
+\includegraphics[width=4cm]{./images/indice17000Spectro1Dlabel0classeGGsansprocessingsanszoom.png}
+\caption{test}
+\end{figure}
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=4cm]{./images/indice20000Spectro1Dlabel9classeZCsansprocessingsanszoom.png}
 \caption{test}
 \end{figure}
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=10cm]{./images/indice17000Spectro1Dlabel0classeGGavecprocessingsanszoom.png}
+\includegraphics[width=4cm]{./images/indice571Spectro1Dlabel9classeZCsansprocessingsanszoom.png}
+\caption{test}
+\end{figure}
+
+On constate plusieurs choses tout d'abord il semble il y avoir une certaine disparité entre les signaux certains étant beaucoups plus bruités que d'autres. De plus contrairement a ce que l'on pouvais penser le clic n'est pas toujours facile a distinguer et celui ci n'est pas non plus toujours bien centré. Pour afiner notre analyse il parait pertinent de commencer par zoomer sur ce clic.
+Pour cela il vas donc faloir commencer par trouver un moyen d'isoler le clic
+
+\subsection{Le zoom}
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=4cm]{./images/indice17000Spectro1Dlabel0classeGGsansprocessingaveczoom.png}
+\caption{test}
+\end{figure}
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=4cm]{./images/indice20000Spectro1Dlabel9classeZCsansprocessingaveczoom.png}
 \caption{test}
 \end{figure}
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=10cm]{./images/indice17000Spectro1Dlabel0classeGGsansprocessingaveczoom.png}
+\includegraphics[width=4cm]{./images/indice571Spectro1Dlabel9classeZCsansprocessingaveczoom.png}
+\caption{test}
+\end{figure}
+
+On constate plusieurs choses tout d'abord l'efficacité du zoom semble corélé a la qualité du signal de départ, de plus les "bons clics" semblent se situer aux alentours de 200 ms même si leur intensité semble variable. De plus sous cette forme nos observations semblent quand même limités. On vas donc commencer par les observer sous d'autres formes puis on chercheras a améliorer la qualité de nos signaux via diverses techniques. Etant donné la nature de nos données observer leurs spectrogrammes semble être le plus pertinent.
+
+\subsection{Spectrogrammes}
+
+On commence tout d'abord par observer leurs Spectrogrammes en 2D:
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=4cm]{./images/indice17000Spectro2Dlabel0classeGGsansprocessingsanszoom.png}
+\caption{test}
+\end{figure}
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=4cm]{./images/indice20000Spectro2Dlabel9classeZCsansprocessingsanszoom.png}
 \caption{test}
 \end{figure}
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=10cm]{./images/indice17000Spectro1Dlabel0classeGGsansprocessingsanszoom.png}
+\includegraphics[width=4cm]{./images/indice571Spectro2Dlabel9classeZCsansprocessingsanszoom.png}
 \caption{test}
 \end{figure}
 
-\subsection{La base de test}
+Puis les Spectrogrammes 3D:
 
-\subsection{Traitement du signal}
-
-\subsection{Data augmentation}
-
-
-\subsection{difficultés rencontrées}
-
+\begin{figure}[!h]
+\centering
+\includegraphics[width=4cm]{./images/indice17000Spectro3Dlabel0classeGGsansprocessingsanszoom.png}
+\caption{test}
+\end{figure}
 
 
+\begin{figure}[!h]
+\centering
+\includegraphics[width=4cm]{./images/indice20000Spectro3Dlabel9classeZCsansprocessingsanszoom.png}
+\caption{test}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=4cm]{./images/indice571Spectro3Dlabel9classeZCsansprocessingaveczoom.png}
+\caption{test}
+\end{figure}
+\section{Traitement du signal}
+
+\subsection{Filtre passe haut}
+
+\subsection{Scaler}
+
+\section{Data augmentation}
+
+\subsection{Théorique}
+
+\subsection{Rajout de bruit blanc}
+
+\subsection{simulation de distance}
+
+\section{Les Pipelines}
 
 
-\chapter{Le travail a distance}\label{Le travail à distance}}
+
+
+
+\chapter{Le travail a distance}\label{Le travail à distance}
 \section{Le travail a distance}
 
 
@@ -149,7 +210,7 @@ Ainsi malgrés des débuts léthargiques nous avons mis en place une "routine de
 
 
 
-\subsection{Outils utilisés}
+\section{Outils utilisés}
 
 \subsection{Présentation de GitHub}
 
