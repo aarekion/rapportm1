@@ -176,7 +176,7 @@ Cette méthode présente plusieurs interets majeurs :
 -Deuxièmement elle nous permet d'optimiser grandement l'ensemble du processus de prétraitement des données.
 -Troisièmement ce procédé améliore grandement les performances de tensorflow
 
-En pratique l'ensemble de nos fonctions étaient stockées dans un fichier python nommé cachalot_helper, et à chaque essai on faisait passer notre flux de données par les fonctions désirées avant de l'injecter dans le réseau de neurones.
+En pratique l'ensemble de nos fonctions étaient stockées dans un fichier python nommé cachalot helper, et à chaque essai on faisait passer notre flux de données par les fonctions désirées avant de l'injecter dans le réseau de neurones.
 
 
 \hypertarget{Les-PDF}{%}
@@ -198,83 +198,3 @@ Dans un troisième temps j'ai créer un autre python également paramètrable pe
 Dans un quatrième temps j'ai créer un autre python encore une fois paramètrable qui va récupérer les fichiers tex précedement créés puis les réunir dans un seul fichier tex qui va automatiquement s'executer pour générer un fichier pdf contenant l'ensemble des courbes qui étaient stockées dans les fichiers tex. Ce fichier pdf sera alors enregistré son nom correspondant à ce qu'il contient ainsi un fichier contenant les spectrogrammes 2D du label 6 sans processing et zoomer :sera nommer : Spectro2Dlabel6sansprocessingaveczoom.pdf
 
 Et enfin un programme principal nommé apdfmaker également paramètrable chargé de faire tourner l'ensemble des programmes vus précedement afin de générer directement des fichiers pdf contenant ce que l'on désire. A noter que celui ci ne se contente pas de générer un pdf à la fois mais peut au contraire en générer une multitude à chaque run. Ainsi si l'on veut par exemple qu'il génére toutes les représentations graphiques possibles (soit 1 080 000 images) de tous les enregistrements puis qu'il les stock dans des pdf le plus détaillés possibles c'est parfaitement possible.
-
-
-\hypertarget{Le-travail-a-distance}{%}
-\chapter{Le travail à distance}\label{Le-travail-a-distance}}
-
-\hypertarget{Organisation-du-travail-a-distance}{%}
-\section{Organisation du travail à distance}\label{Organisation-du-travail-a-distance}}
-
-
-Comme vous le savez certainement durant cette année 2020 nous avons été touché par la crise du coronavirus qui nous à conduit à être confinés nous forçant à travailler uniquement à distance.
-
-Ces circonstances très particuliéres ont grandement affecté notre travail particulérement au début où nous avons dû régler de nombreux problémes techniques et organisationels. Cependant en nous forçant à nous adapter à ces nouvelles conditions, cette crise nous a permis de grandement augmenter nos competances en "télétravail".
-
-Ainsi malgré des débuts léthargiques nous avons mis en place une "routine de travail" qui était la suivante :
--Des visio-conférences quotidiennes nous permettant d'organiser et de synchroniser notre travail
--Un groupe whatsap dédié à mon stage afin de communiquer le plus efficacement possible
--Un Github privé dédié afin de partager l'ensemble du projet
--Un partage régulier de google collab via google drive
-
-
-\hypertarget{Outils-utilisuxe9s}{%}
-\section{Outils utilisés}
-\label{Outils-utilisuxe9s}}
-
-\hypertarget{Pruxe9sentation-de-GitHub}{%}
-\subsection{Présentation de GitHub}
-\label{Pruxe9sentation-de-GitHub}}
-
-\begin{figure}[h]
-  \begin{center}
-  \includegraphics[width=5cm]{./images/github.jpg}
-  \end{center}
-\end{figure}
-
-Nous pouvons définir GitHub comme une plateforme de développement de projet in formatique en groupe. Elle s'implifie grandement le développement de projets. Elle permet de versioner ses programme et d'y apporter des modification en temps réel à plusieurs.
-
-\hypertarget{Pourquoi-Github}{%}
-\subsubsection{Pourquoi Github}
-\label{Pourquoi-Github}}
-Car celà permet une certaine synergie avec nos autres outils que nous verrons plus tard. Cette plateforme permet une facilité de développement de par sa fonctionnalité de versionnage de notre code à chaque changement ce qui permet une mise à jour dynamique ainsi qu'une relative facilité à retourner à un état antérieur de notre programme ce qui permet une facilité de débogage.Nous pouvons d'ailleurs dire que ce rappport est entreposer sur Github et qu'il peut-être récupérer facilement.Cette plateforme est aussi très connue dans le monde de la programmation ce qui sera utile pour notre futur professionnel.
-
-\hypertarget{Pruxe9sentation-de-Google-Colab}{%}
-\subsection{Présentation de Google Colab}
-\label{Pruxe9sentation-de-Google-Colab}}
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=5cm]{./images/Colab_logo.png}
-\end{center}
-\end{figure}
-
-Colab peut-être défini comme étant une plateforme d'éxécution pour notre code
-il permet du fait que ce soit la puissance de calcul d'ordinateur géré par Google une vitesse d'exécution ainsi qu'une vitesse de téléchargement de base de données supérieure à celle qui nous est disponible en local.
-
-\hypertarget{Pourquoi-Colab}{%}
-\subsubsection{Pourquoi Colab}
-\label{Pourquoi-Colab}}
-En premier lieu pour faciliter l'exécution du code car elle ne se fais pas en local ce qui permet une exécution quasi immédiate du code sans aucune installation. Il est aussi facile de mettre sur github du code produit avec colab car ces deux plateformes sont liées. Il permet de par l'utilisation du format Jupyter notebook de mélanger code et texte (peu aussi comporter des images) dans notre notebook.
-
-Voilà un exmple d'exécution avec colab:
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=15cm]{./images/Cap_colab.PNG}
-\caption{Nous avons ici un exemple de code exécuté avec colab.}
-\end{center}
-\end{figure}
-
-
-\hypertarget{Pruxe9sentation-de-LaTex}{%}
-\subsection{Présentation de LaTex}
-\label{Pruxe9sentation-de-LaTex}}
-
-\begin{figure}[h]
-  \begin{center}
-\includegraphics[width=5cm]{./images/Latex.png}
-\end{center}
-\end{figure}
-
-Nous pouvons dire que LaTex est un langage de traitement de texte tel que le markdown qui permet de mettre en forme notre texte de manière \"scientifique\" cela veut dire que. LaTex permet une facilité d'écriture des équations et de toutes les écritures mathématiques.Ce langage permet de par ses nombreux packages une quasi-infinité de possibilités.
