@@ -1,157 +1,96 @@
 
-%\hypertarget{Prerequis}{%
-%\chapter{Prérequis}\label{Prérequis}
+\hypertarget{Analyse-et-traitement-des-donnuxe9es}{%}
+\chapter{Analyse et traitement des données}\label{Analyse-et-traitement-des-donnuxe9es}}
 
-\subsection{Les Cachalots}
-\label{Les Cachalots}
-
-\subsection{Etat des lieux a mon arrive}
-\label{Etat des lieux à mon arrivé}
-
-Quand j'ai commencé mon stage mes tuteurs avaient déjà commencé le challenge depuis un moment déjà c'est pourquoi j'ai du dans un premier temps me mettre à jours sur le challenge et ce qu'ils avaient fais.
-
-
-De plus ceux ci rencontraient un probléme récurant qui était une grande disparité dans leurs résultats sur la base labelisée et leurs résultats sur la base non labelisée.
-C'est entre autre pour cette raison que j'ai été chargé de m'occuper de l'analyse des données
-
-\section{Fonctionnement des réseaux de neurones convolutionels}
-
-La plupart de mes connaissances sur le sujet vient des présentations que m'ont faites les membres du groupe \textbf{SpikeTrain}, ainsi que d'un livre, co-écrit par le Pr. Paugam Moisy~\cite{naturalHandbook}.
-En voici donc un rapide résumé.
-
-\subsubsection{Neurone artificiel}
-\label{neuroneClassique}
-Tout d'abord avant de parler de réseaux de neurone à spike il serait de bon ton d'expliquer le principe du réseau de neurone classique, explication qui commencera par expliquer le
-le principe du neurone unique.
-
-Un neurone artificiel est pourvu d'un certain nombre d'\textbf{entrées}. Dans le cas des neurones classiques, ces entrées sont des nombres réels. Le neurone calculera, en fonction de ces entrées, une unique valeur en \textbf{sortie}.
-Détaillons la façon dont ces calculs sont effectués:
-
-Chacune de ces entrées circule sur une connection, laquelle est caractérisée par un \textbf{poids} qui définit l'importance de l'entrée pour le neurone.
-
-Le neurone calcule dans un premier temps la somme de ses entrées, pondérée par leurs poids respectifs, à laquel vient s'ajouter un \textbf{biais} spécifique à chaque neurone (cf. equation~\ref{sommePonderee}).
-
-\begin{equation}
-\label{sommePonderee}
-y = \sum_{i}^{n} w_i \times x_i + b
-\end{equation}
-
-Le résultat de cette somme passe alors dans une \textbf{fonction d'activation} qui permet d'introduire une non-linéarité dans les calculs. La sortie $s$ du neurone est donc calculée conformément à l'équation~\ref{calcNeurone}
-
-\begin{equation}
-\label{calcNeurone}
-s = f(\sum_{s=0}^{n_{x}} x_{n}w_{n} + b)
-\end{equation}
-
-Un schéma reprenant ces explications est présenté dans la figure~\ref{neuroneSeul} :
-
-\begin{figure}[h]
-\includegraphics[width=16.5cm]{./images/image2.jpg}
-\label{neuroneSeul}
-\caption{Fonctionnement d'un neurone seul}
-\end{figure}
-
-Notre apprentissage ce fera en modifiant les poids de ses différentes
-connexion (et le biais) de façon à obtenir une sortie proche de celle voulu.\newline
-
-\subsubsection{Réseaux de neurones}
-\label{Réseaux de neurones}
-
-Les neurones présentés précédemment prennent tout leur intérêt lorsqu'ils sont utilisés en groupes, dans des \textbf{réseaux de neurones}.
-
-Le premier de ces réseaux, encore utilisé de nos jours, est appelé \textbf{perceptron}.
-Le principe du perceptron n'est pas nouveau et date des années 1960.
-
-Dans ces réseaux, les neurones sont organisés en \textbf{couches}.
-La première couche correspond à celle qui permettra d'introduire des informations dans le réseau (comme la rétine par exemple). Elle est nommé \textbf{couche d'entrée}
-La dernière couche permettra de lire les décisions du réseau. Elle est appelée \textbf{couche de sortie}. Dans les applications classiques, à chaque neurone de la couche de sortie correspond une décision possible et le neurone qui est le plus activé sur la couche de sortie l'emporte.
-Entre ces couches, on trouve souvent un nombre variable de couches intermédiaires appelées \textbf{couches cachées}.
-
-Entre deux couches, on établit le plus souvent un schéma de connexion que nous pouvons qualifier de \textit{full connected}, c-a-d que chaque neurone d'une couche est connecté avec chaque neurone de la couche suivante.Nous allons encore une fois, pour le bien de ce rapport, ne pas épiloguer sur les autres types de connexions existantes.\newline
-
-Nous allons, pour cette partie encore, utiliser une figure (\ref{reseauClassique}) pour illustrer nos propos:
-
-\begin{figure}[h]
-\includegraphics[width=16.5cm]{./images/multicouche.png}
-\caption{réseau de neurones classique en couches}
-\label{reseauClassique}
-\end{figure}
-
-\hypertarget{Analyse des donnees}{%}
-\chapter{Analyse des données}\label{Analyse des données}}
-
+\hypertarget{Les-signaux}{%}
 \section{Les signaux}
+\label{Les-signaux}}
+
+Afin d'améliorer la lisibilité des chapitres suivant nous prendrons 3 signaux (le n°17000 et le n°20000 de la base labelisée ainsi que le n°571 de la base non labelisée) que nous observerons sous diverses formes puis sur lesquels nous effectuerons un certain nombre de traitements.
+
+\hypertarget{Signaux-Bruts}{%}
+\subsection{Signaux Bruts}
+\label{Signaux-Bruts}}
 
 Dans un premier temps on commence par observer les signaux sans traitements sous différentes formes.\n
 D'abord de manière brute :
 
 \begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice17000Spectro1Dlabel0classeGGsansprocessingsanszoom.png}
-\caption{test}
-\end{figure}
-
-
-\begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice20000Spectro1Dlabel9classeZCsansprocessingsanszoom.png}
-\caption{test}
-\end{figure}
-
-\begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice571Spectro1Dlabel9classeZCsansprocessingsanszoom.png}
-\caption{test}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice17000Spectro1Dlabel0classeGGsansprocessingsanszoom.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCsansprocessingsanszoom.png}
+    \caption{Signal 20000 brut}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice571Spectro1Dlabel9classeZCsansprocessingsanszoom.png}
+  \end{subfigure}
+  \caption{Signaux 17000, 20000 et 571 bruts}
 \end{figure}
 
 On constate plusieurs choses tout d'abord il semble il y avoir une certaine disparité entre les signaux certains étant beaucoups plus bruités que d'autres. De plus contrairement a ce que l'on pouvais penser le clic n'est pas toujours facile a distinguer et celui ci n'est pas non plus toujours bien centré. Pour afiner notre analyse il parait pertinent de commencer par zoomer sur ce clic.
 Pour cela il vas donc faloir commencer par trouver un moyen d'isoler le clic
 
+\hypertarget{Le-zoom}{%}
 \subsection{Le zoom}
+\label{Le-zoom}}
 
 
 \begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice17000Spectro1Dlabel0classeGGsansprocessingaveczoom.png}
-\caption{test}
-\end{figure}
-
-
-\begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice20000Spectro1Dlabel9classeZCsansprocessingaveczoom.png}
-\caption{test}
-\end{figure}
-
-\begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice571Spectro1Dlabel9classeZCsansprocessingaveczoom.png}
-\caption{test}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice17000Spectro1Dlabel0classeGGsansprocessingaveczoom.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCsansprocessingaveczoom.png}
+  \caption{Signal 20000 zoom}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice571Spectro1Dlabel9classeZCsansprocessingaveczoom.png}
+  \end{subfigure}
+  \caption{Les signaux zoom}
 \end{figure}
 
 On constate plusieurs choses tout d'abord l'efficacité du zoom semble corélé a la qualité du signal de départ, de plus les "bons clics" semblent se situer aux alentours de 200 ms même si leur intensité semble variable. De plus sous cette forme nos observations semblent quand même limités. On vas donc commencer par les observer sous d'autres formes puis on chercheras a améliorer la qualité de nos signaux via diverses techniques. Etant donné la nature de nos données observer leurs spectrogrammes semble être le plus pertinent.
 
+\hypertarget{Transformuxe9-de-Fourier}{%}
+\subsection{Transformé de Fourier}
+\label{Transformuxe9-de-Fourier}}
+
+\begin{figure}[!h]
+\centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/17000fft.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/20000fft.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/571fft.png}
+  \end{subfigure}
+\caption{Transformé de Fourier des signaux 17000, 20000 et 571}
+\end{figure}
+
+\hypertarget{Spectrogrammes}{%}
 \subsection{Spectrogrammes}
+\label{Spectrogrammes}}
 
 On commence tout d'abord par observer leurs Spectrogrammes en 2D:
 
 \begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice17000Spectro2Dlabel0classeGGsansprocessingsanszoom.png}
-\caption{test}
-\end{figure}
-
-
-\begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice20000Spectro2Dlabel9classeZCsansprocessingsanszoom.png}
-\caption{test}
-\end{figure}
-
-\begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice571Spectro2Dlabel9classeZCsansprocessingsanszoom.png}
-\caption{test}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice17000Spectro2Dlabel0classeGGsansprocessingsanszoom.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice20000Spectro2Dlabel9classeZCsansprocessingsanszoom.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice571Spectro2Dlabel9classeZCsansprocessingsanszoom.png}
+  \end{subfigure}
+  \caption{Spectrogramme 2D des signaux}
 \end{figure}
 
 Puis les Spectrogrammes 3D:
@@ -159,43 +98,67 @@ Puis les Spectrogrammes 3D:
 \begin{figure}[!h]
 \centering
 \includegraphics[width=4cm]{./images/indice17000Spectro3Dlabel0classeGGsansprocessingsanszoom.png}
-\caption{test}
+\caption{Spectrogramme 3D du signal 17000}
 \end{figure}
-
-
 \begin{figure}[!h]
 \centering
 \includegraphics[width=4cm]{./images/indice20000Spectro3Dlabel9classeZCsansprocessingsanszoom.png}
-\caption{test}
+\caption{Spectrogramme 3D du signal 20000}
 \end{figure}
 
 \begin{figure}[!h]
 \centering
 \includegraphics[width=4cm]{./images/indice571Spectro3Dlabel9classeZCsansprocessingaveczoom.png}
-\caption{test}
+\caption{Spectrogramme 3D du signal 571}
 \end{figure}
+
+\hypertarget{Traitement-du-signal}{%}
 \section{Traitement du signal}
+\label{Traitement-du-signal}}
 
+\hypertarget{Filtre-passe-haut}{%}
 \subsection{Filtre passe haut}
+\label{Filtre-passe-haut}}
 
-\subsection{Scaler}
+\hypertarget{}{%}
+\subsection{Mise à l'échelle}
+\label{}}
 
+\hypertarget{Data-augmentation}{%}
 \section{Data augmentation}
+\label{Data-augmentation}}
 
-\subsection{Théorique}
+\hypertarget{}{%}
+\subsection{Intérêt théorique}
+\label{}}
 
+\hypertarget{Rajout-de-bruit-blanc}{%}
 \subsection{Rajout de bruit blanc}
+\label{Rajout-de-bruit-blanc}}
 
-\subsection{simulation de distance}
+\hypertarget{Simulation-de-distance}{%}
+\subsection{Simulation de distance}
+\label{Simulation-de-distance}}
 
+\hypertarget{Les-Pipelines}{%}
 \section{Les Pipelines}
+\label{Les-Pipelines}}
+
+%\hypertarget{}{%}
+%\subsection{Présentation et interet des pipelines}
+%\label{}}
+
+\hypertarget{Les-PDF}{%}
+\section{Les PDF (Fiches d'analyse)}
+\label{Les-PDF}}
 
 
 
+\hypertarget{Le-travail-a-distance}{%}
+\chapter{Le travail à distance}\label{Le-travail-a-distance}}
 
-
-\chapter{Le travail a distance}\label{Le travail à distance}
-\section{Le travail a distance}
+\hypertarget{Organisation-du-travail-a-distance}{%}
+\section{Organisation du travail à distance}\label{Organisation-du-travail-a-distance}}
 
 
 Comme vous le savez certainement durant cette année 2020 nous avons été touchés par la crise du coronavirus qui nous a conduit a être confinés nous forçant a travailler uniquement a distance.
@@ -209,10 +172,13 @@ Ainsi malgrés des débuts léthargiques nous avons mis en place une "routine de
 -Un partage régulier de google collab via google drive
 
 
-
+\hypertarget{Outils-utilisuxe9s}{%}
 \section{Outils utilisés}
+\label{Outils-utilisuxe9s}}
 
+\hypertarget{Pruxe9sentation-de-GitHub}{%}
 \subsection{Présentation de GitHub}
+\label{Pruxe9sentation-de-GitHub}}
 
 \begin{figure}[h]
   \begin{center}
@@ -222,10 +188,14 @@ Ainsi malgrés des débuts léthargiques nous avons mis en place une "routine de
 
 Nous pouvons définir GitHub comme une plateforme de développement de projet in formatique en groupe. Elle s'implifie grandement le développement de projets. Elle permet de versioner ses programme et d'y apporter des modification en temps réel à plusieurs.
 
+\hypertarget{Pourquoi-Github}{%}
 \subsubsection{Pourquoi Github}
+\label{Pourquoi-Github}}
 Car celà permet une certaine synergie avec nos autres outils que nou verrons plus tard. Cette plateforme permet une facilité de développement de par sa fonctionnalité de versionnage de notre code à chaque changement ce qui permet une mise à jour dynamique ainsi que une relative facilitée a retourner à un état entérieur de notre programme ce qui permet une faciliter de débogage.Nous pouvons d'ailleur dire que ce rappport est entreposer sur Github et qu'il peut être récupérer facilement.Cette plateforme est aussi très connu dans le monde de la programmation ce qui sera utile pour notre future professionnel.
 
+\hypertarget{Pruxe9sentation-de-Google-Colab}{%}
 \subsection{Présentation de Google Colab}
+\label{Pruxe9sentation-de-Google-Colab}}
 
 \begin{figure}[h]
 \begin{center}
@@ -236,7 +206,9 @@ Car celà permet une certaine synergie avec nos autres outils que nou verrons pl
 Colab peut-être défini comme étant une plateforme d'éxécution pour notre code
 il permet du fait que ce soit la puissance de calcul d'ordinateur géré par Google une vitesse d'exécution ainsi qu'une vitesse de téléchargement de base de données supérieur à celle qui nous est disponible en local.
 
+\hypertarget{Pourquoi-Colab}{%}
 \subsubsection{Pourquoi Colab}
+\label{Pourquoi-Colab}}
 En premier lieu pour la faciliter d'exéccution du code car ce n'est pas en local ce qui permet une exécution quasi immédiate du code sans aucune installation.Il est aussi facile de mettre sur github du code produit avec colab car c'est deux plateforme sont liées. Il permet de par l'utilisation du format Jupyter de mélanger code et texte (peu aussi comporter des images) dans notre notebook.
 
 Voilà un exmple d'exécution avec colab:
@@ -249,7 +221,9 @@ Voilà un exmple d'exécution avec colab:
 \end{figure}
 
 
+\hypertarget{Pruxe9sentation-de-LaTex}{%}
 \subsection{Présentation de LaTex}
+\label{Pruxe9sentation-de-LaTex}}
 
 \begin{figure}[h]
   \begin{center}
