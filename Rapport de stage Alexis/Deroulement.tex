@@ -30,8 +30,13 @@ D'abord de manière brute :
   \caption{Signaux 17000, 20000 et 571 bruts}
 \end{figure}
 
-On constate plusieurs choses tout d'abord il semble il y avoir une certaine disparité entre les signaux certains étant beaucoups plus bruités que d'autres. De plus contrairement a ce que l'on pouvais penser le clic n'est pas toujours facile a distinguer et celui ci n'est pas non plus toujours bien centré. Pour afiner notre analyse il parait pertinent de commencer par zoomer sur ce clic.
-Pour cela il vas donc faloir commencer par trouver un moyen d'isoler le clic
+On constate plusieurs choses tout d'abord il semble il y avoir une certaine disparité entre les signaux certains étant beaucoups plus bruités que d'autres. De plus contrairement a ce que l'on pouvais penser le clic n'est pas toujours facile a distinguer et celui ci n'est pas non plus toujours bien centré.
+Cependant on peux tirer quelques observations :
+-Le clic semble durer 5 millisecondes
+-L'amplitude des clics semble variable
+-Il arrive que le bruit soit parfois suffisament important par rapport au clic pour rendre sont identification complexe voir impossible
+Pour afiner notre analyse il parait pertinent de commencer par zoomer sur ce clic.
+Pour cela il vas donc faloir commencer par trouver un moyen d'isoler le clic.
 
 \hypertarget{Le-zoom}{%}
 \subsection{Le zoom}
@@ -53,12 +58,15 @@ Pour cela il vas donc faloir commencer par trouver un moyen d'isoler le clic
   \caption{Les signaux zoom}
 \end{figure}
 
-On constate plusieurs choses tout d'abord l'efficacité du zoom semble corélé a la qualité du signal de départ, de plus les "bons clics" semblent se situer aux alentours de 200 ms même si leur intensité semble variable. De plus sous cette forme nos observations semblent quand même limités. On vas donc commencer par les observer sous d'autres formes puis on chercheras a améliorer la qualité de nos signaux via diverses techniques. Etant donné la nature de nos données observer leurs spectrogrammes semble être le plus pertinent.
+Pour zoomer sur le clic on commence par appliquer un filtre notament pour supprimer les bruits parasites(dont on parleras dans la partie traitement du signal) puis on identifie le maximum qui seras logiquement le milieux du clic puis on rajoute l'équivalent de la durée d'un clic avant et aprés ce maximum.
+
+On constate plusieurs choses tout d'abord l'efficacité du zoom semble corélé a la qualité du signal de départ, de plus les "bons clics" semblent se situer aux alentours de 200 ms (ils sont donc bien centré) même si leur intensité semble très  variable pouvant aller jusqu'a un facteur 10 entre 2 clics. De plus sous cette forme nos observations semblent quand même limités. On vas donc commencer par les observer sous d'autres formes puis on chercheras a améliorer la qualité de nos signaux via diverses techniques. Etant donné la nature de nos données à savoir des enregistrements audios observer leurs spectrogrammes semble être le plus pertinent.
 
 \hypertarget{Transformuxe9-de-Fourier}{%}
 \subsection{Transformé de Fourier}
 \label{Transformuxe9-de-Fourier}}
-
+domaine temporel -> fréquenciel
+Avant d'observer les spectrogrammes il convient de commencer par expliquer et observer les Transformés de Fourier de nos 3 signaux:
 \begin{figure}[!h]
 \centering
   \begin{subfigure}[b]{0.3\textwidth}
@@ -131,6 +139,8 @@ Puis les Spectrogrammes 3D:
 \hypertarget{}{%}
 \subsection{Intérêt théorique}
 \label{}}
+
+
 
 \hypertarget{Rajout-de-bruit-blanc}{%}
 \subsection{Rajout de bruit blanc}

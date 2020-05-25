@@ -14,8 +14,7 @@ l'Université à laquelle il est rattaché.
 \hypertarget{lUniversite-des-antilles}{%
 \subsection{L'Université des Antilles}\label{luniversite-des-antilles}}
 
-Bien que ce soit l'Université dans laquelle j'ai fait toutes mes études,
-voici quelques chiffres que je ne connaissais pas et qui donnent la
+Voici quelques chiffres que je ne connaissais pas et qui donnent la
 mesure de sa taille :
 
 L'Université des Antilles s'organise autour deux pôles universitaires
@@ -102,7 +101,7 @@ Maitres de Conférences, ATER, Doctorants) répartis sur deux pôles
 De plus, le LAMIA accueille en son sein un groupe de chercheurs associés
 travaillant en Epidémiologie clinique et médecine.
 
-L'équipe avec laquelle il m'a été donné de travailler principalement est
+L'équipe avec laquelle j'ai principalement travaillé est
 celle d'\textbf{Apprentissages Interactions Données} qui développe des
 méthodes de traitements et d'analyse de données hétérogènes : images
 (classique, multi-spectrale), séquences vidéos, séries temporelles et
@@ -179,9 +178,9 @@ pour ses \textbf{robots} qui apprennent par \textbf{répétitions} à jouer
 \subsection{Le Challenge: Classifier les Cachalots}\label{Le-Challenge}}
 
 Le challenge "Dyni Odontocete Click Classification, 10 species [ DOCC10 ]
-by Universite de Toulon" (https://challengedata.ens.fr/challenges/32) consistait simplement à réaliser un classifieur qui classe des mammifères marins en une dizaine d'especes à partir de leurs "Clics" pour celà nous avions a disposition une base d'apprentissage labelisée ainsi qu'une base de test non labelisée sur laquelle nous pouvions évaluer les performances réelles de nos classifieurs. Pour cela nous labelision les exemples de la base non labelisée puis envoyions nos prédictions sur le site du challenge qui nous renvoyais nos performances ainsi qu'un classement des performances de tous les participants.
+by Universite de Toulon" (https://challengedata.ens.fr/challenges/32) consistait simplement à réaliser un classifieur qui classe des mammifères marins en une dizaine d'espèces à partir de leurs "Clics" pour celà nous avions à disposition une base d'apprentissage labelisée ainsi qu'une base de test non labelisée sur laquelle nous pouvions évaluer les performances réelles de nos classifieurs. Pour cela nous labelision les exemples de la base non labelisée puis nous envoyions nos prédictions sur le site du challenge qui nous renvoyais nos performances ainsi qu'un classement des performances de tous les participants.
 
-Les deux bases sont consititués d'enregistrements audios des clics des différentes especes de cachalots. Chaque enregistrement contient 8192 mesures faites a une fréquence d'échantillonnage de 200Hz. Dans le cas de la base non labelisée appellée base de test chaque enregistrement contient normalement un clic centré au milieu de la fenêtre tandis que dans la base labelisée appellée base d'aprentissage le clic n'est pas spécialement centré et peut se situer a divers moments de l'enregistrement de plus ceux ci peuvent contenir divers bruits.
+Les deux bases sont consitituées d'enregistrements audios des clics des différentes espèces. Chaque enregistrement contient 8192 mesures faites à une fréquence d'échantillonnage de 200Hz. Dans le cas de la base non labelisée appellée base de test chaque enregistrement contient normalement un clic centré au milieu de la fenêtre tandis que dans la base labelisée appellée base d'apprentissage le clic n'est pas spécialement centré et peut se situer à divers moments de l'enregistrement de plus ceux ci peuvent contenir divers bruits.
 
 L'objectif est de classer chaque enregistrement en fonction de l'espèce émettrice correspondante. Les 10 espèces sont : (0) Gg : Grampus griseus- Dauphin de Risso (1) Gma : Globicephala macrorhynchus- Baleine pilote à nageoires courtes (2) La : Lagenorhynchus acutus- Dauphin à flancs blancs de l'Atlantique (3) Mb : Mesoplodon bidens- Baleine à bec de Sowerby (4) Me : Mesoplodon europaeus- Baleine à bec de Gervais (5) Pm : Physeter macrocephalus - Cachalot (6) Ssp : Stenella sp.Dauphin stenellide (7) UDA : Delphinidés de type A - un groupe de dauphins (espèces non encore déterminées) (8) UDB : Delphinidés de type B - un autre groupe de dauphins (espèces non encore déterminées) (9) Zc : Ziphius cavirostris - Baleine de Cuvier à bec. La précision est de l'ordre du métre.
 
@@ -190,24 +189,24 @@ L'objectif est de classer chaque enregistrement en fonction de l'espèce émettr
 \subsection{Etat des lieux a mon arrivé}
 \label{Etat-des-lieux-lors-de-mon-arrivuxe9}}
 
-Quand j'ai commencé mon stage mes tuteurs avaient déjà commencé le challenge depuis un moment déjà c'est pourquoi j'ai du dans un premier temps me mettre à jours sur le challenge et ce qu'ils avaient fais, à savoir :
+Quand j'ai commencé mon stage mes tuteurs avaient déjà commencé le challenge depuis un moment déjà c'est pourquoi j'ai dû dans un premier temps me mettre à jour sur le challenge et ce qu'ils avaient fait, à savoir :
 
--Un grand nombre de tentatives de résolution du probléme uniquement basés sur du machine learning notament des réseaux de neurones et des réseaux de neurones convolitifs
+-Un grand nombre de tentatives de résolution du probléme uniquement basé sur du machine learning notament des réseaux de neurones et des réseaux de neurones convolitifs
 -De la Data Augmentation
 -Divers traitements du signal
 
 Leurs meilleurs résultats étaient de l'ordre de 95 pourcents de réussite sur la base labelisée contre 72 pourcents de réussite sur la base non labelisée, soit un écart de 20 pourcents de réussite entre les deux bases qui persistait même en utilisant d'autres méthodes de machine learning donnant de moins bons résultats.
-Cet énorme énorme différentiel est d'autant plus inconpréhensible que les auteurs du challenge nous présentent les données de la base non labelisée comme des données de meilleures qualité que celles de la base labelisée.
+Cet important différentiel est d'autant plus surprenant que les auteurs du challenge nous présentent les données de la base non labelisée comme des données de meilleures qualité que celles de la base labelisée.
 
 C'est pour mieux comprendre ce diffirentiel mais surtout le probléme dans son ensemble que j'ai été chargé de créer un certain nombre d'outils facilitant grandement l'analyse des données qui nous ont été fournies lors de ce challenge.
 
-Mais avant de pouvoir commencer cette partie du travail il a fallut commencer par comprendre un certaine nombre d'outils et de concept que nous allons voir ensembles.
+Mais avant de pouvoir commencer cette partie du travail il a fallu commencer par comprendre un certaine nombre d'outils et de concept que nous allons voir ensemble.
 
 
 \hypertarget{Neurone-artificiel}{%
 \subsubsection{Neurone artificiel}
 \label{Neurone-artificiel}}
-Tout d'abord avant de parler de réseaux de neurone il serait de bon ton d'expliquer le principe du neurone aritificiel.
+Tout d'abord avant de parler de réseaux de neurones il faut expliquer le principe du neurone aritificiel.
 
 Un neurone artificiel est pourvu d'un certain nombre d'\textbf{entrées}. Dans le cas des neurones classiques, ces entrées sont des nombres réels. Le neurone calculera, en fonction de ces entrées, une unique valeur en \textbf{sortie}.
 Détaillons la façon dont ces calculs sont effectués:
@@ -237,7 +236,7 @@ Un schéma reprenant ces explications est présenté dans la figure~\ref{neurone
 \end{figure}
 
 Notre apprentissage se fera en modifiant les poids de ses différentes
-connexion (et le biais) de façon à obtenir une sortie proche de celle voulu.\newline
+connexions (et le biais) de façon à obtenir une sortie proche de celle voulu.\newline
 
 \hypertarget{Ruxe9seau-de-neurones-classique}{%
 \subsection{Réseau de neurones classique}
@@ -249,11 +248,11 @@ Le premier de ces réseaux, encore utilisé de nos jours, est appelé \textbf{pe
 Le principe du perceptron n'est pas nouveau et date des années 1960.
 
 Dans ces réseaux, les neurones sont organisés en \textbf{couches}.
-La première couche correspond à celle qui permettra d'introduire des informations dans le réseau (comme la rétine par exemple). Elle est nommé \textbf{couche d'entrée}
+La première couche correspond à celle qui permettra d'introduire des informations dans le réseau (comme la rétine par exemple). Elle est nommée \textbf{couche d'entrée}
 La dernière couche permettra de lire les décisions du réseau. Elle est appelée \textbf{couche de sortie}. Dans les applications classiques, à chaque neurone de la couche de sortie correspond une décision possible et le neurone qui est le plus activé sur la couche de sortie l'emporte.
 Entre ces couches, on trouve souvent un nombre variable de couches intermédiaires appelées \textbf{couches cachées}.
 
-Entre deux couches, on établit le plus souvent un schéma de connexion que nous pouvons qualifier de \textit{full connected}, c-a-d que chaque neurone d'une couche est connecté avec chaque neurone de la couche suivante.Nous allons encore une fois, pour le bien de ce rapport, ne pas épiloguer sur les autres types de connexions existantes.\newline
+Entre deux couches, on établit le plus souvent un schéma de connexion que nous pouvons qualifier de \textit{full connected}, c'est à dire que chaque neurone d'une couche est connecté avec chaque neurone de la couche suivante.Nous allons encore une fois, pour le bien de ce rapport, ne pas épiloguer sur les autres types de connexions existantes.\newline
 
 Nous allons, pour cette partie encore, utiliser une figure (\ref{reseauClassique}) pour illustrer nos propos:
 
@@ -270,11 +269,11 @@ Nous allons, pour cette partie encore, utiliser une figure (\ref{reseauClassique
 
 le réseau de neurones convolutifs est un type de réseau de neurones
 inspiré par le cortex cérébral des animaux.
-Il possède de larges application dans la reconnaissance d'image, de vidéo et de son.
+Il possède de larges applications dans la reconnaissance d'image, de vidéo et de son.
 
 Ce réseau se présente comme un réseau classique , une couche d'entrée,
 une couche de sortie et des couches cachées.
-Ces couches cachés possèdent des couches \textbf{convolutives}
+Ces couches cachées possèdent des couches \textbf{convolutives}
 pour lesquelles chaque neurone va appliquer un filtre convolutif
 sur une partie de l'image en entrée afin d'analyser toute l'image
 (voir figure \ref{fig:explication_convolution}).
@@ -321,7 +320,7 @@ quelque soit sa position dans l'image.
 
 
 TensorFlow est un framework open source,
-multiplateforme d'apprentissage automatique développé par Google Brain,
+multiplateforme d'apprentissage automatique développée par Google Brain,
 en Python et en C++.
 Sa premiere version est publiée par Google le 9 novembre 2015.
 L'intérêt de ce framework est de limiter les coûts de développement des solutions à base
