@@ -6,34 +6,33 @@
 \BOOKMARK [1][-]{section.1.2}{Contexte du stage}{chapter.1}% 6
 \BOOKMARK [2][-]{subsection.1.2.1}{Le Challenge: Classifier les Cachalots}{section.1.2}% 7
 \BOOKMARK [2][-]{subsection.1.2.2}{Etat des lieux a mon arriv\351}{section.1.2}% 8
-\BOOKMARK [2][-]{subsection.1.2.3}{Les r\351seaux de neurones}{section.1.2}% 9
-\BOOKMARK [2][-]{subsection.1.2.4}{R\351seau de neurones classique}{section.1.2}% 10
-\BOOKMARK [2][-]{subsection.1.2.5}{R\351seau de neurones convolutifs}{section.1.2}% 11
-\BOOKMARK [0][-]{chapter.2}{Analyse et traitement des donn\351es}{}% 12
-\BOOKMARK [1][-]{section.2.1}{Les signaux}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.1.1}{Signaux Bruts}{section.2.1}% 14
-\BOOKMARK [2][-]{subsection.2.1.2}{Le zoom}{section.2.1}% 15
-\BOOKMARK [2][-]{subsection.2.1.3}{Transform\351 de Fourier}{section.2.1}% 16
-\BOOKMARK [2][-]{subsection.2.1.4}{Spectrogrammes}{section.2.1}% 17
-\BOOKMARK [1][-]{section.2.2}{Traitement du signal}{chapter.2}% 18
-\BOOKMARK [2][-]{subsection.2.2.1}{Filtre passe haut}{section.2.2}% 19
-\BOOKMARK [2][-]{subsection.2.2.2}{Mise \340 l'\351chelle}{section.2.2}% 20
-\BOOKMARK [1][-]{section.2.3}{Data augmentation}{chapter.2}% 21
-\BOOKMARK [2][-]{subsection.2.3.1}{Int\351r\352t th\351orique}{section.2.3}% 22
-\BOOKMARK [2][-]{subsection.2.3.2}{Rajout de bruit blanc}{section.2.3}% 23
-\BOOKMARK [2][-]{subsection.2.3.3}{Simulation de distance}{section.2.3}% 24
-\BOOKMARK [1][-]{section.2.4}{Les Pipelines}{chapter.2}% 25
-\BOOKMARK [1][-]{section.2.5}{Les PDF \(Fiches d'analyse\)}{chapter.2}% 26
-\BOOKMARK [0][-]{chapter.3}{Le travail \340 distance}{}% 27
-\BOOKMARK [1][-]{section.3.1}{Organisation du travail \340 distance}{chapter.3}% 28
-\BOOKMARK [1][-]{section.3.2}{Outils utilis\351s}{chapter.3}% 29
-\BOOKMARK [2][-]{subsection.3.2.1}{Pr\351sentation de GitHub}{section.3.2}% 30
-\BOOKMARK [2][-]{subsection.3.2.2}{Pr\351sentation de Google Colab}{section.3.2}% 31
-\BOOKMARK [2][-]{subsection.3.2.3}{Pr\351sentation de LaTex}{section.3.2}% 32
-\BOOKMARK [0][-]{chapter.4}{Conclusion}{}% 33
-\BOOKMARK [1][-]{section.4.1}{Conclusion de l'\351tude}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.2}{Perspectives}{chapter.4}% 35
-\BOOKMARK [2][-]{subsection.4.2.1}{}{section.4.2}% 36
-\BOOKMARK [1][-]{section.4.3}{Les apports du stage}{chapter.4}% 37
-\BOOKMARK [2][-]{subsection.4.3.1}{les apports generaux}{section.4.3}% 38
-\BOOKMARK [2][-]{subsection.4.3.2}{les apports personels}{section.4.3}% 39
+\BOOKMARK [2][-]{subsection.1.2.3}{R\351seau de neurones classique}{section.1.2}% 9
+\BOOKMARK [2][-]{subsection.1.2.4}{R\351seau de neurones convolutifs}{section.1.2}% 10
+\BOOKMARK [0][-]{chapter.2}{Analyse et traitement des donn\351es}{}% 11
+\BOOKMARK [1][-]{section.2.1}{Les signaux}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.1.1}{Signaux Bruts}{section.2.1}% 13
+\BOOKMARK [2][-]{subsection.2.1.2}{Le zoom}{section.2.1}% 14
+\BOOKMARK [2][-]{subsection.2.1.3}{Transform\351 de Fourier}{section.2.1}% 15
+\BOOKMARK [2][-]{subsection.2.1.4}{Spectrogrammes}{section.2.1}% 16
+\BOOKMARK [1][-]{section.2.2}{Data augmentation}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.1}{Int\351r\352t th\351orique}{section.2.2}% 18
+\BOOKMARK [2][-]{subsection.2.2.2}{Rajout de bruit blanc}{section.2.2}% 19
+\BOOKMARK [2][-]{subsection.2.2.3}{Simulation de distance}{section.2.2}% 20
+\BOOKMARK [1][-]{section.2.3}{Traitement du signal}{chapter.2}% 21
+\BOOKMARK [2][-]{subsection.2.3.1}{Filtre passe haut}{section.2.3}% 22
+\BOOKMARK [2][-]{subsection.2.3.2}{Mise \340 l'\351chelle}{section.2.3}% 23
+\BOOKMARK [1][-]{section.2.4}{Les Pipelines}{chapter.2}% 24
+\BOOKMARK [1][-]{section.2.5}{Les PDF \(Fiches d'analyse\)}{chapter.2}% 25
+\BOOKMARK [0][-]{chapter.3}{Le travail \340 distance}{}% 26
+\BOOKMARK [1][-]{section.3.1}{Organisation du travail \340 distance}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.2}{Outils utilis\351s}{chapter.3}% 28
+\BOOKMARK [2][-]{subsection.3.2.1}{Pr\351sentation de GitHub}{section.3.2}% 29
+\BOOKMARK [2][-]{subsection.3.2.2}{Pr\351sentation de Google Colab}{section.3.2}% 30
+\BOOKMARK [2][-]{subsection.3.2.3}{Pr\351sentation de LaTex}{section.3.2}% 31
+\BOOKMARK [0][-]{chapter.4}{Conclusion}{}% 32
+\BOOKMARK [1][-]{section.4.1}{Conclusion de l'\351tude}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.2}{Perspectives}{chapter.4}% 34
+\BOOKMARK [2][-]{subsection.4.2.1}{}{section.4.2}% 35
+\BOOKMARK [1][-]{section.4.3}{Les apports du stage}{chapter.4}% 36
+\BOOKMARK [2][-]{subsection.4.3.1}{les apports generaux}{section.4.3}% 37
+\BOOKMARK [2][-]{subsection.4.3.2}{les apports personels}{section.4.3}% 38

@@ -6,13 +6,13 @@
 \section{Les signaux}
 \label{Les-signaux}}
 
-Afin d'améliorer la lisibilité des chapitres suivant nous prendrons 3 signaux (le n°17000 et le n°20000 de la base labelisée ainsi que le n°571 de la base non labelisée) que nous observerons sous diverses formes puis sur lesquels nous effectuerons un certain nombre de traitements.
+Afin d'améliorer la lisibilité des chapitres suivants nous prendrons 3 signaux (le n°17000 et le n°20000 de la base labelisée ainsi que le n°571 de la base non labelisée) que nous observerons sous diverses formes puis sur lesquels nous effectuerons un certain nombre de traitements.
 
 \hypertarget{Signaux-Bruts}{%}
 \subsection{Signaux Bruts}
 \label{Signaux-Bruts}}
 
-Dans un premier temps on commence par observer les signaux sans traitements sous différentes formes.\n
+Dans un premier temps on commence par observer les signaux sans traitement sous différentes formes.\n
 D'abord de manière brute :
 
 \begin{figure}[!h]
@@ -30,13 +30,13 @@ D'abord de manière brute :
   \caption{Signaux 17000, 20000 et 571 bruts}
 \end{figure}
 
-On constate plusieurs choses tout d'abord il semble il y avoir une certaine disparité entre les signaux certains étant beaucoups plus bruités que d'autres. De plus contrairement a ce que l'on pouvais penser le clic n'est pas toujours facile a distinguer et celui ci n'est pas non plus toujours bien centré.
-Cependant on peux tirer quelques observations :
+On constate plusieurs choses tout d'abord il semble y avoir une certaine disparité entre les signaux certains étant beaucoup plus bruités que d'autres. De plus contrairement à ce que l'on pouvait penser le clic n'est pas toujours facile à distinguer et celui ci n'est pas non plus toujours bien centré.
+Cependant on peut tirer quelques observations :
 -Le clic semble durer 5 millisecondes
 -L'amplitude des clics semble variable
 -Il arrive que le bruit soit parfois suffisament important par rapport au clic pour rendre sont identification complexe voir impossible
 Pour afiner notre analyse il parait pertinent de commencer par zoomer sur ce clic.
-Pour cela il vas donc faloir commencer par trouver un moyen d'isoler le clic.
+Pour cela il va donc faloir commencer par trouver un moyen d'isoler le clic.
 
 \hypertarget{Le-zoom}{%}
 \subsection{Le zoom}
@@ -58,9 +58,9 @@ Pour cela il vas donc faloir commencer par trouver un moyen d'isoler le clic.
   \caption{Les signaux zoom}
 \end{figure}
 
-Pour zoomer sur le clic on commence par appliquer un filtre notament pour supprimer les bruits parasites(dont on parleras dans la partie traitement du signal) puis on identifie le maximum qui seras logiquement le milieux du clic puis on rajoute l'équivalent de la durée d'un clic avant et aprés ce maximum.
+Pour zoomer sur le clic on commence par appliquer un filtre notament pour supprimer les bruits parasites(dont on parlera dans la partie traitement du signal) puis on identifie le maximum qui sera logiquement le milieu du clic puis on rajoute l'équivalent de la durée d'un clic avant et aprés ce maximum.
 
-On constate plusieurs choses tout d'abord l'efficacité du zoom semble corélé a la qualité du signal de départ, de plus les "bons clics" semblent se situer aux alentours de 200 ms (ils sont donc bien centré) même si leur intensité semble très  variable pouvant aller jusqu'a un facteur 10 entre 2 clics. De plus sous cette forme nos observations semblent quand même limités. On vas donc commencer par les observer sous d'autres formes puis on chercheras a améliorer la qualité de nos signaux via diverses techniques. Etant donné la nature de nos données à savoir des enregistrements audios observer leurs spectrogrammes semble être le plus pertinent.
+On constate plusieurs choses tout d'abord l'efficacité du zoom semble corélée à la qualité du signal de départ, de plus les "bons clics" semblent se situer aux alentours de 200 ms (ils sont donc bien centrés) même si leur intensité est très  variable pouvant aller jusqu'a un facteur 10 entre 2 clics. De plus sous cette forme nos observations semblent quand même limitées. On va donc commencer par les observer sous d'autres formes puis on cherchera à améliorer la qualité de nos signaux via diverses techniques. Etant donné la nature de nos données à savoir des enregistrements audios observer leurs spectrogrammes semble être le plus pertinent.
 
 \hypertarget{Transformuxe9-de-Fourier}{%}
 \subsection{Transformé de Fourier}
@@ -120,18 +120,6 @@ Puis les Spectrogrammes 3D:
 \caption{Spectrogramme 3D du signal 571}
 \end{figure}
 
-\hypertarget{Traitement-du-signal}{%}
-\section{Traitement du signal}
-\label{Traitement-du-signal}}
-
-\hypertarget{Filtre-passe-haut}{%}
-\subsection{Filtre passe haut}
-\label{Filtre-passe-haut}}
-
-\hypertarget{}{%}
-\subsection{Mise à l'échelle}
-\label{}}
-
 \hypertarget{Data-augmentation}{%}
 \section{Data augmentation}
 \label{Data-augmentation}}
@@ -140,7 +128,17 @@ Puis les Spectrogrammes 3D:
 \subsection{Intérêt théorique}
 \label{}}
 
+Basiquement la Data augmentation regroupe un ensemble de méthodes permettant d'augmenter "artificiellement" la taille de la base sur laquelle notre ia va apprendre. Ainsi en plus de nos exemples initiaux on viendra rajouter de nouveaux exemples qui seront des versions "modifiées" des exemples initiaux.
 
+Pour cela selon la nature des données de cette base on va par exemple :
+-Rajouter du bruit sur les exemples
+-Flouter les exemples s'il s'agit d'images
+-Effectuer une rotation sur les exemples
+-Modifier la luminosité dans le cas d'images
+-Déplacer le clic dans le cas de notre probléme
+
+L'intérêt le plus évident de cette opération est de simplement multiplier le nombre d'exemples disponibles afin d'éviter le surapprentissage mais elle peut avoir beaucoup plus d'utilité. En effet dans notre cas nous n'avons rencontré aucun probléme de surapprentissage mais nous avions besoin de l'utiliser pour une autre raison.
+Effectivement nous avions remarqué que certains exemples avaient subis de fortes dégradations notament dues à du bruit ou bien à un fort décalage temporel du clic par exemple. Afin d'éviter que ces dégradations n'altérent le processus d'apprentissage de nos réseaux de neurones (le réseau pouvant par exemple assimiler une de ces dégradations a l'une des classes) plutôt que de supprimer ces dégradations il nous a paru plus pertinent de rajouter des exemples avec des dégradations similaires issuent d'exemples choisis aléatoirement parmis nos classes sur lesquelles ont aurait fait de la data augmentation. En effet ces dégradations pouvant être simplement dues a des problémes pendant l'enregistrement des clics (bateau navigant a proximité de l'animal ou encore d'autres animaux émettant divers bruits à proximité par exemple) il est plus que problable que les enregistrements qui seront soumis par la suite à notre classifieur contiennent également des dégradations qui ne devront pas entraver le bon fonctionnement de celui-ci.
 
 \hypertarget{Rajout-de-bruit-blanc}{%}
 \subsection{Rajout de bruit blanc}
@@ -150,18 +148,56 @@ Puis les Spectrogrammes 3D:
 \subsection{Simulation de distance}
 \label{Simulation-de-distance}}
 
+\hypertarget{Traitement-du-signal}{%}
+\section{Traitement du signal}
+\label{Traitement-du-signal}}
+
+Comme nous avons pu le voir précedement il arrive que certains enregistrements aient subis d'importantes dégradations, si dans un premier temps nous avons fait de la data augmentation il pouvait y avoir certains enregistrements pour lesquels cela ne suffis pas. Parcequ'ils seraient trop dégradés ils empêcheraient l'identification de l'espece, cela peut être un bruit tellement important qu'il recouvrirait le clic par exemple. Ainsi nous avons quand même dû faire du traitement du signal.
+
+\hypertarget{Filtre-passe-haut}{%}
+\subsection{Filtre passe haut}
+\label{Filtre-passe-haut}}
+
+Dans un premier temps
+
+\hypertarget{}{%}
+\subsection{Mise à l'échelle}
+\label{}}
+
+
 \hypertarget{Les-Pipelines}{%}
 \section{Les Pipelines}
 \label{Les-Pipelines}}
 
-%\hypertarget{}{%}
-%\subsection{Présentation et interet des pipelines}
-%\label{}}
+A l'image des pipelines utilisés pour transporter le gaz ou le pétrole, les pipelines en informatique servent à transporter un flux de données.
+Flux de données sur lequel on va effectuer un certain nombre d'opérations, flux qui sera ensuite injecté directement dans le réseau de neurones.
+Cette méthode présente plusieurs interets majeurs :
+-Premièrement elle nous évite de stocker le résultat des opérations intermédiaires  faisant gagner beaucoup de mémoire
+-Deuxièmement elle nous permet d'optimiser grandement l'ensemble du processus de prétraitement des données.
+-Troisièmement ce procédé améliore grandement les performances de tensorflow
+
+En pratique l'ensemble de nos fonctions étaient stockées dans un fichier python nommé cachalot_helper, et à chaque essai on faisait passer notre flux de données par les fonctions désirées avant de l'injecter dans le réseau de neurones.
+
 
 \hypertarget{Les-PDF}{%}
 \section{Les PDF (Fiches d'analyse)}
 \label{Les-PDF}}
 
+Les bases de données contenant un très grand nombre d'exemples (environs 90 000 au total que l'on peut visualiser sous 12 formes différentes soit potentiellement 1 080 000 images) afin de pouvoir exploiter les analyses faites précedement il a fallu créer un certain nombre d'outils afin de pouvoir aisement trier les données.
+Pour cela je me suis inspiré du systéme de pipeline que nous venons de voir, ainsi dans un premier temps l'ensemble des fonctions nécessaires à l'analyse était stocké dans le cachalot_helper.
+
+Dans un second temps j'ai créer dans un autre python une fonction paramètrable permettant tout d'abord de sélectionner ou un certain nombre de signaux dans un certain nombre de labels ou des signaux bien specifiques puis de générer (à l'aide du cachalot_helper) avec et ou sans preprocessing (les traitements du signal) avec ou sans zoom :
+-Des plots des signaux sélectionnés
+-Des spectrogrammes 2D des signaux sélectionnés
+-Des spectrogrammes 3D des signaux sélectionnés
+Une fois générés ils sont enregistrés sous forme de png dont le nom correspond à leur description ce qui donne par exemple pour le spectrogramme 3D sans processing et sans zoom de l'enregistrement numéro 17 000 de la classe GG dont le label est 0 :
+indice17000Spectro3Dlabel0classeGGsansprocessingsanszoom.png. A noter que les plots simples sont enregistrés sous spectro1D pour des raisons pratiques.
+
+Dans un troisième temps j'ai créer un autre python également paramètrable permettant de sélectionner des png en fonction de leur label de leur type (spectrogramme 1D ou 2D ou 3D) et leurs options (avec ou sans zoom et avec ou sans processing) puis ils sont stockés dans un ou plusieurs fichiers tex en fonction de leur nombre.
+
+Dans un quatrième temps j'ai créer un autre python encore une fois paramètrable qui va récupérer les fichiers tex précedement créés puis les réunir dans un seul fichier tex qui va automatiquement s'executer pour générer un fichier pdf contenant l'ensemble des courbes qui étaient stockées dans les fichiers tex. Ce fichier pdf sera alors enregistré son nom correspondant à ce qu'il contient ainsi un fichier contenant les spectrogrammes 2D du label 6 sans processing et zoomer :sera nommer : Spectro2Dlabel6sansprocessingaveczoom.pdf
+
+Et enfin un programme principal nommé apdfmaker également paramètrable chargé de faire tourner l'ensemble des programmes vus précedement afin de générer directement des fichiers pdf contenant ce que l'on désire. A noter que celui ci ne se contente pas de générer un pdf à la fois mais peut au contraire en générer une multitude à chaque run. Ainsi si l'on veut par exemple qu'il génére toutes les représentations graphiques possibles (soit 1 080 000 images) de tous les enregistrements puis qu'il les stock dans des pdf le plus détaillés possibles c'est parfaitement possible.
 
 
 \hypertarget{Le-travail-a-distance}{%}
@@ -171,13 +207,13 @@ Puis les Spectrogrammes 3D:
 \section{Organisation du travail à distance}\label{Organisation-du-travail-a-distance}}
 
 
-Comme vous le savez certainement durant cette année 2020 nous avons été touchés par la crise du coronavirus qui nous a conduit a être confinés nous forçant a travailler uniquement a distance.
+Comme vous le savez certainement durant cette année 2020 nous avons été touché par la crise du coronavirus qui nous à conduit à être confinés nous forçant à travailler uniquement à distance.
 
-Ces circonstances très particuliéres ont grandement affecté notre travail particulérement au début ou nous avons du régler de nombreux problémes techniques et organisationels. Cependant en nous forçant a nous adapter a ces nouvelles conditions, cette crise nous a permis de grandement augmenter nos competances en "télétravail".
+Ces circonstances très particuliéres ont grandement affecté notre travail particulérement au début où nous avons dû régler de nombreux problémes techniques et organisationels. Cependant en nous forçant à nous adapter à ces nouvelles conditions, cette crise nous a permis de grandement augmenter nos competances en "télétravail".
 
-Ainsi malgrés des débuts léthargiques nous avons mis en place une "routine de travail" qui était la suivante :
+Ainsi malgré des débuts léthargiques nous avons mis en place une "routine de travail" qui était la suivante :
 -Des visio-conférences quotidiennes nous permettant d'organiser et de synchroniser notre travail
--Un groupe whatsap dédié a mon stage afin de communiquer le plus efficacement possible
+-Un groupe whatsap dédié à mon stage afin de communiquer le plus efficacement possible
 -Un Github privé dédié afin de partager l'ensemble du projet
 -Un partage régulier de google collab via google drive
 
@@ -201,7 +237,7 @@ Nous pouvons définir GitHub comme une plateforme de développement de projet in
 \hypertarget{Pourquoi-Github}{%}
 \subsubsection{Pourquoi Github}
 \label{Pourquoi-Github}}
-Car celà permet une certaine synergie avec nos autres outils que nou verrons plus tard. Cette plateforme permet une facilité de développement de par sa fonctionnalité de versionnage de notre code à chaque changement ce qui permet une mise à jour dynamique ainsi que une relative facilitée a retourner à un état entérieur de notre programme ce qui permet une faciliter de débogage.Nous pouvons d'ailleur dire que ce rappport est entreposer sur Github et qu'il peut être récupérer facilement.Cette plateforme est aussi très connu dans le monde de la programmation ce qui sera utile pour notre future professionnel.
+Car celà permet une certaine synergie avec nos autres outils que nous verrons plus tard. Cette plateforme permet une facilité de développement de par sa fonctionnalité de versionnage de notre code à chaque changement ce qui permet une mise à jour dynamique ainsi qu'une relative facilité à retourner à un état antérieur de notre programme ce qui permet une facilité de débogage.Nous pouvons d'ailleurs dire que ce rappport est entreposer sur Github et qu'il peut-être récupérer facilement.Cette plateforme est aussi très connue dans le monde de la programmation ce qui sera utile pour notre futur professionnel.
 
 \hypertarget{Pruxe9sentation-de-Google-Colab}{%}
 \subsection{Présentation de Google Colab}
@@ -214,12 +250,12 @@ Car celà permet une certaine synergie avec nos autres outils que nou verrons pl
 \end{figure}
 
 Colab peut-être défini comme étant une plateforme d'éxécution pour notre code
-il permet du fait que ce soit la puissance de calcul d'ordinateur géré par Google une vitesse d'exécution ainsi qu'une vitesse de téléchargement de base de données supérieur à celle qui nous est disponible en local.
+il permet du fait que ce soit la puissance de calcul d'ordinateur géré par Google une vitesse d'exécution ainsi qu'une vitesse de téléchargement de base de données supérieure à celle qui nous est disponible en local.
 
 \hypertarget{Pourquoi-Colab}{%}
 \subsubsection{Pourquoi Colab}
 \label{Pourquoi-Colab}}
-En premier lieu pour la faciliter d'exéccution du code car ce n'est pas en local ce qui permet une exécution quasi immédiate du code sans aucune installation.Il est aussi facile de mettre sur github du code produit avec colab car c'est deux plateforme sont liées. Il permet de par l'utilisation du format Jupyter de mélanger code et texte (peu aussi comporter des images) dans notre notebook.
+En premier lieu pour faciliter l'exécution du code car elle ne se fais pas en local ce qui permet une exécution quasi immédiate du code sans aucune installation. Il est aussi facile de mettre sur github du code produit avec colab car ces deux plateformes sont liées. Il permet de par l'utilisation du format Jupyter notebook de mélanger code et texte (peu aussi comporter des images) dans notre notebook.
 
 Voilà un exmple d'exécution avec colab:
 
@@ -241,4 +277,4 @@ Voilà un exmple d'exécution avec colab:
 \end{center}
 \end{figure}
 
-Nous pouvons dire que LaTex est un langage de traitement de texte tel que le markdown qui permet de mettre en forme notre texte de manière \"scientifique\" cela veut dire que. LaTex permet une faciliter d'écriture des équations et de toutes les écriture mathématiques.Permet de par ses nombreux package une quasi-infinité de possibilitées.
+Nous pouvons dire que LaTex est un langage de traitement de texte tel que le markdown qui permet de mettre en forme notre texte de manière \"scientifique\" cela veut dire que. LaTex permet une facilité d'écriture des équations et de toutes les écritures mathématiques.Ce langage permet de par ses nombreux packages une quasi-infinité de possibilités.
