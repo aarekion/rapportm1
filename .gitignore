@@ -1,6 +1,6 @@
 # pas de fichiers npy
 *.npy
-
+Rapport*Alexis/rapport.pdf
 
 *.aux
 *.log
