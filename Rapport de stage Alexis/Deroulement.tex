@@ -48,6 +48,7 @@ Pour cela il va donc faloir commencer par trouver un moyen d'isoler le clic.
 \subsection{Le zoom}
 \label{Le-zoom}}
 
+Pour zoomer sur le clic on identifie le maximum qui sera logiquement le milieu du clic puis on rajoute l'équivalent de la durée d'un clic avant et aprés ce maximum.
 
 \begin{figure}[!h]
   \centering
@@ -63,19 +64,24 @@ Pour cela il va donc faloir commencer par trouver un moyen d'isoler le clic.
     \includegraphics[width=\textwidth]{./images/indice571Spectro1Dlabel9classeZCsansprocessingaveczoom.png}
   \caption{571}
   \end{subfigure}
-  \caption{Les signaux bruts avec zoom temporel.}
+  \caption{Les signaux n°17 000, 20 000, 571 avec zoom temporel}
 \end{figure}
 
-Pour zoomer sur le clic on commence par appliquer un filtre notament pour supprimer les bruits parasites(dont on parlera dans la partie traitement du signal) puis on identifie le maximum qui sera logiquement le milieu du clic puis on rajoute l'équivalent de la durée d'un clic avant et aprés ce maximum.% 
-\comment{sauf que dans la figure, le filtrage n'est pas réalisé, ce qui conduit à l'echec de l'identification du clic !}
+Hors on constate que celà ne suffis pas dans tous les cas en effet si pour les signaux n° 17 000 et 571 le zoom semble bien fonctionner dans le cas du signal n° 20 000 qui est très bruité le bruit semble avoir pris le dessus sur le clic conduisant à l'echec de l'identification du clic.
+On vas donc par la suite appliquer un filtre pour supprimer les bruits parasites (dont on reparlera dans la partie traitement du signal).
+%\comment{sauf que dans la figure, le filtrage n'est pas réalisé, ce qui conduit à l'echec de l'identification du clic !}
 
-On constate plusieurs choses : tout d'abord l'efficacité du zoom semble corélée à la qualité du signal de départ, de plus les "bons clics" semblent se situer aux alentours de 200 ms (ils sont donc bien centrés) même si leur intensité est très  variable pouvant aller jusqu'a un facteur 10 entre 2 clics. De plus sous cette forme, nos observations semblent quand même limitées. On va donc commencer par les observer sous d'autres formes puis on cherchera à améliorer la qualité de nos signaux via diverses techniques. Etant donné la nature de nos données à savoir des enregistrements audios observer leurs spectrogrammes semble être le plus pertinent.
+On peux déjà observer plusieurs phénoménes :
+-tout d'abord l'efficacité du zoom semble corélée à la qualité du signal de départ
+-Les "bons clics" semblent se situer aux alentours de 200 ms (ils sont donc bien centrés)
+-Leur intensité est très  variable pouvant aller jusqu'a un facteur 10 entre 2 clics. Il parait donc pertinent par la suite de les normaliser.
+Sous cette forme, nos observations semblent quand même limitées. On va donc commencer par les observer sous d'autres formes puis on cherchera à améliorer la qualité de nos signaux via diverses techniques. Etant donné la nature de nos données à savoir des enregistrements audios observer leurs spectrogrammes semble être pertinent.
 
 \hypertarget{Transformuxe9-de-Fourier}{%}
 \subsection{Transformée de Fourier}
 \label{Transformuxe9-de-Fourier}}
-domaine temporel -> fréquenciel
-Avant d'observer les spectrogrammes il convient de commencer par expliquer et observer les Transformés de Fourier de nos 3 signaux:
+
+Avant d'observer les spectrogrammes il convient de commencer par expliquer et observer les Transformés de Fourier de nos 3 signaux (attention les signaux ne sont pas du tout à la même échelle !):
 \begin{figure}[!h]
 \centering
   \begin{subfigure}[b]{0.3\textwidth}
@@ -90,11 +96,15 @@ Avant d'observer les spectrogrammes il convient de commencer par expliquer et ob
 \caption{Transformé de Fourier des signaux 17000, 20000 et 571}
 \end{figure}
 
+La Transformés de Fourier est un outil mathématique nous permettant de passer du domaine temporel au domaine fréquenciel, ainsi la transformé de fourier d'un enregistrement nous donneras un peux à l'image d'un histogramme la répartition fréquentielle de celui ci.
+
 \hypertarget{Spectrogrammes}{%}
 \subsection{Spectrogrammes}
 \label{Spectrogrammes}}
 
-On commence tout d'abord par observer leurs Spectrogrammes en 2D:
+Les Spectrogrammes sont simplement des transformé de fourier non pas sur l'ensemble de l'enregistrement mais a chaque échantillon, ainsi si l'échantillon est de 100 millisecondes par exemple le spectrogramme seras un enchainement de transformé de fourier toutes les 100 millisecondes.
+
+On commence tout d'abord par observer leurs Spectrogrammes en 2D (a noter qu'ici pour éviter les phénoménes d'écrasement (les fréquences majoritaires pouvant écraser les autres) on utilise une échelle logarithmique):
 
 \begin{figure}[!h]
   \centering
@@ -107,27 +117,28 @@ On commence tout d'abord par observer leurs Spectrogrammes en 2D:
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./images/indice571Spectro2Dlabel9classeZCsansprocessingsanszoom.png}
   \end{subfigure}
-  \caption{Spectrogramme 2D des signaux}
+  \caption{Spectrogramme 2D des signaux n° 17 000, 20 000 et 571}
 \end{figure}
 
-Puis les Spectrogrammes 3D:
+On constate tout d'abord que les clics sont bien visibles et que leurs gamme de fréquence semble relativement variable d'un enregistrement à l'autre.
+
+Puis on observe les Spectrogrammes 3D:
 
 \begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice17000Spectro3Dlabel0classeGGsansprocessingsanszoom.png}
-\caption{Spectrogramme 3D du signal 17000}
-\end{figure}
-\begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice20000Spectro3Dlabel9classeZCsansprocessingsanszoom.png}
-\caption{Spectrogramme 3D du signal 20000}
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice17000Spectro3Dlabel0classeGGsansprocessingsanszoom.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice20000Spectro3Dlabel9classeZCsansprocessingsanszoom.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice571Spectro3Dlabel9classeZCsansprocessingsanszoom.png}
+  \end{subfigure}
+  \caption{Spectrogramme 3D des signaux n° 17 000, 20 000 et 571}
 \end{figure}
 
-\begin{figure}[!h]
-\centering
-\includegraphics[width=4cm]{./images/indice571Spectro3Dlabel9classeZCsansprocessingaveczoom.png}
-\caption{Spectrogramme 3D du signal 571}
-\end{figure}
+
 
 \hypertarget{Data-augmentation}{%}
 \section{Data augmentation}
@@ -167,12 +178,25 @@ Comme nous avons pu le voir précedement il arrive que certains enregistrements 
 \subsection{Filtre passe haut}
 \label{Filtre-passe-haut}}
 
-Dans un premier temps
+Dans un premier temps pour résoudre les probléme vus précedement on  vas commencer par appliquer un filtre passe haut aux enregistrements en effet les clics des différents animaux se situant dans une gamme de fréquence au dessus des 8 KHz on peux donc appliquer le filtre à l'enregistrement sans en altérer le clic.
+Ainsi en appliquant simplement ce filtre on constate par exemple que l'identification du clic pour le zoom qui était impossible sans le filtre (à gauche) sur le signal n° 20000 deviens parfaitement possible avec (à droite) :
 
-\hypertarget{}{%}
+\begin{figure}[!h]
+\centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCavecprocessingaveczoom.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCavecprocessingaveczoom.png}
+  \end{subfigure}
+\caption{Zoom du clic du signal 20 000 sans le filtre passe haut puis avec}
+\end{figure}
+
+\hypertarget{Mise-a-l-echelle}{%}
 \subsection{Mise à l'échelle}
-\label{}}
+\label{Mise-a-l-echelle}}
 
+En analysant les signaux on a constaté de grandes différences aussi bien en terme d'intensité que de fréquences sur leurs clics 
 
 \hypertarget{Les-Pipelines}{%}
 \section{Les Pipelines}
