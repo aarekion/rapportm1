@@ -158,15 +158,22 @@ Pour cela selon la nature des données de cette base on va par exemple :
 -Déplacer le clic dans le cas de notre probléme
 
 L'intérêt le plus évident de cette opération est de simplement multiplier le nombre d'exemples disponibles afin d'éviter le surapprentissage mais elle peut avoir beaucoup plus d'utilité. En effet dans notre cas nous n'avons rencontré aucun probléme de surapprentissage mais nous avions besoin de l'utiliser pour une autre raison.
-Effectivement nous avions remarqué que certains exemples avaient subis de fortes dégradations notament dues à du bruit ou bien à un fort décalage temporel du clic par exemple. Afin d'éviter que ces dégradations n'altérent le processus d'apprentissage de nos réseaux de neurones (le réseau pouvant par exemple assimiler une de ces dégradations a l'une des classes) plutôt que de supprimer ces dégradations il nous a paru plus pertinent de rajouter des exemples avec des dégradations similaires issuent d'exemples choisis aléatoirement parmis nos classes sur lesquelles ont aurait fait de la data augmentation. En effet ces dégradations pouvant être simplement dues a des problémes pendant l'enregistrement des clics (bateau navigant a proximité de l'animal ou encore d'autres animaux émettant divers bruits à proximité par exemple) il est plus que problable que les enregistrements qui seront soumis par la suite à notre classifieur contiennent également des dégradations qui ne devront pas entraver le bon fonctionnement de celui-ci.
+Effectivement nous avions remarqué que certains exemples avaient subis de fortes dégradations notament dues à du bruit ou bien à un fort décalage temporel du clic par exemple. Afin d'éviter que ces dégradations n'altérent le processus d'apprentissage de nos réseaux de neurones (le réseau pouvant par exemple assimiler une de ces dégradations a l'une des classes) plutôt que de supprimer ces dégradations il nous a paru plus pertinent de d'abord essayer de rajouter des exemples avec des dégradations similaires issuent d'exemples choisis aléatoirement parmis nos classes sur lesquelles ont aurait fait de la data augmentation. En effet ces dégradations pouvant être simplement dues a des problémes pendant l'enregistrement des clics (bateau navigant a proximité du micro ou encore d'autres animaux émettant divers bruits à proximité par exemple) il est plus que problable que les enregistrements qui seront soumis par la suite à notre classifieur contiennent également des dégradations qui ne devront pas entraver le bon fonctionnement de celui-ci.
 
 \hypertarget{Rajout-de-bruit-blanc}{%}
 \subsection{Rajout de bruit blanc}
 \label{Rajout-de-bruit-blanc}}
 
+Comme on a pu l'observer précedement certains enregistrement sont plus ou moins bruités on vas donc dans un premier temps essayer d'en dimunuer l'impact via de la data augmentation. Autrement dit on vas aléatoirement rajouté des exemples issus d'enregistrements choisis aléatoirement auquels ont a rajouté artificiellement du bruit.
+
 \hypertarget{Simulation-de-distance}{%}
 \subsection{Simulation de distance}
 \label{Simulation-de-distance}}
+
+Lors de la prise des enregistrements audios les animaux peuvent se situer plus ou moins loin du ou des micro, ce qui peux potentiellement influencer notre classifieur. En effet certaines especes plus fuyardes peuvent par exemple rester systématiquement plus éloignées du micro que les autres poussant le classifeur a assimiler une grande distance a une éspece en particulier.
+Afin d'éviter ce biais nous avons décidé de rajouter la simulation de distance dans la data augmentation.
+Le principe est simple on vas rajouter aléatoirement des signaux choisis dans des classes aléatoires a une distance aléatoire (on simule les effets de la distance sur le signal).
+
 
 \hypertarget{Traitement-du-signal}{%}
 \section{Traitement du signal}
@@ -196,7 +203,7 @@ Ainsi en appliquant simplement ce filtre on constate par exemple que l'identific
 \subsection{Mise à l'échelle}
 \label{Mise-a-l-echelle}}
 
-En analysant les signaux on a constaté de grandes différences aussi bien en terme d'intensité que de fréquences sur leurs clics 
+En analysant les signaux on a constaté de grandes différences aussi bien en terme d'intensité que de fréquences sur leurs clics, hors pour bien fonctionner le réseau de neurones convolutif a besoin de données à la même échelle. C'est pourquoi on vas devoir mettre à l'échelle nos signaux, autrement dit on vas normaliser entre 1 et -1 l'ensemble de nos signaux.
 
 \hypertarget{Les-Pipelines}{%}
 \section{Les Pipelines}
