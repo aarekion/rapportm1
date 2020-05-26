@@ -89,7 +89,7 @@ Sous cette forme, nos observations semblent quand même limitées. On va donc co
 
 Avant d'observer les spectrogrammes il convient de commencer par expliquer et observer les Transformés de Fourier de nos 3 signaux.
 
-La Transformés de Fourier est un outil mathématique nous permettant de passer du domaine temporel au domaine fréquenciel, ainsi la transformé de fourier d'un enregistrement nous donneras un peux à l'image d'un histogramme la répartition fréquentielle de celui ci.
+La Transformés de Fourier est un outil mathématique nous permettant de passer du domaine temporel au domaine fréquenciel.
 
 Les Transformés de Fourier de nos signaux (attention les signaux ne sont pas du tout à la même échelle !):
 \begin{figure}[!h]
@@ -151,39 +151,6 @@ Puis on observe les Spectrogrammes 3D:
   \label{fig:spectros3D}}
 \end{figure}
 
-\hypertarget{Traitement-du-signal}{%}
-\section{Prétraitement du signal}
-\label{Traitement-du-signal}}
-
-Comme nous avons pu le voir précedement il arrive que certains enregistrements aient subis d'importantes dégradations, si dans un premier temps nous avons fait de la data augmentation il pouvait y avoir certains enregistrements pour lesquels cela ne suffis pas. Parcequ'ils seraient trop dégradés ils empêcheraient l'identification de l'espece, cela peut être un bruit tellement important qu'il recouvrirait le clic par exemple. Ainsi nous avons quand même dû faire du traitement du signal.
-
-\hypertarget{Filtre-passe-haut}{%}
-\subsection{Filtre passe haut}
-\label{Filtre-passe-haut}}
-
-Dans un premier temps pour résoudre les probléme vus précedement on  vas commencer par appliquer un filtre passe haut aux enregistrements en effet les clics des différents animaux se situant dans une gamme de fréquence au dessus des 8 KHz on peux donc appliquer le filtre à l'enregistrement sans en altérer le clic.
-Ainsi en appliquant simplement ce filtre on constate par exemple que l'identification du clic pour le zoom qui était impossible sans le filtre (à gauche) sur le signal n° 20000 deviens parfaitement possible avec (à droite) :
-
-\begin{figure}[!h]
-\centering
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCsansprocessingaveczoom.png}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.45\textwidth}
-    \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCavecprocessingaveczoom.png}
-  \end{subfigure}
-  \caption{Spectrogramme 3D des signaux : (a) n°20000 de la base d'apprentissage zoomé et non filtré et (b) n°20000 de la base d'apprentissage zoomé et filtré%
-\label{fig:20000zoomavecetsansfiltrage}}
-\end{figure}
-
-\hypertarget{Mise-a-l-echelle}{%}
-\subsection{Mise à l'échelle}
-\label{Mise-a-l-echelle}}
-
-En analysant les signaux on a constaté de grandes différences aussi bien en terme d'intensité que de fréquences sur leurs clics, hors pour bien fonctionner le réseau de neurones convolutif a besoin de données à la même échelle. C'est pourquoi on vas devoir mettre à l'échelle nos signaux, autrement dit on vas normaliser automatiquement entre 1 et -1 l'ensemble de nos signaux.
-Afin de réaliser celà on fais un choix pragmatique qui était de réperer le maximum puis diviser le signal par ce maximum
-\comment a revoir
-
 \hypertarget{Data-augmentation}{%}
 \section{Data augmentation}
 \label{Data-augmentation}}
@@ -225,6 +192,46 @@ Lors de la prise des enregistrements audios les animaux peuvent se situer plus o
 Afin d'éviter ce biais nous avons décidé de rajouter la simulation de distance dans la data augmentation.
 Le principe est simple on vas rajouter aléatoirement des signaux choisis dans des classes aléatoires a une distance aléatoire (on simule les effets de la distance sur le signal).
 
+\hypertarget{Traitement-du-signal}{%}
+\section{Traitement du signal}
+\label{Traitement-du-signal}}
+
+Comme nous avons pu le voir précedement il arrive que certains enregistrements aient subis d'importantes dégradations, si dans un premier temps nous avons fait de la data augmentation il pouvait y avoir certains enregistrements pour lesquels cela ne suffis pas. Parcequ'ils seraient trop dégradés ils empêcheraient l'identification de l'espece, cela peut être un bruit tellement important qu'il recouvrirait le clic par exemple. Ainsi nous avons quand même dû faire du traitement du signal. Ces traitements ne vont pas remplacer la data augmentation déjà effectué mais viendrons simplement en complément de celle ci
+
+\hypertarget{Filtre-passe-haut}{%}
+\subsection{Filtre passe haut}
+\label{Filtre-passe-haut}}
+
+Dans un premier temps pour résoudre les probléme vus précedement on  vas commencer par appliquer un filtre passe haut aux enregistrements. En effet les clics des différents animaux se situant dans une gamme de fréquence au dessus des 8 KHz on peux donc appliquer le filtre à l'enregistrement sans en altérer le clic.
+Sur la réponse fréquencielle du filtre on peux observer
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\textwidth]{./images/reponseEnFrequencePH8kHz.png}
+\caption{Réponse fréquencielle du passe haut à 8kHz%
+\label{fig:reponseEnFrequencePH8kHz}}
+\end{figure}
+Sur la réponse fréquencielle du filtre \ref{fig:reponseEnFrequencePH8kHz} on peux observer qu'au niveau de la fréquence de coupure qui est de 8kHz on 
+Ainsi en appliquant simplement ce filtre on constate par exemple que l'identification du clic pour le zoom qui était impossible sans le filtre (à gauche sur \ref{fig:20000zoomavecetsansfiltrage}) sur le signal n° 20000 deviens parfaitement possible avec (à droite sur \ref{fig:20000zoomavecetsansfiltrage}) :
+
+\begin{figure}[!h]
+\centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCsansprocessingsanszoom.png}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCavecprocessingsanszoom.png}
+  \end{subfigure}
+  \caption{Spectrogramme 3D des signaux : (a) n°20000 de la base d'apprentissage zoomé et non filtré et (b) n°20000 de la base d'apprentissage zoomé et filtré%
+\label{fig:20000zoomavecetsansfiltrage}}
+\end{figure}
+
+\hypertarget{Mise-a-l-echelle}{%}
+\subsection{Mise à l'échelle}
+\label{Mise-a-l-echelle}}
+
+En analysant les signaux on a constaté de grandes différences aussi bien en terme d'intensité que de fréquences sur leurs clics, hors pour bien fonctionner le réseau de neurones convolutif a besoin de données à la même échelle. C'est pourquoi on vas devoir mettre à l'échelle nos signaux, autrement dit on vas normaliser automatiquement entre 1 et -1 l'ensemble de nos signaux.
+Afin de réaliser celà on fais un choix pragmatique qui était de réperer le maximum puis diviser le signal par ce maximum
+\comment a revoir
 
 \hypertarget{Les-Pipelines}{%}
 \section{Les Pipelines}
@@ -246,9 +253,13 @@ En pratique l'ensemble de nos fonctions étaient stockées dans un fichier pytho
 \section{Les PDF (Fiches d'analyse)}
 \label{Les-PDF}}
 
+\hypertarget{Guxe9nuxe9ration-des-PDF}{%}
+\subsection{Génération des PDF}
+\label{Guxe9nuxe9ration-des-PDF}}
+
 Les bases de données contiennent un très grand nombre d'exemples (environ 90 000 au total que l'on peut visualiser sous 12 formes différentes soit potentiellement 1 080 000 images).
-Afin de pouvoir exploiter les analyses faites précedement il a fallu créer un certain nombre d'outils afin de pouvoir aisement trier les données.
-Pour cela je me suis inspiré du systéme de pipeline que nous venons de voir, ainsi dans un premier temps l'ensemble des fonctions nécessaires à l'analyse était stocké dans le cachalot{\_}helper.
+Afin de pouvoir exploiter les analyses faites précedement il a fallu créer un certain nombre d'outils afin de pouvoir aisement trier et manipuler les données.
+Pour cela je me suis inspiré du systéme de pipeline que nous venons de voir, ainsi dans un premier temps l'ensemble des fonctions nécessaires à l'analyse étaient stockés dans le cachalot{\_}helper.
 
 Dans un second temps j'ai créer dans un autre python une fonction paramètrable permettant tout d'abord de sélectionner ou un certain nombre de signaux dans un certain nombre de labels ou des signaux bien specifiques puis de générer (à l'aide du cachalot{\_}helper) avec et ou sans preprocessing (les traitements du signal) avec ou sans zoom :
 \begin{itemize}
@@ -256,11 +267,15 @@ Dans un second temps j'ai créer dans un autre python une fonction paramètrable
 \item Des spectrogrammes 2D des signaux sélectionnés
 \item Des spectrogrammes 3D des signaux sélectionnés
 \end{itemize}
-Une fois générés ils sont enregistrés sous forme de png dont le nom correspond à leur description ce qui donne par exemple pour le spectrogramme 3D sans processing et sans zoom de l'enregistrement numéro 17 000 de la classe GG dont le label est 0 :
+Une fois générés ils sont enregistrés sous forme de png dont le nom correspond à leur description. Ce qui donne par exemple pour le spectrogramme 3D sans processing et sans zoom de l'enregistrement numéro 17 000 de la classe GG dont le label est 0 :
 indice17000Spectro3Dlabel0classeGGsansprocessingsanszoom.png. A noter que les plots simples sont enregistrés sous spectro1D pour des raisons pratiques.
 
-Dans un troisième temps j'ai créer un autre python également paramètrable permettant de sélectionner des png en fonction de leur label de leur type (spectrogramme 1D ou 2D ou 3D) et leurs options (avec ou sans zoom et avec ou sans processing) puis ils sont stockés dans un ou plusieurs fichiers tex en fonction de leur nombre.
+Dans un troisième temps j'ai créé un autre python également paramètrable permettant de sélectionner des png en fonction de leur label de leur type (spectrogramme 1D ou 2D ou 3D) et leurs options (avec ou sans zoom et avec ou sans processing). Puis ils sont stockés dans un ou plusieurs fichiers tex en fonction de leur nombre.
 
-Dans un quatrième temps j'ai créer un autre python encore une fois paramètrable qui va récupérer les fichiers tex précedement créés puis les réunir dans un seul fichier tex qui va automatiquement s'executer pour générer un fichier pdf contenant l'ensemble des courbes qui étaient stockées dans les fichiers tex. Ce fichier pdf sera alors enregistré son nom correspondant à ce qu'il contient ainsi un fichier contenant les spectrogrammes 2D du label 6 sans processing et zoomer :sera nommer : Spectro2Dlabel6sansprocessingaveczoom.pdf
+Dans un quatrième temps j'ai créé un autre python encore une fois paramètrable qui va récupérer les fichiers tex précedement créés. Puis il va les réunir dans un seul fichier tex. Fichier tex qui va automatiquement s'executer pour générer un fichier pdf. Fichier pdf qui contient l'ensemble des courbes qui étaient stockées dans les fichiers tex. Ce fichier pdf sera alors enregistré son nom correspondant à ce qu'il contient. Ainsi un fichier contenant les spectrogrammes 2D du label 6 sans processing et zoomer sera nommé: Spectro2Dlabel6sansprocessingaveczoom.pdf
 
-Et enfin un programme principal nommé apdfmaker également paramètrable chargé de faire tourner l'ensemble des programmes vus précedement afin de générer directement des fichiers pdf contenant ce que l'on désire. A noter que celui ci ne se contente pas de générer un pdf à la fois mais peut au contraire en générer une multitude à chaque run. Ainsi si l'on veut par exemple qu'il génére toutes les représentations graphiques possibles (soit 1 080 000 images) de tous les enregistrements puis qu'il les stock dans des pdf le plus détaillés possibles c'est parfaitement possible.
+Et enfin un programme principal nommé apdfmaker également paramètrable chargé de faire tourner l'ensemble des programmes vus précedement. Dans le but de générer directement des fichiers pdf contenant ce que l'on désire. A noter que celui ci ne se contente pas de générer un pdf à la fois mais peut au contraire en générer une multitude à chaque run. Ainsi si l'on veut par exemple qu'il génére toutes les représentations graphiques possibles (soit 1 080 000 images) de tous les enregistrements puis qu'il les stocke dans des pdf le plus détaillés possibles c'est parfaitement possible.
+
+\hypertarget{Ruxe9sultats-de-l-analyse-des-PDF}{%}
+\subsection{Résultats de l'analyse des PDF}
+\label{Ruxe9sultats-de-l-analyse-des-PDF}}
