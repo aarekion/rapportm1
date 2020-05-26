@@ -1,10 +1,11 @@
 \hypertarget{Introduction}{%
 \chapter{Introduction}\label{Introduction}}
 
+
 \section{Présentation de la structure
 d'accueil}
 
-Durant la période de mon stage, j'ai été accueilli au sein du groupe \textbf{SpikeTrain} du 
+Durant la période de mon stage, j'ai été accueilli au sein du groupe \textbf{SpikeTrain} du
 \textbf{Laboratoire de Mathématiques Informatique et Applications
 (LAMIA)} de l'\textbf{Université des Antilles (UA)}.
 Je vais donc présenter ces trois entités, en commençant par l'Université des Antilles
@@ -21,12 +22,12 @@ Ces missions sont régies par l'article L123-3 du code de l'éducation :
 \item La diffusion de la culture humaniste, en particulier à travers le développement des sciences humaines et sociales, et de la culture scientifique, technique et industrielle ;
 \item La participation à la construction de l’Espace européen de l’enseignement supérieur et de la recherche ;
 \item La coopération internationale.
-\end{itemize} 
+\end{itemize}
 
 L'Université des Antilles s'organise autour deux pôles universitaires
 régionaux dotés d'une certaine autonomie : le \textit{Pôle Guadeloupe} et le \textit{Pôle Martinique}.
 Sur ces pôles, l'Université assure des missions de \emph{formation} et
-de \emph{recherche}, par ses enseignants-chercheurs, Maîtres de Conférences ou Professeurs des Universités, ses chercheurs et ses enseignants, assistés par des personnels \emph{administratifs et 
+de \emph{recherche}, par ses enseignants-chercheurs, Maîtres de Conférences ou Professeurs des Universités, ses chercheurs et ses enseignants, assistés par des personnels \emph{administratifs et
 techniques}.
 
 \hypertarget{administration-et-personnel-technique}{%
@@ -183,22 +184,21 @@ pour ses \textbf{robots} qui apprennent par \textbf{répétitions} à jouer
 \subsection{Le Challenge: Classifier les Cachalots}\label{Le-Challenge}}
 
 Le challenge "Dyni Odontocete Click Classification" (https://challengedata.ens.fr/challenges/32) consiste à réaliser un classifieur qui classe des mammifères marins de dix espèces différentes à partir de leurs "clics", c'est à dire le son qu'ils émettent avec leur machoires.
-Pour celà nous avions à disposition une base d'apprentissage labelisée (comportant 113000 exemples) ainsi qu'une base de test non labelisée (comportant 20000 exemples) sur laquelle nous pouvions évaluer les performances réelles de nos classifieurs. 
-%Pour cela nous labelision les exemples de la base non labelisée puis nous envoyions nos prédictions sur le site du challenge qui nous renvoyais nos performances ainsi qu'un classement des performances de tous les participants.
+Pour celà nous avions à disposition une base d'apprentissage labelisée (comportant 113000 exemples) ainsi qu'une base de test non labelisée (comportant 20000 exemples) sur laquelle nous pouvions évaluer les performances réelles de nos classifieurs.
 
 Les deux bases sont constituées d'enregistrements audios des clics des différentes espèces. Chaque enregistrement contient 8192 mesures faites à une fréquence d'échantillonnage de 200KHz. Dans le cas de la base non labelisée appellée base de test chaque enregistrement contient normalement un clic centré au milieu de la fenêtre tandis que dans la base labelisée appellée base d'apprentissage, le clic n'est pas spécialement centré et peut se situer à divers moments de l'enregistrement. De plus, les enregistrements peuvent contenir divers bruits.
 
-L'objectif est de classer chaque enregistrement en fonction de l'espèce émettrice correspondante. Les 10 espèces sont : 
+L'objectif est de classer chaque enregistrement en fonction de l'espèce émettrice correspondante. Les 10 espèces sont :
 \begin{itemize}
-\item (0) Gg : Grampus griseus- Dauphin de Risso 
-\item (1) Gma : Globicephala macrorhynchus- Baleine pilote à nageoires courtes 
-\item (2) La : Lagenorhynchus acutus- Dauphin à flancs blancs de l'Atlantique 
-\item (3) Mb : Mesoplodon bidens- Baleine à bec de Sowerby 
-\item (4) Me : Mesoplodon europaeus- Baleine à bec de Gervais 
-\item (5) Pm : Physeter macrocephalus - Cachalot 
-\item (6) Ssp : Stenella sp.Dauphin stenellide 
+\item (0) Gg : Grampus griseus- Dauphin de Risso
+\item (1) Gma : Globicephala macrorhynchus- Baleine pilote à nageoires courtes
+\item (2) La : Lagenorhynchus acutus- Dauphin à flancs blancs de l'Atlantique
+\item (3) Mb : Mesoplodon bidens- Baleine à bec de Sowerby
+\item (4) Me : Mesoplodon europaeus- Baleine à bec de Gervais
+\item (5) Pm : Physeter macrocephalus - Cachalot
+\item (6) Ssp : Stenella sp.Dauphin stenellide
 \item (7) UDA : Delphinidés de type A - un groupe de dauphins (espèces non encore déterminées)
-\item (8) UDB : Delphinidés de type B - un autre groupe de dauphins (espèces non encore déterminées) 
+\item (8) UDB : Delphinidés de type B - un autre groupe de dauphins (espèces non encore déterminées)
 \item (9) Zc : Ziphius cavirostris - Baleine de Cuvier à bec.
 \end{itemize}
 
@@ -325,41 +325,9 @@ De cette manière, l’image diminue en taille et se retrouve simplifiée (liss�
 L'un des intérêts majeurs des réseaux convolutifs est qu'ils permettent de réaliser une invariance
 de translation : un motif appris sur une zone de l'image sera reconnue
 quelque soit sa position dans l'image.
-Un autre intérêt est qu'ils nécessitent l'apprentissage de beaucoup moins de paramètres (les poids) que les réseaux de neurones de type Perceptron Multicouche, pour des performances 
+Un autre intérêt est qu'ils nécessitent l'apprentissage de beaucoup moins de paramètres (les poids) que les réseaux de neurones de type Perceptron Multicouche, pour des performances
 en classification équivalentes ou supérieures.
 
-\hypertarget{Tensorflow}{%
-\subsection{TensorFlow}%
-\label{Tensorflow}}
-
-\comment{à renvoyer vers la section outils}
-
-\begin{center}
-\label{fig:Tensorflow_logo}
-\centering
-\includegraphics[width=5cm]{./images/Tensorflow_logo.png}
-\begin{figure}[h!]
-\caption{Logo de Tensorflow}
-\end{figure}
-\end{center}
-
-
-TensorFlow est un framework open source,
-multiplateforme d'apprentissage automatique développée par Google Brain,
-en C++ avec une interface pour Python.
-Sa premiere version est publiée par Google le 9 novembre 2015.
-L'intérêt de ce framework est de limiter les coûts de développement des solutions à base
-de réseaux de neurones, en réunissant des fonctionnalités permettant,
-en quelques lignes de code de construire des réseaux complexes.
-Tensorflow permet donc de simplifier beaucoup de choses dans
-le domaine de l'apprentissage automatique.
-Son autre intérêt est de fournir des interfaces pour pouvoir exécuter les calculs sur
-des accélérateurs graphiques et surtout de les prendre en charge
-de façon complétement transparente pour les utilisateurs.
-Les gains de vitesse peuvent atteindre ainsi un facteur 10 quand le même modèle est exécuté
-sur une carte graphique.
-
-Le concurrent principal de TensorFlow est pyTorch, utilisé par FaceBook.
 
 \hypertarget{plan}{%
 \section{Présentation du plan du rapport}%
