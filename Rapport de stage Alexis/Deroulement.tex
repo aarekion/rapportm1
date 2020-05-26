@@ -9,33 +9,39 @@
 Afin d'améliorer la lisibilité des chapitres suivants nous prendrons 3 signaux (le n°17000 et le n°20000 de la base labelisée ainsi que le n°571 de la base non labelisée) que nous observerons sous diverses formes puis sur lesquels nous effectuerons un certain nombre de traitements.
 
 \hypertarget{Signaux-Bruts}{%}
-\subsection{Signaux Bruts}
+\subsection{Les signaux bruts}
 \label{Signaux-Bruts}}
 
-Dans un premier temps on commence par observer les signaux sans traitement sous différentes formes.\n
-D'abord de manière brute :
+Dans un premier temps on commence par observer les signaux sans traitement sous différentes formes.
 
 \begin{figure}[!h]
-  \centering
-  \begin{subfigure}[b]{0.3\textwidth}
+\centering
+	\begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./images/indice17000Spectro1Dlabel0classeGGsansprocessingsanszoom.png}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.3\textwidth}
+    \caption{}
+  	\end{subfigure}
+  	\begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCsansprocessingsanszoom.png}
-    \caption{Signal 20000 brut}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.3\textwidth}
+	\caption{}
+  	\end{subfigure}
+  	\begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./images/indice571Spectro1Dlabel9classeZCsansprocessingsanszoom.png}
-  \end{subfigure}
-  \caption{Signaux 17000, 20000 et 571 bruts}
+    	\caption{}
+	\end{subfigure}
+\caption{Signaux bruts : (a) n°17000 et (b) n°20000 de la base d'apprentissage ; (c) n°571 de la base de test.%
+\label{fig:signauxbruts}}
 \end{figure}
 
-On constate plusieurs choses tout d'abord il semble y avoir une certaine disparité entre les signaux certains étant beaucoup plus bruités que d'autres. De plus contrairement à ce que l'on pouvait penser le clic n'est pas toujours facile à distinguer et celui ci n'est pas non plus toujours bien centré.
-Cependant on peut tirer quelques observations :
--Le clic semble durer 5 millisecondes
--L'amplitude des clics semble variable
--Il arrive que le bruit soit parfois suffisament important par rapport au clic pour rendre sont identification complexe voir impossible
-Pour afiner notre analyse il parait pertinent de commencer par zoomer sur ce clic.
+Sur la figure \ref{fig:signauxbruts}, nous constatons plusieurs choses : tout d'abord il semble y avoir une certaine disparité entre les signaux, certains étant beaucoup plus bruités que d'autres ; de plus contrairement à ce que l'on pouvait penser, le clic n'est pas toujours facile à distinguer et celui ci n'est pas non plus toujours bien centré.
+
+Cependant nous avons pu tirer quelques enseignements de l'observation de ces signaux :
+\begin{itemize}
+\item Le clic semble durer 5 millisecondes.
+\item L'amplitude des clics semble variable.
+\item Il arrive que le bruit soit parfois suffisament important par rapport au clic pour rendre son identification difficile voir impossible.
+\end{itemize}
+
+Pour afiner notre analyse, il parait pertinent de commencer par zoomer sur ce clic.
 Pour cela il va donc faloir commencer par trouver un moyen d'isoler le clic.
 
 \hypertarget{Le-zoom}{%}
@@ -47,23 +53,26 @@ Pour cela il va donc faloir commencer par trouver un moyen d'isoler le clic.
   \centering
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./images/indice17000Spectro1Dlabel0classeGGsansprocessingaveczoom.png}
+    \caption{17000}
   \end{subfigure}
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCsansprocessingaveczoom.png}
-  \caption{Signal 20000 zoom}
+  \caption{20000}
   \end{subfigure}
   \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./images/indice571Spectro1Dlabel9classeZCsansprocessingaveczoom.png}
+  \caption{571}
   \end{subfigure}
-  \caption{Les signaux zoom}
+  \caption{Les signaux bruts avec zoom temporel.}
 \end{figure}
 
-Pour zoomer sur le clic on commence par appliquer un filtre notament pour supprimer les bruits parasites(dont on parlera dans la partie traitement du signal) puis on identifie le maximum qui sera logiquement le milieu du clic puis on rajoute l'équivalent de la durée d'un clic avant et aprés ce maximum.
+Pour zoomer sur le clic on commence par appliquer un filtre notament pour supprimer les bruits parasites(dont on parlera dans la partie traitement du signal) puis on identifie le maximum qui sera logiquement le milieu du clic puis on rajoute l'équivalent de la durée d'un clic avant et aprés ce maximum.% 
+\comment{sauf que dans la figure, le filtrage n'est pas réalisé, ce qui conduit à l'echec de l'identification du clic !}
 
-On constate plusieurs choses tout d'abord l'efficacité du zoom semble corélée à la qualité du signal de départ, de plus les "bons clics" semblent se situer aux alentours de 200 ms (ils sont donc bien centrés) même si leur intensité est très  variable pouvant aller jusqu'a un facteur 10 entre 2 clics. De plus sous cette forme nos observations semblent quand même limitées. On va donc commencer par les observer sous d'autres formes puis on cherchera à améliorer la qualité de nos signaux via diverses techniques. Etant donné la nature de nos données à savoir des enregistrements audios observer leurs spectrogrammes semble être le plus pertinent.
+On constate plusieurs choses : tout d'abord l'efficacité du zoom semble corélée à la qualité du signal de départ, de plus les "bons clics" semblent se situer aux alentours de 200 ms (ils sont donc bien centrés) même si leur intensité est très  variable pouvant aller jusqu'a un facteur 10 entre 2 clics. De plus sous cette forme, nos observations semblent quand même limitées. On va donc commencer par les observer sous d'autres formes puis on cherchera à améliorer la qualité de nos signaux via diverses techniques. Etant donné la nature de nos données à savoir des enregistrements audios observer leurs spectrogrammes semble être le plus pertinent.
 
 \hypertarget{Transformuxe9-de-Fourier}{%}
-\subsection{Transformé de Fourier}
+\subsection{Transformée de Fourier}
 \label{Transformuxe9-de-Fourier}}
 domaine temporel -> fréquenciel
 Avant d'observer les spectrogrammes il convient de commencer par expliquer et observer les Transformés de Fourier de nos 3 signaux:
@@ -126,7 +135,7 @@ Puis les Spectrogrammes 3D:
 
 \hypertarget{}{%}
 \subsection{Intérêt théorique}
-\label{}}
+\label{interets_theoriques}}
 
 Basiquement la Data augmentation regroupe un ensemble de méthodes permettant d'augmenter "artificiellement" la taille de la base sur laquelle notre ia va apprendre. Ainsi en plus de nos exemples initiaux on viendra rajouter de nouveaux exemples qui seront des versions "modifiées" des exemples initiaux.
 
@@ -184,9 +193,9 @@ En pratique l'ensemble de nos fonctions étaient stockées dans un fichier pytho
 \label{Les-PDF}}
 
 Les bases de données contenant un très grand nombre d'exemples (environs 90 000 au total que l'on peut visualiser sous 12 formes différentes soit potentiellement 1 080 000 images) afin de pouvoir exploiter les analyses faites précedement il a fallu créer un certain nombre d'outils afin de pouvoir aisement trier les données.
-Pour cela je me suis inspiré du systéme de pipeline que nous venons de voir, ainsi dans un premier temps l'ensemble des fonctions nécessaires à l'analyse était stocké dans le cachalot_helper.
+Pour cela je me suis inspiré du systéme de pipeline que nous venons de voir, ainsi dans un premier temps l'ensemble des fonctions nécessaires à l'analyse était stocké dans le cachalot{\_}helper.
 
-Dans un second temps j'ai créer dans un autre python une fonction paramètrable permettant tout d'abord de sélectionner ou un certain nombre de signaux dans un certain nombre de labels ou des signaux bien specifiques puis de générer (à l'aide du cachalot_helper) avec et ou sans preprocessing (les traitements du signal) avec ou sans zoom :
+Dans un second temps j'ai créer dans un autre python une fonction paramètrable permettant tout d'abord de sélectionner ou un certain nombre de signaux dans un certain nombre de labels ou des signaux bien specifiques puis de générer (à l'aide du cachalot{\_}helper) avec et ou sans preprocessing (les traitements du signal) avec ou sans zoom :
 -Des plots des signaux sélectionnés
 -Des spectrogrammes 2D des signaux sélectionnés
 -Des spectrogrammes 3D des signaux sélectionnés
