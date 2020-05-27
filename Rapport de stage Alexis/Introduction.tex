@@ -338,35 +338,89 @@ et de sons.
 
 Ce réseau se présente comme un réseau classique , une couche d'entrée,
 une couche de sortie et des couches cachées.
-Ces couches cachées possèdent des couches \textbf{convolutives}
+Neanmoins, il s'en distingue par la composition des couches cachées.
+
+Ces réseaux ayant été conçus initialement pour des applications a des images,
+nous illustrerons notre propos ici sur ce type de données, avant de passer
+à l'implémentation utilisée dans le cas du challenge.
+
+\subsubsection{les features map}
+
+En entrée et en sortie d'une couche d'un réseau convolutif, on trouve des
+\textbf{features map}, que nous nommerons ici \textbf{cartes} pour cartes de
+caractéristiques.
+Par exemple, en entrée d'un réseau traitant des images RGB, les entrées
+seraient composée de trois cartes, correspondant aux trois canaux de l'image.
+
+Une sortie de la première couche d'un réseau convolutif est également un
+ensemble de cartes qui pourraient, par exemple, correspondre aux emplacements,
+dans l'image de départ, de traits verticaux (carte 1), de traits horizontaux
+(carte 2)...
+
+Ces cartes, dans les frameworks actuels, sont représentées sous forme de
+tenseurs (des tableaux de dimension variable.
+Le tenseur représentant une image RGB peut être imaginé comme un cube de données
+de dimension 3 (hauteur, largeur, canal).
+
+\subsubsection{les couches convolutives}
+
+Les réseaux convolutifs possèdent des couches \textbf{convolutives}
 pour lesquelles chaque neurone va appliquer un filtre convolutif
-sur une partie de l'image en entrée afin d'analyser toute l'image
-(voir figure \ref{fig:explication_convolution}).
+sur les cartes d'entrée.
+
+Plus clairement : Imaginons, qu'une couche doive notamment produire une carte
+contenant les emplacements des traits verticaux. Dans un réseau classique,
+cette couche serait composée d'autant de neurones que l'image d'entrée.
+Pour que les neurones détectent tous des traits verticaux à différents
+emplacements de l'image d'entrée, il faudrait qu'ils fassent tous la même
+opération (qu'ils aient les même poids), mais opèrent chacun sur une portion variable de l'image d'entrée.
+
+De fait, cette opération d'extraction de traits verticaux est une convolution
+et peut être faite par un neurone unique qui "se déplace" dans l'image.
+Dans le cas des neurones convolutifs, on gagne de nombreuses choses par rapport
+à une convolution classique :
+\begin{itemize}
+\item le neurone peut travailler sur toutes les cartes d'entrées en meme temps
+(il mixe les informations de ces cartes)
+\item il intègre une fonction d'activation qui est non linéaire, ce que ne fait
+pas la convolution de base.
+\item le neurone va apprendre quels caractéristiques extraire des cartes
+d'entrées
+\end{itemize}
+
+La définition d'une couche convolutive est donc très simple :
+on lui indique le nombre de cartes d'entrées, et le nombre de cartes de sorties
+désirée. Le réseau possèdera alors, pour cette couche, autant de neurones
+que de cartes de sorties voulues.
+
+Cette opération est illustrée dans la figure~\ref{fig:exCNN}, avec une couche
+convolutive placée juste après l'image d'entrée.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=12cm]{./images/explication_convolution.jpg}
-\caption[Schéma de la convolution.]{L'image d'entrée est découpée en \textit{patchs}
-sur lesquels est appliqué un filtre de convolution.
-La sortie de ce fitre appliqué à chacun des patchs donne la couche de sortie
-de la couche convolutive (appelée carte ou map).
-La convolution est paramètrée par : le \textit{kernel} (la forme du patch),
-le \textit{stride} (le déplacement du filtre) et le \textit{padding}
-(la façon dont les bords de l'image vont être traités).
-\label{fig:explication_convolution}}
+\includegraphics[width=16cm]{./images/exCNN.png}
+\caption[Exemple de réseau convolutif]{ Exemple de réseau convolutif
+\label{fig:exCNN}
+}
 \end{figure}
 
-Dit autrement et pour simplifier, tous les neurones d'une couche travaillent
-sur une portion de la couche précédente, limitée spatialement.
-De plus, tous ces neurones partagent leur poids et effectuent dont la même
-opération (de convolution) sur différentes parties des sorties de la couche
-précédente.
+\subsubsection{les couches de pooling}
 
 Les réseaux convolutifs possèdent aussi des couches de \textbf{pooling}.
 Le \textbf{pooling} est une opération simple qui consiste à remplacer une zone
 de pixels (généralement 2×2 ou 3×3), par une valeur unique
 (généralement le max ou la moyenne).
 De cette manière, l’image diminue en taille et se retrouve simplifiée (lissée).
+
+Cette opération est illustrée dans la figure~\ref{fig:exCNN}, avec une couche
+de pooling placée en seconde position après l'image d'entrée.
+
+En général, les réseaux convolutifs alternent plus ou moins couches de
+convolution et couche de pooling, avant de passer à la prise de décision finale.
+
+\subsubsection{la couche de sortie}
+
+
 
 L'un des intérêts majeurs des réseaux convolutifs est qu'ils permettent de
 réaliser une invariance de translation :
