@@ -3,28 +3,24 @@
 
 \section{Conclusion de l'analyse}
 
+L'analyse des fiches nous à permis de constater que :
+\begin{itemize}
+\item Certaines espèces semblent émettre à certaines gammes de fréquences
+\item Contrairement à ce qui nous avait été annoncé dans la description du challenge de nombreux clics de la base de test n'étaient pas centrés.
+\item Les signaux de la base d'apprentissage sont en très grande majorité bien centrés.
+\item Un nombre important d'enregistrements de la base de test semblent avoir subbis d'importantes dégradations.
+\item Sur certains enregistrements de la base de test le clic est impossible a identifier sans prétraitement.
+\end{itemize}
+Ce qui peux expliquer au moins en partie le différentiel de performances de nos IA sur la base labelisée et la base non labelisée.
 
+En somme l'objectif est atteint.
 
 \section{Perspectives}
 
-%\subsection{Changer architecture du réseau (Barabasi)}
-Nous avons envisagé de changer la \textbf{topologie} \footnote{Topologie: Tel que la topologie d'un graffe il s'agit de la façon dont sont connecté nos neurones entre eux.}. Pour passer à une topologie dite \textbf{scalefree}. Qui est justement celle utilisé dans l'article d'origine. Cette architecture ressemble à ça:
+Actuellement l'ensemble des IA existantes donnant de bons résultats ont un point commun, elle demandent une quantité titanesque de données afin d'être efficace. Fort de ce constat les outils d'analyse et de tris des données permettant de naviguer facilement dans d'importantes quantités de données semble présenter un grand intérêt. Ainsi même si pour l'instant ces outils sont adaptés à un probléme et une base de données particulière, la transformation de ceux-ci en outils génériques utilisables sur diverses bases de données ne semble pas absurde.
 
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[width=10.5cm,height=10.5cm]{./images/scalefree.png}
-\end{center}
-\caption{Architecture scale-free}
-\label{scale_free}
-\end{figure}
-\subsection{}
-
-Nous pouvons interpréter tout le réseau comme un utilisateur et cet entretient comme le temps qu'il accorde à la rumeur.
-
-Cela permettrait
 \section{Les apports du stage}
 \subsection{les apports generaux}
-Grâce à ce stage les chercheurs du laboratoire auront une idée plus précise de la diffusion d'un echo dans un réservoir et comment y créer un entretient ce qui sera utile pour leurs futures expériences. Cela permettra de mieux appréhender certains problèmes.
+Comme dit précedement si à l'heure actuelle ces outils ne sont adaptés qu'à une base de données et à un probléme particulier il est possible qu'ils puissent par la suite être transformés en outils génériques facilitant l'analyse des données des futurs problémes auxquels seront confrontés l'équipe SpikeTrain.
 \subsection{les apports personels}
-Comme dit pendant mon introduction, avant ce stage je n'avais aucune connaissance des réseaux de neurones, ce stage m'a donc permis de m'ouvrir a ce nouveau sujet passionnant, et m'a permis d'obtenir des compétence nécéssaire à mon cursus universitaire. Il m'a permis d'affiné mes méthodes de travail grâce à l'apprentissage de l'utilisation de GitHub et Colab. J'ai amélioré ma rédaction grace à l'approfondissement
-du LaTeX. Il m'a permis d'affiner mon analyse de par l'analyse de mes résultats.
+Bien que les tâches auxquelles j'ai été affecté ne s'attardent que peu sur les IA que nous avons utilisés, de par leur nature elle m'ont permis d'acquérir une large gamme de compétences. D'abord en programmation puisqu'avant de commencer mon stage je n'avais qu'un faible niveau en python et de maigres connaissances sur google colab, ainsi qu'aucune connaissance en LaTex, je ressors donc avec une certaine maitrise de ces trois langages. Ensuite en terme de méthodologie, mon travail avec des chercheurs sur un sujet de recherche à distance m'as permis de m'initier et de m'exercer aux méthodes de recherche, de travail à distance. J'ai pu aussi, apprendre à rédiger des documents de recherche grâce à la création des fiches d'analyse ainsi que la rédaction de ce rapport. Les problémes techniques inhérents au conditions exceptionnelles dans lesquelles mon stage s'est déroulé ont rendu son déroulement compliqué et laborieux. Heureusement, la grande maîtrise et la remarquable fléxibilité de mes tuteurs en ont fait une expérience aussi intense qu'enrichissante.
