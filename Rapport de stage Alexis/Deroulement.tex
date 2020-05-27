@@ -26,6 +26,11 @@ Nous les observerons sous diverses formes puis nous effectuerons dessus un certa
 
 Dans un premier temps, nous commençons par observer les signaux sans traitement, comme des signaux sonores, c'est à dire comme l'évolution dans le temps de l'amplitude du son.
 
+Avec la fréquence d'échantillonage utilisée, un signal a une durée de 0.04096s,
+soit approximativement 40ms.
+Nos signaux seront donc présenté avec une échelle en millisecondes pour une
+meilleure lisibilité.
+
 \begin{figure}[!h]
 \centering
 	\begin{subfigure}[b]{0.3\textwidth}
@@ -53,13 +58,21 @@ Cependant, nous avons pu tirer quelques enseignements de l'observation de ces si
 \end{itemize}
 
 Pour afiner notre analyse, il parait pertinent de commencer par zoomer sur ce clic.
-Pour cela il va donc faloir commencer par trouver un moyen d'isoler le clic.
+Pour cela il va donc falloir commencer par trouver un moyen d'isoler le clic.
 
 \hypertarget{Le-zoom}{%}
 \subsection{Le zoom}
 \label{Le-zoom}}
 
-Pour zoomer sur le clic, on identifie le maximum du signal qui sera, idéalement, le milieu du clic puis on rajoute l'équivalent de la durée d'un clic (qui est de l'ordre de 5 millisecondes) avant et aprés ce maximum.
+Pour observer les clics de façon plus nette, il est nécessaire d'opérer un zoom
+sur les signaux. Une étude rapide a permis de montrer qu'un clic
+est d'une durée approximative de 0.5ms.
+
+Pour zoomer de façon automatique sur le clic, nous avons donc procédé comme
+suit :
+on identifie le maximum du signal qui sera, idéalement, le milieu du clic puis
+on observe le signal sur une fenêtre temporelle équivalente à la durée d'un clic
+avant et aprés ce maximum. On observe ainsi, en zoomant, une durée de 1ms.
 
 
 \begin{figure}[!h]
