@@ -2,6 +2,8 @@
 \hypertarget{Analyse-et-traitement-des-donnuxe9es}{%}
 \chapter{Analyse et traitement des données}\label{Analyse-et-traitement-des-donnuxe9es}}
 
+Dans cette partie on va voir l'essentiel du travail que j'ai effectué durant mon stage à savoir la génération de fiches d'analyse de nos données. Dans un premier temps nous verrons les signaux, puis à l'aide d'un zoom les clics émis par les animaux. Ensuite afin d'affiner notre analyse nous verrons leurs transformés de Fourier grâce auxquelles nous obtiendrons leurs spectrogrammes 2D et 3D. Dans un second temps nous verrons l'une des principales méthodes de préparation des données que nous avons effectué à savoir la Data Augmentation d'abord d'un point de vu théorique puis d'un point de vu pratique avec la data augmentation que nous avons effectué sur notre base à savoir le rajout de bruit blanc puis la simulation de distance. Dans un troisième temps nous verrons les prétraitements de données que nous avons dûs effectués pour le bon fonctionnement de nos IA à savoir l'application d'un filtre passe haut puis une mise à l'échelle. Ensuite nous verrons les pipelines qui nous ont permis d'optimiser l'injection des flux de données que l'on a ainsi traité dans notre IA. Et enfin nous verrons le coeur de mon travail à savoir la génération des fiches d'analyse.
+
 \hypertarget{Les-signaux}{%}
 \section{Les signaux}
 \label{Les-signaux}}
@@ -15,7 +17,7 @@ Afin d'améliorer la lisibilité des chapitres suivants nous prendrons 3 signaux
 Dans un premier temps on commence par observer les signaux sans traitement sous différentes formes. Ces signaux sont spécifiquements choisis car ils représentent approximativement la variété des signaux que l'on a dans notre base à savoir :
 \begin{itemize}
 \item Des signaux très propres
-\item Des signaux un peux bruités ou altérés
+\item Des signaux un peu bruités ou altérés
 \item Des signaux très dégradés
 \end{itemize}
 
@@ -37,7 +39,7 @@ Dans un premier temps on commence par observer les signaux sans traitement sous 
 \label{fig:signauxbruts}}
 \end{figure}
 
-Sur la figure \ref{fig:signauxbruts}, nous constatons plusieurs choses : tout d'abord il semble y avoir une certaine disparité entre les signaux, certains étant beaucoup plus bruités que d'autres ; de plus contrairement à ce que l'on pouvait penser, le clic n'est pas toujours facile à distinguer et celui ci n'est pas non plus toujours bien centré.
+Sur la figure \ref{fig:signauxbruts}, nous constatons plusieurs choses : tout d'abord il semble y avoir une certaine disparité entre les signaux, certains étant beaucoup plus bruités que d'autres; de plus contrairement à ce que l'on pouvait penser, le clic n'est pas toujours facile à distinguer et celui-ci n'est pas non plus toujours bien centré.
 
 Cependant nous avons pu tirer quelques enseignements de l'observation de ces signaux :
 \begin{itemize}
@@ -52,7 +54,7 @@ Pour cela il va donc faloir commencer par trouver un moyen d'isoler le clic.
 \subsection{Le zoom}
 \label{Le-zoom}}
 
-Pour zoomer sur le clic on identifie le maximum qui sera logiquement le milieu du clic puis on rajoute l'équivalent de la durée d'un clic (que nous avons obtenus grâce a une procédure préalable) avant et aprés ce maximum.
+Pour zoomer sur le clic on identifie le maximum qui sera logiquement le milieu du clic puis on rajoute l'équivalent de la durée d'un clic (que nous avons obtenus grâce à une procédure préalable) avant et aprés ce maximum.
 
 
 \begin{figure}[!h]
@@ -73,10 +75,10 @@ Pour zoomer sur le clic on identifie le maximum qui sera logiquement le milieu d
   \label{fig:signauxbrutszoom}}
 \end{figure}
 
-Or on constate que celà ne suffit pas dans tous les cas en effet si pour les signaux n° 17 000 et 571 le zoom semble bien fonctionner dans le cas du signal n° 20 000 qui est très bruité le bruit semble avoir pris le dessus sur le clic conduisant à l'echec de l'identification du clic.
-On vas donc par la suite appliquer un filtre pour supprimer les bruits parasites (dont on reparlera dans la partie traitement du signal).
+Or on constate que cela ne suffit pas dans tous les cas en effet si pour les signaux n° 17 000 et 571 le zoom semble bien fonctionner dans le cas du signal n° 20 000 qui est très bruité le bruit semble avoir pris le dessus sur le clic conduisant à l'echec de l'identification du clic.
+On va donc par la suite appliquer un filtre pour supprimer les bruits parasites (dont on reparlera dans la partie traitement du signal).
 
-On peux déjà observer plusieurs phénoménes :
+On peut déjà observer plusieurs phénoménes :
 -tout d'abord l'efficacité du zoom semble corélée à la qualité du signal de départ
 -Les "bons clics" semblent se situer aux alentours de 200 ms (ils sont donc bien centrés)
 -Leur intensité est très  variable pouvant aller jusqu'a un facteur 10 entre 2 clics. Il parait donc pertinent par la suite de les normaliser.
@@ -113,7 +115,7 @@ Sur la figure \ref{fig:tf} on constate particuliérement sur le signal n° 17000
 \subsection{Spectrogrammes}
 \label{Spectrogrammes}}
 
-Les Spectrogrammes sont simplement des transformé de fourier non pas sur l'ensemble de l'enregistrement mais a chaque échantillon, ainsi si l'échantillon est de 100 millisecondes par exemple le spectrogramme seras un enchainement de transformé de fourier toutes les 100 millisecondes.
+Les Spectrogrammes sont simplement des transformés de fourier non pas sur l'ensemble de l'enregistrement mais à chaque échantillon, ainsi si l'échantillon est de 100 millisecondes par exemple le spectrogramme sera un enchainement de transformés de fourier toutes les 100 millisecondes.
 
 On commence tout d'abord par observer leurs Spectrogrammes en 2D (a noter qu'ici pour éviter les phénoménes d'écrasement (les fréquences majoritaires pouvant écraser les autres) on utilise une échelle logarithmique):
 
@@ -132,7 +134,7 @@ On commence tout d'abord par observer leurs Spectrogrammes en 2D (a noter qu'ici
   \label{fig:spectros2D}}
 \end{figure}
 
-On constate tout d'abord  que leurs gamme de fréquence semble relativement variable d'un enregistrement à l'autre et que la visibilité des clics semble bien correlé à leur qualité ainsi sur le signal n° 17000 qui est le meilleur le clic est très clairement visible, sur le signal n° 571 qui est dégradé le clic est encore assez visible contrairement au signal n° 20000 qui est le plus dégradé dont le clic est très peux visible.
+On constate tout d'abord  que leurs gammes de fréquence semble relativement variable d'un enregistrement à l'autre et que la visibilité des clics semble bien correler à leur qualité ainsi sur le signal n° 17000 qui est le meilleur le clic est très clairement visible, sur le signal n° 571 qui est dégradé le clic est encore assez visible contrairement au signal n° 20000 qui est le plus dégradé dont le clic est très peu visible.
 
 Puis on observe les Spectrogrammes 3D:
 
@@ -151,6 +153,8 @@ Puis on observe les Spectrogrammes 3D:
   \label{fig:spectros3D}}
 \end{figure}
 
+En plus des informations contenues dans les spectrogrammes 2D les spectrogrammes 3D nous permettent d'avoir des informations sur l'intensité des clics mais également des bruits parasites.
+
 \hypertarget{Data-augmentation}{%}
 \section{Data augmentation}
 \label{Data-augmentation}}
@@ -168,7 +172,7 @@ Pour cela selon la nature des données de cette base on va par exemple :
 \item Modifier la luminosité dans le cas d'images
 \end{itemize}
 
-Dans notre cas vus que nos données sont des enregistrements audios on va plutôt :
+Dans notre cas vu que nos données sont des enregistrements audios on va plutôt :
 \begin{itemize}
 \item Rajouter du bruit sur les exemples
 \item Déplacer le clic
@@ -176,33 +180,33 @@ Dans notre cas vus que nos données sont des enregistrements audios on va plutô
 \end{itemize}
 
 L'intérêt le plus évident de cette opération est de simplement multiplier le nombre d'exemples disponibles afin d'éviter le surapprentissage mais elle peut avoir beaucoup plus d'utilité. En effet dans notre cas nous n'avons rencontré aucun probléme de surapprentissage mais nous avions besoin de l'utiliser pour une autre raison.
-Effectivement nous avions remarqué que certains exemples avaient subis de fortes dégradations notament dues à du bruit ou bien à un fort décalage temporel du clic par exemple. Afin d'éviter que ces dégradations n'altérent le processus d'apprentissage de nos réseaux de neurones (le réseau pouvant par exemple assimiler une de ces dégradations a l'une des classes) plutôt que de supprimer ces dégradations il nous a paru plus pertinent de d'abord essayer de rajouter des exemples avec des dégradations similaires issuent d'exemples choisis aléatoirement parmis nos classes sur lesquelles ont aurait fait de la data augmentation. En effet ces dégradations pouvant être simplement dues a des problémes pendant l'enregistrement des clics (bateau navigant a proximité du micro ou encore d'autres animaux émettant divers bruits à proximité par exemple) il est plus que problable que les enregistrements qui seront soumis par la suite à notre classifieur contiennent également des dégradations qui ne devront pas entraver le bon fonctionnement de celui-ci.
+Effectivement nous avions remarqué que certains exemples avaient subis de fortes dégradations notament dues à du bruit ou bien à un fort décalage temporel du clic par exemple. Afin d'éviter que ces dégradations n'altérent le processus d'apprentissage de nos réseaux de neurones (le réseau pouvant par exemple assimiler une de ces dégradations à l'une des classes) plutôt que de supprimer ces dégradations il nous a paru plus pertinent de d'abord essayer de rajouter des exemples avec des dégradations similaires issuent d'exemples choisis aléatoirement parmis nos classes sur lesquelles ont aurait fait de la data augmentation. En effet ces dégradations pouvant être simplement dues à des problémes pendant l'enregistrement des clics (bateau navigant à proximité du micro ou encore d'autres animaux émettant divers bruits à proximité par exemple) il est plus que problable que les enregistrements qui seront soumis par la suite à notre classifieur contiennent également des dégradations qui ne devront pas entraver le bon fonctionnement de celui-ci.
 
 \hypertarget{Rajout-de-bruit-blanc}{%}
 \subsection{Rajout de bruit blanc}
 \label{Rajout-de-bruit-blanc}}
 
-Comme on a pu l'observer précedement certains enregistrement sont plus ou moins bruités on vas donc dans un premier temps essayer d'en dimunuer l'impact via de la data augmentation. Autrement dit on vas aléatoirement rajouté des exemples issus d'enregistrements choisis aléatoirement auquels ont a rajouté artificiellement du bruit.
+Comme on a pu l'observer précedement certains enregistrement sont plus ou moins bruités on va donc dans un premier temps essayer d'en dimunuer l'impact via de la data augmentation. Autrement dit on va aléatoirement rajouté des exemples issus d'enregistrements choisis aléatoirement auxquels ont a rajouté artificiellement du bruit.
 
 \hypertarget{Simulation-de-distance}{%}
 \subsection{Simulation de distance}
 \label{Simulation-de-distance}}
 
-Lors de la prise des enregistrements audios les animaux peuvent se situer plus ou moins loin du ou des micro, ce qui peux potentiellement influencer notre classifieur. En effet certaines especes plus fuyardes peuvent par exemple rester systématiquement plus éloignées du micro que les autres poussant le classifeur a assimiler une grande distance a une éspece en particulier.
+Lors de la prise des enregistrements audios les animaux peuvent se situer plus ou moins loin du ou des micro, ce qui peut potentiellement influencer notre classifieur. En effet certaines espèces plus fuyardes peuvent par exemple rester systématiquement plus éloignées du micro que les autres poussant le classifeur a assimiler une grande distance à une éspece en particulier.
 Afin d'éviter ce biais nous avons décidé de rajouter la simulation de distance dans la data augmentation.
-Le principe est simple on vas rajouter aléatoirement des signaux choisis dans des classes aléatoires a une distance aléatoire (on simule les effets de la distance sur le signal).
+Le principe est simple on va rajouter aléatoirement des signaux choisis dans des classes aléatoires à une distance aléatoire (on simule les effets de la distance sur le signal).
 
 \hypertarget{Traitement-du-signal}{%}
 \section{Traitement du signal}
 \label{Traitement-du-signal}}
 
-Comme nous avons pu le voir précedement il arrive que certains enregistrements aient subis d'importantes dégradations, si dans un premier temps nous avons fait de la data augmentation il pouvait y avoir certains enregistrements pour lesquels cela ne suffis pas. Parcequ'ils seraient trop dégradés ils empêcheraient l'identification de l'espece, cela peut être un bruit tellement important qu'il recouvrirait le clic par exemple. Ainsi nous avons quand même dû faire du traitement du signal. Ces traitements ne vont pas remplacer la data augmentation déjà effectué mais viendrons simplement en complément de celle ci
+Comme nous avons pu le voir précedement il arrive que certains enregistrements aient subis d'importantes dégradations, si dans un premier temps nous avons fait de la data augmentation il pouvait y avoir certains enregistrements pour lesquels cela ne suffit pas. Parcequ'ils seraient trop dégradés ils empêcheraient l'identification de l'espèce, cela peut-être un bruit tellement important qu'il recouvrirait le clic par exemple. Ainsi nous avons quand même dû faire du traitement du signal. Ces traitements ne vont pas remplacer la data augmentation déjà effectué mais viendront simplement en complément de celles-ci
 
 \hypertarget{Filtre-passe-haut}{%}
 \subsection{Filtre passe haut}
 \label{Filtre-passe-haut}}
 
-Dans un premier temps pour résoudre les probléme vus précedement on  vas commencer par appliquer un filtre passe haut aux enregistrements. En effet les clics des différents animaux se situant dans une gamme de fréquence au dessus des 8 KHz on peux donc appliquer le filtre à l'enregistrement sans en altérer le clic.
+Dans un premier temps pour résoudre les probléme vus précedement on  va commencer par appliquer un filtre passe haut aux enregistrements. En effet les clics des différents animaux se situant dans une gamme de fréquence au dessus des 8 KHz on peut donc appliquer le filtre à l'enregistrement sans en altérer le clic.
 Sur la réponse fréquencielle du filtre on peux observer
 \begin{figure}[!h]
 \centering
@@ -210,8 +214,9 @@ Sur la réponse fréquencielle du filtre on peux observer
 \caption{Réponse fréquencielle du passe haut à 8kHz%
 \label{fig:reponseEnFrequencePH8kHz}}
 \end{figure}
-Sur la réponse fréquencielle du filtre \ref{fig:reponseEnFrequencePH8kHz} on peux observer qu'au niveau de la fréquence de coupure qui est de 8kHz on 
-Ainsi en appliquant simplement ce filtre on constate par exemple que l'identification du clic pour le zoom qui était impossible sans le filtre (à gauche sur \ref{fig:20000zoomavecetsansfiltrage}) sur le signal n° 20000 deviens parfaitement possible avec (à droite sur \ref{fig:20000zoomavecetsansfiltrage}) :
+Sur la réponse fréquencielle du filtre \ref{fig:reponseEnFrequencePH8kHz} on observe bien qu'au niveau de la fréquence de coupure qui est de 8kHz le signal est réduit de moitié.
+
+Ainsi en appliquant simplement ce filtre on constate par exemple que l'identification du clic pour le zoom qui était impossible sans le filtre (à gauche sur \ref{fig:20000zoomavecetsansfiltrage}) sur le signal n° 20000 devient parfaitement possible avec (à droite sur \ref{fig:20000zoomavecetsansfiltrage}) :
 
 \begin{figure}[!h]
 \centering
@@ -229,8 +234,8 @@ Ainsi en appliquant simplement ce filtre on constate par exemple que l'identific
 \subsection{Mise à l'échelle}
 \label{Mise-a-l-echelle}}
 
-En analysant les signaux on a constaté de grandes différences aussi bien en terme d'intensité que de fréquences sur leurs clics, hors pour bien fonctionner le réseau de neurones convolutif a besoin de données à la même échelle. C'est pourquoi on vas devoir mettre à l'échelle nos signaux, autrement dit on vas normaliser automatiquement entre 1 et -1 l'ensemble de nos signaux.
-Afin de réaliser celà on fais un choix pragmatique qui était de réperer le maximum puis diviser le signal par ce maximum
+En analysant les signaux on a constaté de grandes différences aussi bien en terme d'intensité que de fréquences sur leurs clics, hors pour bien fonctionner le réseau de neurones convolutifs a besoin de données à la même échelle. C'est pourquoi on va devoir mettre à l'échelle nos signaux, autrement dit on va normaliser automatiquement entre 1 et -1 l'ensemble de nos signaux.
+Afin de réaliser celà on fait un choix pragmatique qui était de repérer le maximum puis diviser le signal par ce maximum
 \comment a revoir
 
 \hypertarget{Les-Pipelines}{%}
@@ -259,9 +264,9 @@ En pratique l'ensemble de nos fonctions étaient stockées dans un fichier pytho
 
 Les bases de données contiennent un très grand nombre d'exemples (environ 90 000 au total que l'on peut visualiser sous 12 formes différentes soit potentiellement 1 080 000 images).
 Afin de pouvoir exploiter les analyses faites précedement il a fallu créer un certain nombre d'outils afin de pouvoir aisement trier et manipuler les données.
-Pour cela je me suis inspiré du systéme de pipeline que nous venons de voir, ainsi dans un premier temps l'ensemble des fonctions nécessaires à l'analyse étaient stockés dans le cachalot{\_}helper.
+Pour cela je me suis inspiré du systéme de pipeline que nous venons de voir, ainsi dans un premier temps l'ensemble des fonctions nécessaires à l'analyse était stocké dans le cachalot{\_}helper.
 
-Dans un second temps j'ai créer dans un autre python une fonction paramètrable permettant tout d'abord de sélectionner ou un certain nombre de signaux dans un certain nombre de labels ou des signaux bien specifiques puis de générer (à l'aide du cachalot{\_}helper) avec et ou sans preprocessing (les traitements du signal) avec ou sans zoom :
+Dans un second temps j'ai créé dans un autre python une fonction paramètrable permettant tout d'abord de sélectionner ou un certain nombre de signaux dans un certain nombre de labels ou des signaux bien specifiques puis de générer (à l'aide du cachalot{\_}helper) avec et ou sans preprocessing (les traitements du signal) avec ou sans zoom :
 \begin{itemize}
 \item Des plots des signaux sélectionnés
 \item Des spectrogrammes 2D des signaux sélectionnés
@@ -274,8 +279,29 @@ Dans un troisième temps j'ai créé un autre python également paramètrable pe
 
 Dans un quatrième temps j'ai créé un autre python encore une fois paramètrable qui va récupérer les fichiers tex précedement créés. Puis il va les réunir dans un seul fichier tex. Fichier tex qui va automatiquement s'executer pour générer un fichier pdf. Fichier pdf qui contient l'ensemble des courbes qui étaient stockées dans les fichiers tex. Ce fichier pdf sera alors enregistré son nom correspondant à ce qu'il contient. Ainsi un fichier contenant les spectrogrammes 2D du label 6 sans processing et zoomer sera nommé: Spectro2Dlabel6sansprocessingaveczoom.pdf
 
-Et enfin un programme principal nommé apdfmaker également paramètrable chargé de faire tourner l'ensemble des programmes vus précedement. Dans le but de générer directement des fichiers pdf contenant ce que l'on désire. A noter que celui ci ne se contente pas de générer un pdf à la fois mais peut au contraire en générer une multitude à chaque run. Ainsi si l'on veut par exemple qu'il génére toutes les représentations graphiques possibles (soit 1 080 000 images) de tous les enregistrements puis qu'il les stocke dans des pdf le plus détaillés possibles c'est parfaitement possible.
+Et enfin un programme principal nommé apdfmaker également paramètrable chargé de faire tourner l'ensemble des programmes vus précedement. Dans le but de générer directement des fichiers pdf contenant ce que l'on désire. A noter que celui-ci ne se contente pas de générer un pdf à la fois mais peut au contraire en générer une multitude à chaque run. Ainsi si l'on veut par exemple qu'il génére toutes les représentations graphiques possibles (soit 1 080 000 images) de tous les enregistrements puis qu'il les stocke dans des pdf le plus détaillés possibles c'est parfaitement possible.
+
+Les pdf finaux ressemblerons à \ref{fig:exempledepdf} :
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=10cm]{./images/pdfexemple.png}
+\caption{Réponse fréquencielle du passe haut à 8kHz%
+\label{fig:exempledepdf}}
+\end{figure}
+
 
 \hypertarget{Ruxe9sultats-de-l-analyse-des-PDF}{%}
 \subsection{Résultats de l'analyse des PDF}
 \label{Ruxe9sultats-de-l-analyse-des-PDF}}
+
+L'analyse de ces fiches nous à permis de constater que :
+\begin{itemize}
+\item Certaines espèces semblent émettre à certaines gammes de fréquences
+\item Contrairement à ce qui nous avait été annoncé dans la description du challenge de nombreux clics de la base de test n'étaient pas centrés.
+\item Les signaux de la base d'apprentissage sont en très grande majorité bien centrés.
+\item Un nombre important d'enregistrements de la base de test semblent avoir subbis d'importantes dégradations.
+\item Sur certains enregistrements de la base de test le clic est impossible a identifier sans prétraitement.
+\end{itemize}
+Ainsi on comprend mieux le différentiel de performances de nos IA sur la base labelisée et la base non labelisée
+\coment à revoir
