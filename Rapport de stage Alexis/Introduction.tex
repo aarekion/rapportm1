@@ -1,7 +1,8 @@
 \hypertarget{Introduction}{%
 \chapter{Introduction}\label{Introduction}}
 
-Dans ce premier chapitre on va dans un premier temps présenter la structure d'accueil à savoir l'Université des Antilles son laboratoire LAMIA et son équipe SpikeTrain dans laquelle j'ai été accueilli. Puis on s'attardera sur le contexte du stage et donc logiquement le challenge sur lequel travaillaient mes tuteurs lorsque j'ai commencé mon stage ainsi que leur état d'avancement sur celui-ci. Et enfin on présentera les outils théoriques indispensables à la résolution du challenge à savoir les neurones artificiels, les réseaux de neurones qui en découle et enfin les réseaux de neurones convolutifs que l'on va utiliser pour résoudre notre probléme.
+Dans ce premier chapitre, je vais dans un premier temps présenter la structure d'accueil à savoir l'\textbf{Université des Antilles}, son laboratoire \textbf{LAMIA} et le groupe \textbf{SpikeTrain} dans laquelle j'ai été accueilli. Puis je m'attarderais sur le contexte du stage et le challenge sur lequel travaillaient mes tuteurs lorsque j'ai commencé mon stage, ainsi que leur état d'avancement sur celui-ci. Et enfin je présenterais les outils théoriques indispensables à la résolution du challenge à savoir les neurones artificiels, les réseaux de neurones qui en découle et enfin les réseaux de neurones convolutifs que l'on va utiliser pour résoudre notre probléme.
+
 \section{Présentation de la structure
 d'accueil}
 
@@ -13,8 +14,8 @@ Je vais donc présenter ces trois entités, en commençant par l'Université des
 \hypertarget{lUniversite-des-antilles}{%
 \subsection{L'Université des Antilles}\label{luniversite-des-antilles}}
 
-L'Université des Antilles est un public de l'enseignement supérieur qui entre dasn la catégorie des établissements à  caractère scientifique, culturel et professionnel (EPSCP).
-Ces missions sont régies par l'article L123-3 du code de l'éducation :
+L'Université des Antilles est un établissement public de l'enseignement supérieur qui entre dans la catégorie des établissements à  caractère scientifique, culturel et professionnel (EPSCP).
+Il sont en charge de missions, régies par l'article L123-3 du code de l'éducation et concernent :
 \begin{itemize}
 \item La formation initiale et continue tout au long de la vie ;
 \item La recherche scientifique et technologique, la diffusion et la valorisation de ses résultats au service de la société ;
@@ -60,7 +61,7 @@ enseignants-chercheurs pour 200 étudiants.
 \subsubsection{Recherche}\label{recherche}}
 
 La recherche à l'Université des Antilles est structurée en laboratoires auxquels sont rattachés les
-enseignants chercheurs qui peuvent former de futurs chercheurs : les
+enseignants chercheurs qui peuvent notamment former de futurs chercheurs : les
 doctorants.
 
 L'Université compte ainsi au total :
@@ -114,20 +115,21 @@ travaillant en Epidémiologie clinique et médecine.
 %spatio-temporelles, dont la responsable est \textbf{Mme. Hélène
 %Paugam-Moisy}.
 
-Indépendamment de ces équipes, les travaux de recherche du laboratoire
-se répartissent en \textbf{projets} qui peuvent réunir des membres de
-plusieurs équipes en \textbf{groupes de travail}. Mon stage était en
+Indépendamment de ces équipes, depuis 2019, les travaux de recherche du
+laboratoire  se répartissent en \textbf{projets} qui peuvent réunir des membres
+de plusieurs équipes en \textbf{groupes de travail}.
+Mon stage était en
 fait plus attaché à un projet et un groupe de travail qu'à une équipe.
 
-Ce groupe de travail, nommé SpikeTrain,  et
-concerne l'utilisation de \textbf{réseaux de neurones impulsionnels}
-pour l'apprentissage automatique (ces notions seront définies plus
-loin). Le groupe de travail associé réunit à l'heure actuelle :
+Ce groupe de travail, nommé \textbf{SpikeTrain}, concerne l'utilisation de
+\textbf{réseaux de neurones}, et en particulier leur variante
+\textbf{impulsionnelle} pour l'apprentissage automatique.
+Ce groupe de travail réunit à l'heure actuelle :
 
 \begin{itemize}
 \tightlist
 \item
-  1 Professeur des Universités
+  1 Professeur des Universités (en éméritat)
 \item
   2 MCF avec HDR
 \item
@@ -137,7 +139,7 @@ loin). Le groupe de travail associé réunit à l'heure actuelle :
 \end{itemize}.
 
 C'est avec ces personnes que j'ai travaillé tout au long du stage et mes
-tuteurs de stage était \textbf{M.~Vincent PAGÉ et M. ~Manuel CLERGUE}.
+tuteurs de stage étaient \textbf{M.~Vincent PAGÉ et M. ~Manuel CLERGUE}.
 
 %Ci dessous, un schéma présentant la structure du laboratoire me
 %rattachant à cette structure. (L'équipe de travail \textbf{Spikestrain}
@@ -159,12 +161,11 @@ tuteurs de stage était \textbf{M.~Vincent PAGÉ et M. ~Manuel CLERGUE}.
 La prochaine section sera consacrée à la présentation de la thématique
 de recherche du groupe SpikesTrain et de mon stage.
 
-
 \hypertarget{Objectif_Spike}{%
 \subsection{Le groupe Spiketrain}\label{Groupe_Spiketrain}}
 
-Le groupe \textbf{Spikestrain} s'intéresse aux techniques
-d'\textbf{Intelligence Artificielle}, plus spécifiquement à
+Comme signalé plus haut, le groupe \textbf{Spikestrain} s'intéresse aux
+techniques d'\textbf{Intelligence Artificielle}, plus spécifiquement à
 l'\textbf{apprentissage automatique} dont l'objectif est de créer des
 programmes capable d'apprendre à partir de bases d'exemples.
 
@@ -176,6 +177,10 @@ pour sa \textbf{reconnaissance faciale} ou encore par \textbf{Google™}
 pour ses \textbf{robots} qui apprennent par \textbf{répétitions} à jouer
 à des jeux de stratégies comme les échecs ou le Go.
 
+Bien qu'un des axes de recherche du groupe \textbf{SpikeTrain} concerne les
+neurones impulsionnels, ce ne sont pas ceux que nous avons utilisés dans ces
+travaux, et ils ne seront pas évoqués dans ce rapport.
+
 
 \hypertarget{Contexte}{%
 \section{Contexte du stage}\label{Contexte}}
@@ -183,9 +188,30 @@ pour ses \textbf{robots} qui apprennent par \textbf{répétitions} à jouer
 \hypertarget{Le-Challenge}{%
 \subsection{Le Challenge: Classifier les Cachalots}\label{Le-Challenge}}
 
-Le challenge "Dyni Odontocete Click Classification" (https://challengedata.ens.fr/challenges/32) consiste à réaliser un classifieur qui classe des mammifères marins de dix espèces différentes à partir de leurs "clics", c'est à dire le son qu'ils émettent avec leur machoires.
-Pour celà nous avions à disposition une base d'apprentissage labelisée (comportant 113000 exemples) ainsi qu'une base de test non labelisée (comportant 20000 exemples) sur laquelle nous pouvions évaluer les performances réelles de nos classifieurs.
+Le challenge "Dyni Odontocete Click Classification"
+(https://challengedata.ens.fr/challenges/32) consiste à réaliser un classifieur qui classe des mammifères marins de dix espèces différentes à partir de leurs "clics", c'est à dire le son qu'ils émettent avec leur machoires.
 
+Pour celà nous avions à disposition une \textbf{base labelisée} (comportant 113000 exemples) ainsi qu'une \textbf{base de test}, non labelisée (comportant 20000 exemples). Comme dans tout challenge de ce type, ces deux bases ont des rôles
+très différents :
+
+\begin{itemize}
+  \item La \textbf{base labelisée} sera découpée en deux par les participants :
+    \begin{itemize}
+      \item une \textbf{base d'apprentissage} permettant de régler les
+      paramètres des algorithmes.
+      \item une \textbf{base de validation} permettant d'évaluer les
+      performances des algorithmes sur des exemples qu'ils n'ont jamais vus.
+    \end{itemize}
+  \item La \textbf{base de test} sert pour l'évaluation par les organisateurs du
+  challenge. Quotidiennement, les participants peuvent déposer leurs prédictions
+  sur cette base (Deux fois par jour maximum). On peut ainsi définir les
+  performances des différents participants.
+\end{itemize}
+
+Ci dessous, une traduction approximative du descriptif du challenge tel qu'il
+est présenté sur le site dont j'ai donné l'adresse en tête de cette section :
+
+\begin{quotation}
 Les deux bases sont constituées d'enregistrements audios des clics des différentes espèces. Chaque enregistrement contient 8192 mesures faites à une fréquence d'échantillonnage de 200KHz. Dans le cas de la base non labelisée appellée base de test chaque enregistrement contient normalement un clic centré au milieu de la fenêtre tandis que dans la base labelisée appellée base d'apprentissage, le clic n'est pas spécialement centré et peut se situer à divers moments de l'enregistrement. De plus, les enregistrements peuvent contenir divers bruits.
 
 L'objectif est de classer chaque enregistrement en fonction de l'espèce émettrice correspondante. Les 10 espèces sont :
@@ -203,27 +229,40 @@ L'objectif est de classer chaque enregistrement en fonction de l'espèce émettr
 \end{itemize}
 
 La performance du classifieur est évaluée sur la base de test (les labels sont envoyés au site du challenge) par une mesure d'accuracy (le nombre de bien classés sur le nombre total d'exemples).
+\end{quotation}
 
 \hypertarget{Etat-des-lieux-lors-de-mon-arrivuxe9}{%
-\subsection{Etat des lieux à mon arrivé}
+\subsection{Etat des lieux à mon arrivée}
 \label{Etat-des-lieux-lors-de-mon-arrivuxe9}}
 
-Quand j'ai commencé mon stage, mes tuteurs avaient déjà commencé le challenge depuis un moment déjà c'est pourquoi j'ai dû dans un premier temps me mettre à jour sur le challenge et ce qu'ils avaient fait, à savoir :
+Quand j'ai commencé mon stage, mes tuteurs avaient déjà commencé le challenge depuis un moment déjà. J'ai ainsi dû, dans un premier temps, me mettre à jour
+sur le challenge et ce qu'ils avaient fait, à savoir :
+
 \begin{itemize}
-\item Un grand nombre de tentatives de résolution du probléme uniquement basé sur du machine learning notament des réseaux de neurones et des réseaux de neurones convolutifs
+\item Un grand nombre de tentatives de résolution du probléme uniquement basé sur du machine learning notament des réseaux de neurones et des réseaux de neurones convolutionnels
 \item Divers traitements des signaux bruts
 \item De l'augmentation de données
 \end{itemize}
 
+Leurs meilleurs résultats étaient les suivants :
+\begin{itemize}
+  \item de l'ordre de 98\% de réussite en accuracy sur la base de validation
+  \item de l'ordre de 72\% de réussite sur la base de test
+\end{itemize}
 
+Cet un écart de 20 points entre les deux bases persistait même en utilisant
+d'autres méthodes de machine learning donnant de moins bons résultats.
+Cet important différentiel est d'autant plus surprenant que les auteurs du
+challenge nous présentent les données de la base non labelisée comme des données
+de meilleure qualité que celles de la base labelisée.
 
-Leurs meilleurs résultats étaient de l'ordre de 98\% de réussite en accuracy sur la base labelisée contre 72 \% de réussite sur la base non labelisée, soit un écart de 20 pourcents de réussite entre les deux bases qui persistait même en utilisant d'autres méthodes de machine learning donnant de moins bons résultats.
-Cet important différentiel est d'autant plus surprenant que les auteurs du challenge nous présentent les données de la base non labelisée comme des données de meilleure qualité que celles de la base labelisée.
+C'est pour mieux comprendre ce différentiel mais surtout le probléme dans son
+ensemble que j'ai été chargé de créer un certain nombre d'outils facilitant
+l'analyse et la visualisation des données et des effets des traitements que
+nous leurs appliquons.
 
-C'est pour mieux comprendre ce différentiel mais surtout le probléme dans son ensemble que j'ai été chargé de créer un certain nombre d'outils facilitant l'analyse et la visualisation des données et des effets des traitements que nous leurs appliquons.
-
-Mais avant de pouvoir commencer cette partie du travail il a fallu commencer par comprendre un certaine nombre d'outils et de concepts que nous allons voir ensemble.
-
+Avant de pouvoir commencer cette partie du travail, il m'a fallu prendre en main
+un certain nombre de concepts et d'outils, concernant les \textbf{réseaux de neurones}, que nous allons voir ensemble maintenant.
 
 \hypertarget{Neurone-artificiel}{%
 \subsubsection{Neurone artificiel}
@@ -252,12 +291,13 @@ s = f(\sum_{s=0}^{n_{x}} x_{n}w_{n} + b)
 Un schéma reprenant ces explications est présenté dans la figure~\ref{neuroneSeul}.
 
 \begin{figure}[h]
-\includegraphics[width=16.5cm]{./images/image2.jpg}
+\centering
+\includegraphics[width=10cm]{./images/image2.jpg}
 \caption{Fonctionnement d'un neurone seul.\label{neuroneSeul}}
 \end{figure}
 
 Notre apprentissage se fera en modifiant les poids de ses différentes
-connexions (et le biais) de façon à obtenir une sortie proche de celle voulu.\newline
+connexions (et le biais) de façon à obtenir une sortie proche de celle voulue.
 
 \hypertarget{Ruxe9seau-de-neurones-classique}{%
 \subsection{Réseau de neurones classique}
@@ -273,12 +313,15 @@ La première couche correspond à celle qui permettra d'introduire des informati
 La dernière couche permettra de lire les décisions du réseau. Elle est appelée \textbf{couche de sortie}. Dans les applications classiques, à chaque neurone de la couche de sortie correspond une décision possible et le neurone qui est le plus activé sur la couche de sortie l'emporte.
 Entre ces couches, on trouve souvent un nombre variable de couches intermédiaires appelées \textbf{couches cachées}.
 
-Entre deux couches, on établit le plus souvent un schéma de connexion que nous pouvons qualifier de \textit{full connected}, c'est à dire que chaque neurone d'une couche est connecté avec chaque neurone de la couche suivante.Nous allons encore une fois, pour le bien de ce rapport, ne pas épiloguer sur les autres types de connexions existantes.\newline
-
-Ce type d'architecture est présentée sur la figure \ref{reseauClassique}.
+Entre deux couches, on établit le plus souvent un schéma de connexion qualifiée
+de \textit{full connected} ou \textit{dense}.
+Dans ce cas, chaque neurone d'une couche est connecté avec chaque neurone de la
+couche suivante. Pour le bien de ce rapport, nous n'épiloguerons pas sur les autres
+types de connexions existantes. Ce type d'architecture est présentée sur la figure \ref{reseauClassique}.
 
 \begin{figure}[h]
-\includegraphics[width=16.5cm]{./images/multicouche.png}
+\centering
+\includegraphics[width=10cm]{./images/multicouche.png}
 \caption{réseau de neurones classique en couches.%
 \label{reseauClassique}}
 \end{figure}
@@ -288,9 +331,10 @@ Ce type d'architecture est présentée sur la figure \ref{reseauClassique}.
 \subsection{Réseau de neurones convolutifs}
 \label{Ruxe9seau-de-neurones-convolutif}}
 
-le réseau de neurones convolutifs est un type de réseau de neurones
-inspiré par le cortex cérébral des animaux.
-Il possède de larges applications dans la reconnaissance d'images, de vidéos et de sons.
+Les réseaux de neurones \textbf{convolutifs} sont un type de réseau de neurones
+inspirés par le cortex cérébral des animaux.
+Ils possèdent de larges applications dans la reconnaissance d'images, de vidéos
+et de sons.
 
 Ce réseau se présente comme un réseau classique , une couche d'entrée,
 une couche de sortie et des couches cachées.
@@ -300,35 +344,71 @@ sur une partie de l'image en entrée afin d'analyser toute l'image
 (voir figure \ref{fig:explication_convolution}).
 
 \begin{figure}[h!]
-\begin{center}
 \centering
-\includegraphics[width=15cm]{./images/explication_convolution.jpg}
+\includegraphics[width=12cm]{./images/explication_convolution.jpg}
 \caption[Schéma de la convolution.]{L'image d'entrée est découpée en \textit{patchs}
 sur lesquels est appliqué un filtre de convolution.
 La sortie de ce fitre appliqué à chacun des patchs donne la couche de sortie
 de la couche convolutive (appelée carte ou map).
 La convolution est paramètrée par : le \textit{kernel} (la forme du patch),
 le \textit{stride} (le déplacement du filtre) et le \textit{padding}
- (la façon dont les bords de l'image vont être traités).\label{fig:explication_convolution}}
-\end{center}
+(la façon dont les bords de l'image vont être traités).
+\label{fig:explication_convolution}}
 \end{figure}
 
-Ces neurones ont souvent une fonction d'activation de type \textit{Relu}
-qui borne l'activation du neurone à 0. Ce sont donc des neurones
-dont l'activation ne peut être que positive ou nulle.
+Dit autrement et pour simplifier, tous les neurones d'une couche travaillent
+sur une portion de la couche précédente, limitée spatialement.
+De plus, tous ces neurones partagent leur poids et effectuent dont la même
+opération (de convolution) sur différentes parties des sorties de la couche
+précédente.
 
 Les réseaux convolutifs possèdent aussi des couches de \textbf{pooling}.
-Le \textbf{pooling} est une opération simple qui consiste à remplacer une zone de pixels
-(généralement 2×2 ou 3×3) par une valeur unique (généralement le max ou la moyenne).
+Le \textbf{pooling} est une opération simple qui consiste à remplacer une zone
+de pixels (généralement 2×2 ou 3×3), par une valeur unique
+(généralement le max ou la moyenne).
 De cette manière, l’image diminue en taille et se retrouve simplifiée (lissée).
 
-L'un des intérêts majeurs des réseaux convolutifs est qu'ils permettent de réaliser une invariance
-de translation : un motif appris sur une zone de l'image sera reconnue
-quelque soit sa position dans l'image.
-Un autre intérêt est qu'ils nécessitent l'apprentissage de beaucoup moins de paramètres (les poids) que les réseaux de neurones de type Perceptron Multicouche, pour des performances
-en classification équivalentes ou supérieures.
-
+L'un des intérêts majeurs des réseaux convolutifs est qu'ils permettent de
+réaliser une invariance de translation :
+un motif appris sur une zone de l'image sera reconnue quelque soit sa position
+dans l'image.
+Un autre intérêt est qu'ils nécessitent l'apprentissage de beaucoup moins de
+paramètres (les poids) que les réseaux de neurones de type Perceptron
+Multicouche, pour des performances en classification équivalentes ou
+supérieures.
 
 \hypertarget{plan}{%
 \section{Présentation du plan du rapport}%
 \label{Présentation du plan du rapport}}
+
+Ceci ayant été posé, nous pouvons maintenant présenter le plan de ce rapport,
+qui sera structuré comme suit :
+
+Après ce chapitre d'introdution, qui présentait le contexte opérationnel, la mission et les pré-requis théoriques de ce stage, le
+chapitre~\ref{Analyse-et-traitement-des-donnuxe9es} présentera l'essentiel
+des travaux que j'ai réalisés durant ce stage.
+
+Mon objectif était de permettre au groupe spike de visualiser les signaux
+injectés dans les réseaux de neurones.
+Les signaux issus des bases d'exemples du challenge seront présentés dans la section~\ref{Les-signaux}.
+Ces signaux passent ensuite au travers d'une multitude de filtres.
+Certains de ces filtres ont un objectif de prétraitement et seront vus en section~\ref{Traitement-du-signal}).
+D'autres filtres sont là pour faire de l'\textbf{augmentation de données}, ce
+qui occupera la section~\ref{Data-augmentation} que nous avons laissée sous son
+nom anglophone (\textit{Data Augmentation}) comme c'est le cas dans toutes les documentations que nous avons
+trouvées.
+Pour organiser le passage des signaux des bases d'exemples vers l'entrée des réseaux de neurones, les framework actuel de réseaux de neurones utilisent
+la notion de \textbf{pipeline de données}, que mes tuteurs et moi même avons
+fouillés au cours de ce stage. Ils font l'objet de la
+section~\ref{Les-Pipelines}.
+Enfin, l'objectif final de mes travaux était de produire des outils permettant
+de générer rapidement des fiches synthétisant les visualisations des signaux à divers emplacement de ce pipeline. Ces fiches et les outils permettant de les
+créer sont décrits dans la section~\ref{Les-PDF}.
+
+Cette année 2020 a été très particulière en raison du confinement lié au
+COVID-19. Ce stage ayant, comme l'ensemble des activités mondiales, a été
+impacté par ce confinement et a été réalisé en intégralité sous forme de
+travail à distance. Il nous a semblé judicieux d'ajouter à ce rapport un
+chapitre dédié à ces spécificités (cf. chapitre~\ref{Le-travail-a-distance}).
+
+Enfin, nous terminerons ce rapport par une conclusion et des perspectives.

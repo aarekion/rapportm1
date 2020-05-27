@@ -17,7 +17,12 @@
 \usepackage[marginparwidth=2cm]{geometry}
 
 
-
+\usepackage{framed}
+\usepackage{xcolor}
+\let\oldquotation=\quotation
+\let\endoldquotation=\endquotation
+\colorlet{shadecolor}{orange!15}
+\renewenvironment{quotation}{\begin{shaded*}\begin{oldquotation}}{\end{oldquotation}\end{shaded*}}
 
 \usepackage{array}
 
@@ -71,7 +76,10 @@
 \date{\today}
 \makeatletter
 
+
 \begin{document}
+\renewcommand{\labelitemi}{\textbullet}
+\renewcommand{\labelitemii}{$\circ$}
 
 \include{pageDeGarde}
 %%\listoffigures
