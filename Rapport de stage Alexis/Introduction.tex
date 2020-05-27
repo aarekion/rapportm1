@@ -1,7 +1,17 @@
 \hypertarget{Introduction}{%
 \chapter{Introduction}\label{Introduction}}
 
-Dans ce premier chapitre, je vais dans un premier temps présenter la structure d'accueil à savoir l'\textbf{Université des Antilles}, son laboratoire \textbf{LAMIA} et le groupe \textbf{SpikeTrain} dans laquelle j'ai été accueilli. Puis je m'attarderais sur le contexte du stage et le challenge sur lequel travaillaient mes tuteurs lorsque j'ai commencé mon stage, ainsi que leur état d'avancement sur celui-ci. Et enfin je présenterais les outils théoriques indispensables à la résolution du challenge à savoir les neurones artificiels, les réseaux de neurones qui en découlent et enfin les réseaux de neurones convolutifs que l'on va utiliser pour résoudre notre probléme.
+Dans ce premier chapitre, je vais dans un premier temps présenter la structure
+d'accueil à savoir l'\textbf{Université des Antilles}, son laboratoire
+\textbf{LAMIA} et le groupe \textbf{SpikeTrain} dans laquelle j'ai été
+accueilli.
+Puis je m'attarderais sur le contexte du stage et le challenge sur lequel
+travaillaient mes tuteurs lorsque j'ai commencé mon stage, ainsi que leur état
+d'avancement sur celui-ci.
+Ensuite, je présenterais les outils théoriques indispensables à la résolution du
+challenge à savoir les neurones artificiels, les réseaux de neurones qui en
+découlent et enfin les réseaux de neurones convolutifs que l'on va utiliser pour
+résoudre notre probléme. Enfin, je présenterais le plan de ce rapport.
 
 \section{Présentation de la structure
 d'accueil}
@@ -130,7 +140,7 @@ Ce groupe de travail réunit à l'heure actuelle :
 \tightlist
 \item
 % Hélène n'est plus en éméritat
-  1 Professeur des Universités 
+  1 Professeur des Universités
 \item
   2 Maîtres de Conférences avec une Habilitation à Diriger des Recherches
 \item
@@ -179,19 +189,19 @@ pour ses \textbf{robots} qui apprennent par \textbf{répétitions} à jouer
 à des jeux de stratégies comme les échecs ou le Go.
 
 Les réseaux de neurones artificiels, bien que très performants, souffrent d'un défaut
-majeur : leur consommation électrique est très importante. 
+majeur : leur consommation électrique est très importante.
 Cela risque de poser à terme de nombreux problèmes environnementaux, si ces techniques se généralisent.
 La version impulsionnelle des réseaux de neurones, plus proche du fonctionnement des neurones naturels et du cerveau,
-est plus parcimonieuse. 
-Actuellement, sur quelques applications, les réseaux de neurones impulsionnels arrivent à des performances équivalentes aux réseaux de neurones artificiels classique, avec une consommation dix à cent fois moindre. 
+est plus parcimonieuse.
+Actuellement, sur quelques applications, les réseaux de neurones impulsionnels arrivent à des performances équivalentes aux réseaux de neurones artificiels classique, avec une consommation dix à cent fois moindre.
 Cette propriété les rend particulièrement adaptés pour faire du traitement \emph{in situ} (à la sortie des capteurs) dans des applications de surveillance de l'environnement par exemple.
-C'est justement une telle application qui a amené le groupe SpikeTrain à s'intéresser au challenge présenté dans la section suivante. 
+C'est justement une telle application qui a amené le groupe SpikeTrain à s'intéresser au challenge présenté dans la section suivante.
 
 Bien qu'un des axes de recherche du groupe \textbf{SpikeTrain} concerne les
 neurones impulsionnels, ce ne sont pas ceux que nous avons utilisés dans ces
 travaux, et ils ne seront pas évoqués dans ce rapport.
 Il s'agit de travaux préliminaires pour déterminer les performances des techniques classiques
-afin de pouvoir les comparer avec ce qu'il pourra être fait avec les réseaux de neurones 
+afin de pouvoir les comparer avec ce qu'il pourra être fait avec les réseaux de neurones
 impulsionnels.
 
 
@@ -282,17 +292,17 @@ un certain nombre de concepts et d'outils, concernant les \textbf{réseaux de ne
 \section{Réseaux de neurones artificiels}
 \label{Res-Neurone-artificiel}}
 
-Les réseaux de neurones artificiels sont une technique d'apprentissage automatique 
-particulièrement puissante. 
+Les réseaux de neurones artificiels sont une technique d'apprentissage automatique
+particulièrement puissante.
 Ils parviennent efficacement à détecter les régularités statistiques des entrées qui leurs sont présentés afin de les répartir en classes.
 Cette technique a enregistré des succès phénoménaux ces dix dernières années, dans tous les domaines, de la médecine aux jeux de stratégie, en passant par la reconnaissance de formes.
 La description précise de leur fonctionnement dépasse largement le cadre de ce rapport.
 Nous nous contenterons de donner quelques éléments permettant de comprendre ce fontionnement.
-  
+
 Nous débuterons par  la présentation de l'unité de base, le neurone artificiel, puis de comment
-les neurones artificiels sont combinés en réseau permettant de réaliser des tâches de classification. 
+les neurones artificiels sont combinés en réseau permettant de réaliser des tâches de classification.
 Enfin, nous présenterons les réseaux de neurones convolutifs, utilisés pour faire de la reconnaissance de formes et de la classification d'images ou de sons.
-  
+
 \hypertarget{Neurone-artificiel}{%
 \subsection{Neurone artificiel}
 \label{Neurone-artificiel}}
@@ -432,6 +442,14 @@ convolutive placée juste après l'image d'entrée.
 }
 \end{figure}
 
+En empilant les couches de convolutions, on constate que les caractéristiques
+extraites par chaque couche sont de plus en plus sémantiques avec la profondeur
+des couches. Par exemple, la premiere couche va extraire des bords
+d'orientations diverses. La seconde va combiner ces bords pour extraire des
+coins. La troisième pourrait détecter des formes basiques (ronds, cercles)
+et une dernière pourrait combiner tout cela pour differencier des images de
+robots d'images de chats....
+
 \subsubsection{les couches de pooling}
 
 Les réseaux convolutifs possèdent aussi des couches de \textbf{pooling}.
@@ -451,7 +469,7 @@ convolution et couche de pooling, avant de passer à la prise de décision final
 La lecture de la décision d'un réseau de neurones convolutifs est rarement lue directement
 sur les couches convolutives.
 Il est nécessaire d'utiliser un classifieur pour associer les cartes de caractèristiques
-à des classes. 
+à des classes.
 Dans la plupart des cas, c'est un perceptron multicouche qui est utilisé comme classifieur. Il est possible d'utliser la même méthode d'apprentissage pour la partie convolutive et pour la partie classifieur.
 
 
@@ -464,7 +482,7 @@ paramètres (les poids) que les réseaux de neurones de type Perceptron
 Multicouche, pour des performances en classification équivalentes ou
 supérieures.
 
-A titre d'exemple, notre meilleur résultat sur le challenge à été obtenu par un réseau de neurones convolutifs composé de 10 couches convolutives à 1 dimension, alternées avec des couches de pooling, suivies d'une perceptron multicouches à 64 entrées, une couche cachée de 32 neurones et une couche de sortie à 10 neurones (un par classe). Le nombre total de paramètres à apprendre était de 457258. Le temps d'apprentissage était de environ 4 heures sur une carte graphique. 
+A titre d'exemple, notre meilleur résultat sur le challenge à été obtenu par un réseau de neurones convolutifs composé de 10 couches convolutives à 1 dimension, alternées avec des couches de pooling, suivies d'une perceptron multicouches à 64 entrées, une couche cachée de 32 neurones et une couche de sortie à 10 neurones (un par classe). Le nombre total de paramètres à apprendre était de 457258. Le temps d'apprentissage était de environ 4 heures sur une carte graphique.
 Les performances (accuracy) obtenues étaient de 0.98 sur la base d'apprentissage et de 0.80 sur la base de test.
 
 
