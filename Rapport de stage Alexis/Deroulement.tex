@@ -2,7 +2,7 @@
 \hypertarget{Analyse-et-traitement-des-donnuxe9es}{%}
 \chapter{Analyse et traitement des données}\label{Analyse-et-traitement-des-donnuxe9es}}
 
-Dans cette partie on va voir l'essentiel du travail que j'ai effectué durant mon stage à savoir la génération de fiches d'analyse de nos données. Dans un premier temps nous verrons les signaux, puis à l'aide d'un zoom les clics émis par les animaux. Ensuite afin d'affiner notre analyse nous verrons leurs transformées de Fourier grâce auxquelles nous obtiendrons leurs spectrogrammes 2D et 3D. Dans un second temps nous verrons l'une des principales méthodes de préparation des données que nous avons effectuée à savoir la \textit{data augmentation} d'abord d'un point de vue théorique puis d'un point de vue pratique avec la data augmentation que nous avons effectuée sur notre base à savoir le rajout de bruit blanc puis la simulation de distance. Dans un troisième temps nous verrons les prétraitements de données que nous avons dûs effectuer pour le bon fonctionnement de nos IA à savoir l'application d'un filtre passe haut puis une mise à l'échelle. Ensuite nous verrons les pipelines qui nous ont permis d'optimiser l'injection des flux de données dans nos réseaux de neurones. Et enfin nous verrons le résultat final regroupant ces différents éléments pour la génération des fiches d'analyse.
+Dans cette partie on va voir l'essentiel du travail que j'ai effectué durant mon stage à savoir la génération de fiches d'analyse de nos données. Dans un premier temps nous verrons les signaux, puis à l'aide d'un zoom les clics émis par les animaux. Ensuite afin d'affiner notre analyse nous verrons leurs transformées de Fourier grâce auxquelles nous obtiendrons leurs spectrogrammes 2D et 3D. Dans un second temps nous verrons l'une des principales méthodes de préparation des données que nous avons effectué à savoir la \textit{data augmentation} d'abord d'un point de  théorique puis d'un point de vu pratique avec la data augmentation que nous avons effectuée sur notre base à savoir le rajout de bruit blanc puis la simulation de distance. Dans un troisième temps nous verrons les prétraitements de données que nous avons dû effectuer pour le bon fonctionnement de nos IA à savoir l'application d'un filtre passe haut puis une mise à l'échelle. Ensuite nous verrons les pipelines qui nous ont permis d'optimiser l'injection des flux de données dans nos réseaux de neurones. Et enfin nous verrons le résultat final regroupant ces différents éléments pour la génération des fiches d'analyse.
 
 \hypertarget{Les-signaux}{%}
 \section{Les signaux}
@@ -24,11 +24,11 @@ Nous les observerons sous diverses formes puis nous effectuerons dessus un certa
 \subsection{Les signaux bruts}
 \label{Signaux-Bruts}}
 
-Dans un premier temps, nous commençons par observer les signaux sans traitement, comme des signaux sonores, c'est à dire comme l'évolution dans le temps de l'amplitude du son.
+Dans un premier temps, nous commençons par observer les signaux sans traitement, comme des signaux sonores, c'est-à-dire comme l'évolution dans le temps de l'amplitude du son.
 
 Avec la fréquence d'échantillonage utilisée, un signal a une durée de 0.04096s,
 soit approximativement 40ms.
-Nos signaux seront donc présenté avec une échelle en millisecondes pour une
+Nos signaux seront donc présentés avec une échelle en millisecondes pour une
 meilleure lisibilité.
 
 \begin{figure}[!h]
@@ -72,7 +72,7 @@ Pour zoomer de façon automatique sur le clic, nous avons donc procédé comme
 suit :
 on identifie le maximum du signal qui sera, idéalement, le milieu du clic puis
 on observe le signal sur une fenêtre temporelle équivalente à la durée d'un clic
-avant et aprés ce maximum. On observe ainsi, en zoomant, une durée de 1ms.
+avant et après ce maximum. On observe ainsi, en zoomant, une durée de 1ms.
 
 
 \begin{figure}[!h]
@@ -134,7 +134,7 @@ Les transformées de Fourier de nos signaux sont présentées sur la figure~\ref
 \label{fig:tf}}
 \end{figure}
 
-Sur la figure \ref{fig:tf} on constate particuliérement sur le signal n° 17000 un pic entre les fréquence 25KHz et 50KHz, dont on peut supposer qu'il correspond au clic.
+Sur la figure \ref{fig:tf} on constate particulièrement sur le signal n° 17000 un pic entre les fréquence 25KHz et 50KHz, dont on peut supposer qu'il correspond au clic.
 Par contre, les autres spectres, tels qu'ils sont représentés, avec des pics importants aux très basses fréquences, ne permettent pas de trouver le clic.
 
 \hypertarget{Spectrogrammes}{%}
@@ -143,7 +143,7 @@ Par contre, les autres spectres, tels qu'ils sont représentés, avec des pics i
 
 Les spectrogrammes sont simplement des transformées de Fourier effectuées à chaque pas de temps, sur une fenêtre temporelle. Cela permet de visualiser l'évolution des fréquences au cours du temps.
 
-On commence par observer, sur la figure~\ref{fig:spectros2D}, les spectrogrammes en 2D, avec l'amplitude qui est représentée par une échelle de couleur (a noter qu'ici pour éviter les phénoménes d'écrasement, les fréquences majoritaires pouvant écraser les autres, on utilise une échelle logarithmique pour les amplitudes).
+On commence par observer, sur la figure~\ref{fig:spectros2D}, les spectrogrammes en 2D, avec l'amplitude qui est représentée par une échelle de couleur.
 
 \begin{figure}[!h]
   \centering
@@ -166,9 +166,7 @@ On commence par observer, sur la figure~\ref{fig:spectros2D}, les spectrogrammes
 On constate tout d'abord  que leurs gammes de fréquences semblent relativement variable d'un enregistrement à l'autre et que la visibilité des clics semble bien correlée à leur qualité.
 Ainsi, pour le signal n° 17000 qui est de bonne qualité, le clic est très clairement visible : la bande verticale au centre de la figure de couleur vive.
 Pour le signal n° 571 qui est peu dégradé le clic est encore assez visible.
-A l'inverse, pour le signal n° 20000 qui est le plus dégradé, le clic est très peu visibleet plutôt sur les basses fréquences.
-
-On constate également, ce qui n'apparaisait ni sur les signaux temporels ni sur les spectres que le clic principale sempble accompagné de répliques, ce qui est cohérent avec la biologie : il y a un phénomène d'écho à l'intérieur du nez des odontocètes lors de l'émission des clics.
+A l'inverse, pour le signal n° 20000 qui est le plus dégradé, le clic est très peu visible et plutôt sur les basses fréquences.
 
 On peut aussi visualiser les spectrogrammes en 3D, comme le montre la figure~\ref{fig:spectros3D}.
 Les informations sont les mêmes, mais représentées différemment.
@@ -194,6 +192,7 @@ De plus, un intérêt qui n'est pas évident sur un affichage statique, cette vi
 \end{figure}
 
 On constate bien mieux l'impact du bruit sur \ref{fig:spectros3D} les spectrogrammes 3D que sur les spectrogrammes 2D.
+On constate également, ce qui n'apparaisait ni sur les signaux temporels ni sur les spectres que le clic principale sempble accompagné de répliques, ce qui est cohérent avec la biologie : il y a un phénomène d'écho à l'intérieur du nez des odontocètes lors de l'émission des clics.
 
 \hypertarget{Data-augmentation}{%}
 \section{Data augmentation}
@@ -226,7 +225,7 @@ L'intérêt le plus évident de cette opération est de multiplier le nombre d'e
 En effet dans notre cas, nous n'avons rencontré aucun probléme de surapprentissage mais nous avons besoin de l'utiliser pour une autre raison.
 Nous avons pu remarquer que certains exemples avaient subi de fortes dégradations notamment dues
 à du bruit ou bien à un fort décalage temporel du clic par exemple.
-Afin d'éviter que ces dégradations n'altérent le processus d'apprentissage de nos réseaux de neurones (le réseau pouvant par exemple assimiler une de ces dégradations à l'une des classes),
+Afin d'éviter que ces dégradations n'altèrent le processus d'apprentissage de nos réseaux de neurones (le réseau pouvant par exemple assimiler une de ces dégradations à l'une des classes),
 plutôt que de les supprimer, il nous a paru plus pertinent d'essayer de rajouter aléatoirement ces
 pertubations sur tous les exemples.
 
@@ -235,7 +234,7 @@ pertubations sur tous les exemples.
 \subsection{Rajout de bruit blanc}
 \label{Rajout-de-bruit-blanc}}
 
-Comme on a pu l'observer précedement certains enregistrement sont plus ou moins bruités.
+Comme on a pu l'observer précedement certains enregistrements sont plus ou moins bruités.
 Nous allons donc dans un premier temps essayer d'en diminuer l'impact via de la data augmentation. Autrement dit nous allons artificiellement créer des exemples issus d'enregistrements choisis aléatoirement auxquels du bruit a été artificiellement ajouté.
 Le type de bruit que nous avons choisi, en dehors de toute indications sur les bruits marins, est un bruit blanc ou gaussien : au signal temporel est ajouté une valeur aléatoire de densité normale (moyenne 0, écart-type variable).
 
@@ -266,7 +265,7 @@ Ils ne remplacent pas la data augmentation mais viennent simplement en compléme
 \subsection{Filtre passe haut}
 \label{Filtre-passe-haut}}
 
-Dans un premier temps pour résoudre les probléme vus précedement on  va commencer par appliquer un filtre passe haut aux enregistrements. En effet les clics des différents animaux se situant dans une gamme de fréquence au dessus des 8 KHz on peut donc appliquer le filtre à l'enregistrement sans en altérer le clic.
+Dans un premier temps pour résoudre les problémes vus précédemment, on  va commencer par appliquer un filtre passe haut aux enregistrements. En effet les clics des différents animaux se situant dans une gamme de fréquence au dessus des 8 KHz on peut donc appliquer le filtre à l'enregistrement sans en altérer le clic.
 
 \begin{figure}[!h]
 \centering
@@ -280,11 +279,11 @@ Ainsi en appliquant simplement ce filtre on constate par exemple que l'identific
 
 \begin{figure}[!h]
 \centering
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCsansprocessingsanszoom.png}
     \caption{}
   \end{subfigure}
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./images/indice20000Spectro1Dlabel9classeZCavecprocessingsanszoom.png}
     \caption{}
   \end{subfigure}
@@ -296,12 +295,12 @@ Ainsi en appliquant simplement ce filtre on constate par exemple que l'identific
 \subsection{Mise à l'échelle}
 \label{Mise-a-l-echelle}}
 
-En analysant les signaux, nous avons constaté de grandes différences aussi bien en terme d'intensité que de fréquences sur leurs clics.
+En analysant les signaux, nous avons constaté de grandes différences aussi bien en terme d'intensités que de fréquences sur leurs clics.
 Cependant, pour bien fonctionner le réseau de neurones convolutifs (comme la grande majorité des classifieurs) nécessite des données normalisées.
 C'est pourquoi on va devoir mettre à l'échelle nos signaux, autrement dit nous allons normaliser automatiquement entre -1 et 1 l'ensemble de nos signaux.
-Afin de réaliser celà on fait un choix pragmatique qui était de repérer le maximum puis diviser le signal par ce maximum.
+Afin de réaliser celà, on fait un choix pragmatique qui était de repérer le maximum puis diviser le signal par ce maximum.
 Cette phase de normalisation se faisant après le filtrage passe haut des signaux,
-il est raisonnable d'espèrer que la maximum du signal corresponde bien au clic.
+il est raisonnable d'espèrer que le maximum du signal correspond bien au clic.
 
 \hypertarget{Les-Pipelines}{%}
 \section{Les Pipelines}
@@ -309,7 +308,7 @@ il est raisonnable d'espèrer que la maximum du signal corresponde bien au clic.
 
 A l'image des pipelines utilisés pour transporter le gaz ou le pétrole,
 les pipelines en informatique servent à transporter un flux de données.
-Flux de données sur lequel on va effectuer un certain nombre d'opérations, flux qui sera ensuite injecté  dans le réseau de neurones.
+Flux de données sur lequel on va effectuer un certain nombre d'opérations, flux qui sera ensuite injectés  dans le réseau de neurones.
 Cette méthode constitue maintenant la norme pour les applications en apprentissage automatique.
 
 Elle présente plusieurs interêts majeurs :
@@ -343,11 +342,12 @@ J'ai donc créé dans un script python définissant fonction paramètrable perme
 \item Des courbes des signaux sélectionnés
 \item Des spectrogrammes 2D des signaux sélectionnés
 \item Des spectrogrammes 3D des signaux sélectionnés
+\item Des fichiers contenant les signaux que l'on observe
 \end{itemize}
 Une fois générés, ils sont enregistrés sous forme de png dont le nom correspond à leur description. Ce qui donne par exemple pour le spectrogramme 3D sans processing et sans zoom de l'enregistrement numéro 17 000 de la classe GG dont le label est 0 :\\
 indice17000Spectro3Dlabel0classeGGsansprocessingsanszoom.png.
 
-A noter que les plots simples sont enregistrés sous spectro1D pour des raisons pratiques.
+A noter que les plots simples sont enregistrées sous spectro1D pour des raisons pratiques.
 
 Dans un troisième temps, j'ai créé un autre script en python également paramètrable permettant de sélectionner des png en fonction de leur label, de leur type (spectrogramme 1D ou 2D ou 3D) et leurs options (avec ou sans zoom et avec ou sans processing).
 Et de les intégrer dans un ou plusieurs fichiers latex en fonction de leur nombre.
@@ -357,16 +357,18 @@ Ce fichier latex est automatiquementcompilé par le script pour générer un fic
 qui contient l'ensemble des courbes générées.
 Ce fichier pdf est alors enregistré avec un nom correspondant à ce qu'il contient. Ainsi un fichier contenant les spectrogrammes 2D du label 6 sans processing et avec zoom sera nommé:\\ Spectro2Dlabel6sansprocessingaveczoom.pdf
 
-Enfin un programme principal nommé apdfmaker, également paramètrable, est chargé de coordonner l'ensemble des scripts vus précedement.
+Enfin un programme principal nommé apdfmaker, également paramètrable, est chargé de coordonner l'ensemble des scripts vus précédemment.
 A noter que ce programme ne se contente pas de générer un pdf à la fois mais peut
 en générer une multitude à chaque exécution, en fonction des paramètres.
-Ainsi si l'on veut par exemple qu'il génére toutes les représentations graphiques possibles (soit 1 080 000 images) de tous les enregistrements puis qu'il les stocke dans des pdf les plus détaillés possibles c'est théoriquement possible (même si cela n'est pas souhaitable  car très vite l'espace disque serait saturé).
+Ainsi si l'on veut par exemple qu'il génère toutes les représentations graphiques possibles (soit 1 080 000 images) de tous les enregistrements puis qu'il les stocke dans des pdf les plus détaillés possibles c'est théoriquement possible (même si cela n'est pas souhaitable  car très vite l'espace disque serait saturé).
 
-Les pdf finaux ressemblerons à la figure~\ref{fig:exempledepdf}.
+Les pdf finaux ressembleront à la figure~\ref{fig:exempledepdf}.
 
 \begin{figure}[!h]
 \centering
 \includegraphics[width=10cm]{./images/pdfexemple.png}
-\caption{Exemple de fiche d'analyse%
+\caption{Extrait de la fiche d'analyse des signaux bruts du label 9 sans processing et sans zoom%
 \label{fig:exempledepdf}}
 \end{figure}
+
+On voit ci-dessus \ref{fig:exemplepdf} un extrait de la fiche d'analyse des signaux bruts du label 9 sans processing et sans zoom. Dans cette fiche on peut observer une quarantaine de signaux appartenant tous au label, elle nous permet d'avoir une vague idée des signaux de ce label.

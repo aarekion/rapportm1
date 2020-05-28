@@ -1,27 +1,55 @@
 \hypertarget{conclusion}{%
 \chapter{Conclusion}\label{conclusion}}
 
-Mettre un chapeau
+Dans cette partie nous verrons dans un premier temps un bref résumé du travail que j'ai effectué durant ce stage. Dans un second temps ce que mon travail a apporté a mon équipe. Dans un troisième temps nous ferons un bilan de ce stage d'un point de vu personnel. Et enfin nous finirons par voir les possilités qui nous ont été ouvertes par ce travail aussi bien pour mon équipe que pour moi même.
 
-\section{Travail réalisé}
+\section{Mon stage}
 
-Debrouille toi.
+\subsection{Le déroulement de mon stage}
 
-\section{Ce que SpikeTrain en tire}
+Durant ce stage nous avons participé en équipe au challenge de classification d'animaux marins. Notre équipe était composée de M. Clergue qui se chargeait de tester des IA, de moi-même qui me chargeais de l'analyse des données et de M. Page qui nous fournissais une grande partie des fonctions dont nous avions besoin ainsi qu'une assistance importante dans nos missions.
+J'ai donc eu pour objectif de créer l'ensemble des outils permettant la création de fiches d'analyses, fiches qui permettent à mes tuteurs d'avoir un grand nombre d'informations sur la base de données.
+Afin de créer ces fiches j'ai dans un premier temps dû créer les outils d'analyses nécessaires avec l'aide de M. Page à savoir :
+
+\begin{itemize}
+
+\item La génération des courbes simples de nos signaux audios.
+\item La génération des transformées de fourier de nos signaux.
+\item La génération des spectrogrammes 2D et 3D de nos signaux.
+\item Le zoom sur les clics.
+\item Le prétraitement des données permettant de mieux identifier les zoom.
+
+\end{itemize}
+
+Puis à l'aide de ces outils d'analyse ainsi que les outils de data augmentation créés par M. Page j'ai pu créer les outils permettant la visualisation des résultats de ces analyses. J'ai donc dû créer des outils pour :
+
+\begin{itemize}
+
+  \item Sélectionner les signaux que l'on désire.
+  \item Sauvegarder sous forme de png les signaux et leurs spectrogrammes avec et ou sans zoom et prétraitements.
+  \item Créer des fichiers LaTex permettant de réunir ces png selon les critères désirés.
+  \item Créer des fichiers générant les fiches d'analyse sous forme de pdf à partir des fichiers LaTex.
+  \item Un programme permettant à partir de tous les outils vus précedement de créer d directement les fiches d'analyse désirées en rentrant simplement leurs caractéristiques.
+
+\end{itemize}
+
+
+\subsection{Le résultat de mon stage}
 
 L'analyse des fiches nous à permis de constater que :
 \begin{itemize}
-\item Certaines espèces semblent émettre à certaines gammes de fréquences
+\item Certaines espèces semblent émettre à certaines gammes de fréquences.
 \item Contrairement à ce qui nous avait été annoncé dans la description du challenge de nombreux clics de la base de test n'étaient pas centrés.
 \item Les signaux de la base d'apprentissage sont en très grande majorité bien centrés.
 \item Un nombre important d'enregistrements de la base de test semblent avoir subbis d'importantes dégradations.
-\item Sur certains enregistrements de la base de test le clic est impossible a identifier sans prétraitement.
+\item Sur certains enregistrements de la base de test le clic est impossible à identifier sans prétraitement.
 \end{itemize}
-Ce qui peux expliquer au moins en partie le différentiel de performances de nos IA sur la base labelisée et la base non labelisée.
+Ce qui peut expliquer au moins en partie le différentiel de performances de nos IA sur la base labelisée et la base non labelisée.
 
 En somme l'objectif est atteint.
 
-\section{Ce qu'Alexis en tire}
+
+\section{Bilan personnel du stage}
 
 Bien que les tâches auxquelles j'ai été affecté ne s'attardent que peu sur les
 IA que nous avons utilisés, de par leur nature elle m'ont permis d'acquérir une
@@ -36,29 +64,37 @@ J'ai pu aussi, apprendre à rédiger des documents de recherche grâce à la cr�
 Les problémes techniques inhérents aux conditions exceptionnelles dans lesquelles mon stage s'est déroulé ont rendu son déroulement compliqué et laborieux.
 Heureusement, la grande maîtrise et la remarquable fléxibilité de mes tuteurs en ont fait une expérience aussi intense qu'enrichissante.
 
-\section{Perspectives}
+\section{Perspectives d'avenir}
 
-Perspectives pour SpikeTrain :
+Du point de vu de l'équipe SpikeTrain plusieurs pistes de développement de ces outils :
 
-- GUI pour l'outil notamment dans le cadre du projet H2020 déposé par le groupe spikeTrain.
+\begin{itemize}
 
-- L'outil de création de fiche de visualisation me semble mature. En particulier,
-il permet de rassembler en un seul fichier pdf, les visualisations de nombreux
-exemples de la base. Il reste, pour mes tuteurs, à analyser finement ces visualisations pour améliorer les performances du classifieur.
-Ils sont optimistes à ce sujet.
+\item La création d'une interface graphique pour l'outil notamment dans le cadre du projet H2020 déposé par le groupe spikeTrain.
 
-- A l'heure actuelle ces outils ne sont adaptés qu'à une base de données et à
-un probléme particulier.
-Par la suite, il devraient être transformés en outils génériques facilitant l'analyse des données des futurs problémes auxquels seront confrontés l'équipe SpikeTrain. Par exemple, ils comptent s'intéresser à de l'identification de
+\item L'analyse fine des fiches d'analyse afin d'améliorer les performances du classifieur. En effet l'outil de création de fiche de visualisation me semble mature.
+En particulier, il permet de rassembler en un seul fichier pdf, les visualisations de nombreux exemples de la base.
+A noter que mes tuteurs semblent optimistes à ce sujet.
+
+\item La transformation de ces outils qui ne sont adaptés qu'à une base de données et à un probléme particulier en outils génériques.
+Outils génériques qui faciliteront l'analyse des données des futurs problémes auxquels seront confrontés l'équipe SpikeTrain. Par exemple, l'identification de
 poissons dans les récifs coraliens en collaboration avec le laboratoire de
 Biologie Marine de l'Université des Antilles.
 
-Perspectives pour Alexis
+\end{itemize}
 
-- mon envie de faire de la recherche
+D'un point de vu plus personnel ce stage m'a :
+\begin{itemize}
+\item Conforté dans mon choix qui était de me spécialiser en IA. En effet en me confrontant à des problèmes et concepts mathématiques complexes, j'ai constaté que j'avais les capacités nécessaires pour pousuivre dans cette voie. De plus je trouve ce domaine particulèrement stimulant.
 
-- ton envie de faire de l'IA / signal / maths
+\item Il m'a également permis d'avoir un apperçu du domaine de la recherche. Et par la même occasion permis de surmonter certaines de mes appréhensions concernant la recherche.
 
-- ton envie de faire des trucs
-Actuellement l'ensemble des IA existantes donnant de bons résultats ont un point commun, elle demandent une quantité titanesque de données afin d'être efficaces.
-Fort de ce constat les outils d'analyse et de tris des données permettant de naviguer facilement dans d'importantes quantités de données semble présenter un grand intérêt.
+\item Il m'a également motivé à poursuivre le développement d'outils d'analyse. En effet actuellement l'ensemble des IA existantes donnant de bons résultats ont un point commun, elle demandent une quantité titanesque de données afin d'être efficaces. Fort de ce constat les outils d'analyse et de tris des données permettant de naviguer facilement dans d'importantes quantités de données semblent présenter un grand intérêt.
+\end{itemize}
+
+
+
+
+
+\centering
+\~Fin\~

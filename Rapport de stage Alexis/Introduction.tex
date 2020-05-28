@@ -346,7 +346,7 @@ Les neurones présentés précédemment prennent tout leur intérêt lorsqu'ils 
 Le premier de ces réseaux, encore utilisé de nos jours, est appelé \textbf{perceptron}.
 Le principe du perceptron n'est pas nouveau et date des années 1960.
 
-Dans ces types de réseaux, les neurones sont organisés en \textbf{couches} (une seul couche pour le perceptron et plusieurs pour le perceptron multicouche).
+Dans ces types de réseaux, les neurones sont organisés en \textbf{couches} (une seule couche pour le perceptron et plusieurs pour le perceptron multicouche).
 La première couche correspond à celle qui permettra d'introduire des informations dans le réseau (comme la rétine par exemple). Elle est nommée \textbf{couche d'entrée}.
 La dernière couche permettra de lire les décisions du réseau. Elle est appelée \textbf{couche de sortie}. Dans les applications classiques, à chaque neurone de la couche de sortie correspond une décision possible et le neurone qui est le plus activé sur la couche de sortie l'emporte.
 Entre ces couches, on trouve souvent un nombre variable de couches intermédiaires appelées \textbf{couches cachées}.
@@ -378,7 +378,7 @@ Ce réseau se présente comme un réseau classique , une couche d'entrée,
 une couche de sortie et des couches cachées.
 Neanmoins, il s'en distingue par la composition des couches cachées.
 
-Ces réseaux ayant été conçus initialement pour des applications a des images,
+Ces réseaux ayant été conçus initialement pour des applications à des images,
 nous illustrerons notre propos ici sur ce type de données, avant de passer
 à l'implémentation utilisée dans le cas du challenge.
 
@@ -418,7 +418,7 @@ et peut être faite par un neurone unique qui "se déplace" dans l'image.
 Dans le cas des neurones convolutifs, on gagne de nombreuses choses par rapport
 à une convolution classique :
 \begin{itemize}
-\item le neurone peut travailler sur toutes les cartes d'entrées en meme temps
+\item le neurone peut travailler sur toutes les cartes d'entrées en même temps
 (il mixe les informations de ces cartes)
 \item il intègre une fonction d'activation qui est non linéaire, ce que ne fait
 pas la convolution de base.
@@ -428,7 +428,7 @@ d'entrées
 
 La définition d'une couche convolutive est donc très simple :
 on lui indique le nombre de cartes d'entrées, et le nombre de cartes de sorties
-désirée. Le réseau possèdera alors, pour cette couche, autant de neurones
+désirées. Le réseau possèdera alors, pour cette couche, autant de neurones
 que de cartes de sorties voulues.
 
 Cette opération est illustrée dans la figure~\ref{fig:exCNN}, avec une couche
@@ -437,7 +437,7 @@ convolutive placée juste après l'image d'entrée.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\textwidth]{./images/exCNN.png}
-\caption[Exemple de réseau convolutif]{ Exemple de réseau convolutif. Celui ci présente 2 couches convolutives, entre lesquelles on trouve des couches de
+\caption[Exemple de réseau convolutif]{ Exemple de réseau convolutif. Celui-ci présente 2 couches convolutives, entre lesquelles on trouve des couches de
 pooling, notée ici \textit{subsampling}. La couche de sortie est notée \textit{output}.
 \label{fig:exCNN}
 }
@@ -445,7 +445,7 @@ pooling, notée ici \textit{subsampling}. La couche de sortie est notée \textit
 
 En empilant les couches de convolutions, on constate que les caractéristiques
 extraites par chaque couche sont de plus en plus sémantiques avec la profondeur
-des couches. Par exemple, la premiere couche va extraire des bords
+des couches. Par exemple, la première couche va extraire des bords
 d'orientations diverses. La seconde va combiner ces bords pour extraire des
 coins. La troisième pourrait détecter des formes basiques (ronds, cercles)
 et une dernière pourrait combiner tout cela pour differencier des images de
