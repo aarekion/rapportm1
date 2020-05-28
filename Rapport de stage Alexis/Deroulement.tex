@@ -114,25 +114,25 @@ Nous allons donc les observer sous d'autres formes puis on cherchera à amélior
 
 Avant d'observer les spectrogrammes il convient de commencer par expliquer et observer les spectres obtenus par la transformée de Fourier de nos 3 signaux.
 
-La transformée de Fourier est un outil mathématique nous permettant de passer du domaine temporel au domaine fréquenciel, en décomposant le signal de départ en somme de signaux sinusoidaux.
-Cela permet d'observer les différentes composantes fréquentielles du signal.
-
 Les transformées de Fourier de nos signaux sont présentées sur la figure~\ref{fig:tf} (les courbes ne sont pas du tout à la même échelle en ordonnée).
 
 \begin{figure}[!h]
 \centering
-  \begin{subfigure}[b]{0.3\textwidth}
+  \begin{subfigure}[b]{0.2\textwidth}
     \includegraphics[width=\textwidth]{./images/17000fft.png}
   \end{subfigure}
-  \begin{subfigure}[b]{0.3\textwidth}
+  \begin{subfigure}[b]{0.2\textwidth}
     \includegraphics[width=\textwidth]{./images/20000fft.png}
   \end{subfigure}
-  \begin{subfigure}[b]{0.3\textwidth}
+  \begin{subfigure}[b]{0.2\textwidth}
     \includegraphics[width=\textwidth]{./images/571fft.png}
   \end{subfigure}
   \caption{Transformé de Fourier des signaux : (a) n°17000 et (b) n°20000 de la base d'apprentissage ; (c) n°571 de la base de test.%
 \label{fig:tf}}
 \end{figure}
+
+La transformée de Fourier est un outil mathématique nous permettant de passer du domaine temporel au domaine fréquenciel, en décomposant le signal de départ en somme de signaux sinusoidaux.
+Cela permet d'observer les différentes composantes fréquentielles du signal.
 
 Sur la figure \ref{fig:tf} on constate particulièrement sur le signal n° 17000 un pic entre les fréquence 25KHz et 50KHz, dont on peut supposer qu'il correspond au clic.
 Par contre, les autres spectres, tels qu'ils sont représentés, avec des pics importants aux très basses fréquences, ne permettent pas de trouver le clic.
